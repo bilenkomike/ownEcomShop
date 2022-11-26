@@ -3,20 +3,22 @@ import { Link } from "react-router-dom";
 
 import { TopBarStyled, TopBarStyledPositioned } from "./TopBar.styled";
 
-const TopBar = () => {
+import Links from "../../constants/links/Links";
+
+const TopBar: React.FC = () => {
   return (
     <TopBarStyled>
-      <TopBarStyledPositioned>
+      <TopBarStyledPositioned style={{ textAlign: "left" }}>
         <a href="tel:+(405) 555-0128">Available 24/7 at (405) 555-0128</a>
       </TopBarStyledPositioned>
 
       <TopBarStyledPositioned centered={true}>
-        <Link to="/deliver-return">Delivery & returns</Link>
-        <Link to="/track-order">Track order</Link>
-        <Link to="/blog">Blog</Link>
-        <Link to="/contacts">Contacts</Link>
+        <Link to={Links.returnDelivery}>Delivery & returns</Link>
+        <Link to={Links.trackOrder}>Track order</Link>
+        <Link to={Links.blog}>Blog</Link>
+        <Link to={Links.contacts}>Contacts</Link>
       </TopBarStyledPositioned>
-      <TopBarStyledPositioned>
+      <TopBarStyledPositioned style={{ textAlign: "right" }}>
         <span>Eng</span> /<span> $</span>
         <span>Log in</span> / <span>Register</span>
       </TopBarStyledPositioned>
@@ -25,11 +27,3 @@ const TopBar = () => {
 };
 
 export default TopBar;
-
-//
-// Delivery & returns
-// Track order
-// Blog
-// Contacts
-// Eng / $
-// Log in / Register
