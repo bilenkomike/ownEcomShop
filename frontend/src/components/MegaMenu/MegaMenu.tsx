@@ -15,7 +15,7 @@ import Button from "../Button/Button";
 
 const MegaMenu: React.FC = () => {
   return (
-    <MegaMenuStyled active={true}>
+    <MegaMenuStyled active={false}>
       <MegaMenuList>
         <MegaMenuListItem>New collection</MegaMenuListItem>
         <MegaMenuListItem>Best Sellers</MegaMenuListItem>
@@ -67,18 +67,18 @@ const MegaMenu: React.FC = () => {
         <MegaMenuListItem>Socks & tights</MegaMenuListItem>
       </MegaMenuList>
       <MegaMenuLine />
-      <MegaMenuBanner style={{ background: "#202020" }}>
+      <MegaMenuBanner>
         <img src={BoyImg} alt="" />
         <MegaMenuBannerText>Back to school. Sale up to 50%</MegaMenuBannerText>
         <Button
-          // icon="next"
-          // iconPosition="before"
-          styleType="light"
-          size="social"
-          variant="solid"
+          icon="next"
+          iconPosition="after"
+          styleType="default"
+          size="small"
+          variant="outlined"
           disabled={false}
         >
-          f
+          See offers
         </Button>
       </MegaMenuBanner>
     </MegaMenuStyled>
