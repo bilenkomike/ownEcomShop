@@ -41,6 +41,16 @@ export const TopBarStyledPositioned = styled.div<{ centered?: boolean }>`
 
     cursor: pointer;
 
+    &:first-child {
+      justify-content: start;
+      margin-left: 0;
+    }
+
+    &:last-child {
+      justify-content: end;
+      margin-right: 0;
+    }
+
     &:hover {
       text-decoration: underline;
     }
