@@ -31,3 +31,12 @@ export const InputStyled = styled.input<{
     color: ${Colors.gray600};
   }
 `;
+
+export const InputStyledLabel = styled.label`
+  display: block;
+  margin-bottom: 8px;
+
+  font-weight: 400;
+  font-size: 14px;
+  color: ${Colors.gray800};
+`;
