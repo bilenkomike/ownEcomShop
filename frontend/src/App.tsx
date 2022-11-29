@@ -7,11 +7,12 @@ import Links from "./constants/links/Links";
 
 const App: React.FunctionComponent = () => {
   return (
-    <Routes>
+    <div>
       <Header />
-
-      <Route path={Links.home} element={<HomePage />} />
-    </Routes>
+      <Routes>
+        <Route path={Links.home} element={<HomePage />} />
+      </Routes>
+    </div>
   );
 };
 
