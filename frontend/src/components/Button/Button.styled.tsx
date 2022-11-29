@@ -14,8 +14,13 @@ import {
 export const ButtonStyled = styled.button<ButtonStylesTypes>`
   display: flex;
   align-items: center;
+  justify-content: center;
   ${(props) => props.size === "social" && { width: 32, height: 32 }}
   padding: ${(props) => size(props.size)};
+  max-height: 52px;
+
+  height: ${(props) =>
+    props.size === "default" ? 42 : props.size === "large" ? 52 : 36}px;
 
   font-weight: 700;
   font-size: ${(props) => fontSize(props.size)};
