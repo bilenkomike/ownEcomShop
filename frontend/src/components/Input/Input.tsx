@@ -1,6 +1,6 @@
 import React from "react";
 
-import { InputStyled } from "./Input.styled";
+import { InputStyled, InputStyledLabel } from "./Input.styled";
 
 interface Variant {
   variant: "large" | "default" | "small";
@@ -21,15 +21,21 @@ const Input: React.FC<Variant> = ({
   type,
   variant,
   onChange,
+  label,
 }) => {
+  const id = Math.random().toString();
   return (
-    <InputStyled
-      placeholder={placeholder}
-      type={type}
-      variant={variant}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    />
+    <div>
+      <InputStyledLabel htmlFor={id}>{label}</InputStyledLabel>
+      <InputStyled
+        id={id}
+        placeholder={placeholder}
+        type={type}
+        variant={variant}
+        value={value}
+        onChange={(e) => onChange(e.target.value)}
+      />
+    </div>
   );
 };
 
