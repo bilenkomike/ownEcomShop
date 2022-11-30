@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const BrandsStyled = styled.section`
   display: flex;
-  padding: 0 17.9%;
+  padding: 0 17.9% 120px;
   justify-content: space-between;
   align-items: center;
 `;
