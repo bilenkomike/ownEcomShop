@@ -13,15 +13,6 @@ export const DownloadAppButtonsStyledButton = styled.button`
   outline: none;
   border-radius: 4px;
   background-color: ${Colors.gray800};
-  /* background: linear-gradient(
-    0deg,
-    rgba(26, 26, 26, 0.1) -0.24%,
-    rgba(33, 33, 33, 0.151) 177.23%,
-    rgba(53, 53, 53, 0.227) 444.15%,
-    rgba(87, 87, 87, 0.318) 767.35%,
-    rgba(133, 133, 133, 0.421) 1129.49%,
-    rgba(179, 179, 179, 0.51) 1442.59%
-  ); */
 
   color: ${Colors.white};
 
