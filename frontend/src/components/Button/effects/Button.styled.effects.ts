@@ -268,7 +268,7 @@ export const disabledHover = (
 export const size = (size: Size) => {
   switch (size) {
     case "social":
-      return "8px 12px";
+      return "8px";
     case "small":
       return "12px 24px";
 

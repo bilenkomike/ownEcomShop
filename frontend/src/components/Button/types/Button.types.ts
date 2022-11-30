@@ -1,6 +1,13 @@
 interface ButtonInterface {
-  children: string;
-  icon?: "next" | "cart" | "instagram";
+  children?: string;
+  icon?:
+    | "next"
+    | "cart"
+    | "instagram"
+    | "facebook"
+    | "twitter"
+    | "pinterest"
+    | "youtube";
   styleType: "default" | "secondary" | "dark" | "light";
   variant: "outlined" | "solid";
   disabled?: boolean;

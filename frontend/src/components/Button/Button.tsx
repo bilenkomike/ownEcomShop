@@ -1,10 +1,18 @@
 import React from "react";
 import { ButtonStyled } from "./Button.styled";
-import { BsArrowRight, BsCart, BsInstagram } from "react-icons/bs";
+import {
+  BsArrowRight,
+  BsCart,
+  BsInstagram,
+  BsTwitter,
+  BsYoutube,
+  BsPinterest,
+} from "react-icons/bs";
+import { FaFacebookF } from "react-icons/fa";
 import ButtonInterface from "./types/Button.types";
 
 const Button: React.FC<ButtonInterface> = ({
-  children,
+  children = "",
   icon,
   iconPosition = "before",
   size,
@@ -20,18 +28,34 @@ const Button: React.FC<ButtonInterface> = ({
       disabled={disabled}
       style={{ width: icon === "cart" ? "100%" : "" }}
     >
-      {icon && iconPosition === "before" && icon === "next" && (
-        <BsArrowRight style={{ marginRight: 6 }} />
+      {icon && iconPosition === "before" && icon === "facebook" && (
+        <FaFacebookF style={{ marginRight: size !== "social" ? 6 : "" }} />
       )}
+
+      {icon && iconPosition === "before" && icon === "twitter" && (
+        <BsTwitter style={{ marginRight: size !== "social" ? 6 : "" }} />
+      )}
+      {icon && iconPosition === "before" && icon === "youtube" && (
+        <BsYoutube style={{ marginRight: size !== "social" ? 6 : "" }} />
+      )}
+
+      {icon && iconPosition === "before" && icon === "pinterest" && (
+        <BsPinterest style={{ marginRight: size !== "social" ? 6 : "" }} />
+      )}
+
+      {icon && iconPosition === "before" && icon === "next" && (
+        <BsArrowRight style={{ marginRight: size !== "social" ? 6 : "" }} />
+      )}
+
       {icon && iconPosition === "before" && icon === "instagram" && (
-        <BsInstagram style={{ marginRight: 6 }} />
+        <BsInstagram style={{ marginRight: size !== "social" ? 6 : "" }} />
       )}
       {icon && iconPosition === "before" && icon === "cart" && (
-        <BsCart style={{ marginRight: 6 }} />
+        <BsCart style={{ marginRight: size !== "social" ? 6 : "" }} />
       )}
       {children}
       {icon && iconPosition === "after" && icon === "next" && (
-        <BsArrowRight style={{ marginLeft: 6 }} />
+        <BsArrowRight style={{ marginLeft: size !== "social" ? 6 : "" }} />
       )}
     </ButtonStyled>
   );
