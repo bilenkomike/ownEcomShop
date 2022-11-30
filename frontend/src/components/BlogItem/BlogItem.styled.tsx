@@ -77,6 +77,9 @@ export const BlogItemStyled = styled.article`
   }
 
   &:hover {
-    box-shadow: 0px 0px 50px -15px rgba(30, 33, 44, 0.3);
+    box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.16),
+      0px 30px 24px -10px rgba(154, 156, 165, 0.1),
+      0px 12px 10px -6px rgba(154, 156, 165, 0.08),
+      0px 4px 4px -4px rgba(30, 33, 44, 0.05);
   }
 `;
