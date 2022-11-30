@@ -83,7 +83,7 @@ export const MainMenuSearchButton = styled.button`
   background-color: transparent;
 
   position: absolute;
-  top: 30%;
+  bottom: 25%;
   right: 5%;
   z-index: 2;
 
