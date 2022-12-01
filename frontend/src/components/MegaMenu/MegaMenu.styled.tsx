@@ -8,6 +8,7 @@ export const MegaMenuStyled = styled.div<{ active?: boolean }>`
 
   box-sizing: border-box;
   position: absolute;
+  z-index: 4;
 
   background-color: ${Colors.white};
 `;

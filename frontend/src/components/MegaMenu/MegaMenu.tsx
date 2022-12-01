@@ -13,9 +13,9 @@ import {
 } from "./MegaMenu.styled";
 import Button from "../Button/Button";
 
-const MegaMenu: React.FC = () => {
+const MegaMenu: React.FC<{ active: boolean }> = ({ active }) => {
   return (
-    <MegaMenuStyled active={false}>
+    <MegaMenuStyled active={active}>
       <MegaMenuList>
         <MegaMenuListItem>New collection</MegaMenuListItem>
         <MegaMenuListItem>Best Sellers</MegaMenuListItem>
