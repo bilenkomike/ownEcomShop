@@ -6,6 +6,12 @@ export const SalesStyled = styled.section`
   margin-bottom: 100px;
 `;
 
+export const SalesStyledContainer = styled.div`
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+`;
+
 export const SalesStyledHeader = styled.div`
   display: flex;
   justify-content: space-between;

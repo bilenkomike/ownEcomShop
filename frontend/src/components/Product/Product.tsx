@@ -3,7 +3,7 @@ import ProductInterface from "./types/Product.types";
 import Button from "../Button/Button";
 import Rating from "../Rating/Rating";
 import ProductAttributes from "../ProductAttributes/ProductAttributes";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 import {
   ProductStyled,
@@ -39,96 +39,98 @@ const Product: React.FC<ProductInterface> = ({
 
   return (
     <ProductStyled size={size}>
-      <Link to={`/product/${id}`}>
-        {sale > 0 && <ProductStyledSale>-{sale}%</ProductStyledSale>}
-        <ProductStyledGalary>
-          {gallary.length > 1 && (
-            <>
-              <ProductStyledGallaryButton
-                left
-                onClick={() =>
-                  selectedImage < 1
-                    ? setSelectedImage(gallary.length - 1)
-                    : setSelectedImage(selectedImage - 1)
-                }
-              >
-                <TfiAngleLeft />
-              </ProductStyledGallaryButton>
-              {gallary.map((image, index) => (
-                <ProductStyledImage
-                  key={image}
-                  index={index}
-                  current={selectedImage}
-                  src={image}
-                  alt={name.concat(`${index}`)}
-                  active={index === selectedImage}
-                />
-              ))}
-              <ProductStyledGallaryButton
-                left={false}
-                onClick={() =>
-                  selectedImage > gallary.length - 2
-                    ? setSelectedImage(0)
-                    : setSelectedImage(selectedImage + 1)
-                }
-              >
-                <TfiAngleRight />
-              </ProductStyledGallaryButton>
-            </>
-          )}
-          {gallary.length === 1 && (
-            <ProductStyledImage
-              index={0}
-              current={selectedImage}
-              src={gallary[selectedImage]}
-              alt={name}
-              active={0 === selectedImage}
-            />
-          )}
-          <ProductStyledWishList wished={wishlist}>
-            {!wishlist && <AiOutlineHeart />}
-            {wishlist && <AiFillHeart />}
-          </ProductStyledWishList>
-        </ProductStyledGalary>
-        <ProductStyledDescription>
-          <div>
-            <ProductStyledTitle>{name}</ProductStyledTitle>
-            <ProductStyledPrice>
-              <ProductStyledPriceText sale={sale > 0}>
-                {sale === 0 && `${currency} ${price}`}
-                {sale > 0 &&
-                  `${currency} ${(price - (price * sale) / 100).toFixed(2)}`}
-              </ProductStyledPriceText>
+      {/* <Link to={`/product/${id}`}> */}
+      {sale > 0 && <ProductStyledSale>-{sale}%</ProductStyledSale>}
+      <ProductStyledGalary>
+        {gallary.length > 1 && (
+          <>
+            <ProductStyledGallaryButton
+              left
+              onClick={() =>
+                selectedImage < 1
+                  ? setSelectedImage(gallary.length - 1)
+                  : setSelectedImage(selectedImage - 1)
+              }
+            >
+              <TfiAngleLeft />
+            </ProductStyledGallaryButton>
 
-              {sale > 0 && (
-                <ProductStyledPriceSaleFrom>
-                  {currency}
-                  {price}
-                </ProductStyledPriceSaleFrom>
-              )}
-            </ProductStyledPrice>
-          </div>
+            {gallary.map((image, index) => (
+              <ProductStyledImage
+                key={image}
+                index={index}
+                current={selectedImage}
+                src={image}
+                alt={name.concat(`${index}`)}
+                active={index === selectedImage}
+              />
+            ))}
 
-          {rating > 0 && <Rating absolute={true} rating={rating} />}
+            <ProductStyledGallaryButton
+              left={false}
+              onClick={() =>
+                selectedImage > gallary.length - 2
+                  ? setSelectedImage(0)
+                  : setSelectedImage(selectedImage + 1)
+              }
+            >
+              <TfiAngleRight />
+            </ProductStyledGallaryButton>
+          </>
+        )}
+        {gallary.length === 1 && (
+          <ProductStyledImage
+            index={0}
+            current={selectedImage}
+            src={gallary[selectedImage]}
+            alt={name}
+            active={0 === selectedImage}
+          />
+        )}
+        <ProductStyledWishList wished={wishlist}>
+          {!wishlist && <AiOutlineHeart />}
+          {wishlist && <AiFillHeart />}
+        </ProductStyledWishList>
+      </ProductStyledGalary>
+      <ProductStyledDescription>
+        <div>
+          <ProductStyledTitle>{name}</ProductStyledTitle>
+          <ProductStyledPrice>
+            <ProductStyledPriceText sale={sale > 0}>
+              {sale === 0 && `${currency} ${price}`}
+              {sale > 0 &&
+                `${currency} ${(price - (price * sale) / 100).toFixed(2)}`}
+            </ProductStyledPriceText>
 
-          <ProductStyledHover>
-            {attributes.length > 0 && (
-              <ProductAttributes attributes={attributes} />
+            {sale > 0 && (
+              <ProductStyledPriceSaleFrom>
+                {currency}
+                {price}
+              </ProductStyledPriceSaleFrom>
             )}
-            <span style={{ display: "block", marginTop: 20 }}>
-              <Button
-                size="small"
-                icon="cart"
-                iconPosition="before"
-                variant="solid"
-                styleType="default"
-              >
-                Add to cart
-              </Button>
-            </span>
-          </ProductStyledHover>
-        </ProductStyledDescription>
-      </Link>
+          </ProductStyledPrice>
+        </div>
+
+        {rating > 0 && <Rating absolute={true} rating={rating} />}
+
+        <ProductStyledHover>
+          {attributes.length > 0 && (
+            <ProductAttributes attributes={attributes} />
+          )}
+          <span style={{ display: "block", marginTop: 20 }}>
+            <Button
+              size="small"
+              icon="cart"
+              iconPosition="before"
+              variant="solid"
+              styleType="default"
+            >
+              Add to cart
+            </Button>
+          </span>
+        </ProductStyledHover>
+      </ProductStyledDescription>
+      {/* </Link> */}
     </ProductStyled>
   );
 };

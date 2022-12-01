@@ -27,19 +27,27 @@ export const TopBarStyled = styled.nav`
 
 export const TopBarStyledPositioned = styled.div<{ centered?: boolean }>`
   flex: ${(props) => (props.centered ? 2 : 1)};
+  align-items: center;
   text-align: center;
   color: ${Colors.gray600};
   & > a,
   & > span {
     flex: 1;
-
+    /* display: flex; */
     justify-content: space-between;
+    align-items: center;
     margin: 0 10px;
 
     color: ${Colors.gray600};
     text-decoration: none;
 
     cursor: pointer;
+
+    & > svg {
+      margin: 0 0px -2px 5px;
+      width: 12px;
+      height: 12px;
+    }
 
     &:first-child {
       justify-content: start;

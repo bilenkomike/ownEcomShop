@@ -5,6 +5,9 @@ import { TopBarStyled, TopBarStyledPositioned } from "./TopBar.styled";
 
 import Links from "../../constants/links/Links";
 
+import { TfiAngleDown } from "react-icons/tfi";
+import flag from "./images/flag-usa.png";
+
 const TopBar: React.FC = () => {
   return (
     <TopBarStyled>
@@ -19,7 +22,16 @@ const TopBar: React.FC = () => {
         <Link to={Links.contacts}>Contacts</Link>
       </TopBarStyledPositioned>
       <TopBarStyledPositioned style={{ textAlign: "right" }}>
-        <span>Eng</span> /<span> $</span>
+        <span>
+          <img src={flag} alt="" />
+          Eng
+          <TfiAngleDown />
+        </span>{" "}
+        /
+        <span>
+          {" "}
+          $<TfiAngleDown />
+        </span>
         <span>Log in</span> / <span>Register</span>
       </TopBarStyledPositioned>
     </TopBarStyled>

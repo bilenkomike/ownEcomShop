@@ -52,13 +52,16 @@ export const MainMenuMiniCartCounter = styled.span`
 `;
 
 export const MainMenuLinks = styled.div`
-  & > a {
+  & > a,
+  & > span {
     margin: 0px 10px;
 
     text-decoration: none;
     color: ${Colors.gray800};
 
     transition: color 0.1s linear;
+
+    cursor: pointer;
 
     &:hover {
       color: ${Colors.primary};
