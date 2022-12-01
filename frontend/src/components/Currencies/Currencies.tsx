@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { CurrenciesStyled, CurrenciesStyledItem } from "./Currencies.styled";
 
 const Currencies: React.FC<{ active: boolean }> = ({ active }) => {
