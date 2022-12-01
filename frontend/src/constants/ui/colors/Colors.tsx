@@ -6,6 +6,7 @@ const Colors = {
   success: "#03CEA4",
   danger: "#FF4242",
   warning: "#F89828",
+  yellow: "#FFBD00",
   info: "#5A87FC",
   gray1000: "#14161d",
   gray900: "#1E212C",
