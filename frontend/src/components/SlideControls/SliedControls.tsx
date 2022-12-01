@@ -5,13 +5,16 @@ import {
 } from "./SlideControls.styled";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
-const SliedControls = () => {
+const SliedControls: React.FC<{
+  actionBack?: () => void;
+  actionForward?: () => void;
+}> = ({ actionBack, actionForward }) => {
   return (
     <SlideControlsStyled>
-      <SlideControlsStyledItem>
+      <SlideControlsStyledItem onClick={actionBack}>
         <AiOutlineArrowLeft />
       </SlideControlsStyledItem>
-      <SlideControlsStyledItem>
+      <SlideControlsStyledItem onClick={actionForward}>
         <AiOutlineArrowRight />
       </SlideControlsStyledItem>
     </SlideControlsStyled>
