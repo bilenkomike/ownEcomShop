@@ -19,7 +19,7 @@ import {
 } from "react-icons/ai";
 import Links from "../../constants/links/Links";
 
-const MainMenu: React.FC = () => {
+const MainMenu: React.FC<{ toggle: () => void }> = ({ toggle }) => {
   const [search, setSearch] = useState("");
   const searchSubmitHandler: (e: React.FormEvent) => void = (e) => {
     e.preventDefault();
@@ -40,15 +40,15 @@ const MainMenu: React.FC = () => {
         <img src="/images/logo.png" alt="" />
       </Link>
       <MainMenuLinks>
-        <Link className="active" to="/">
+        <span className="active" onClick={toggle}>
           Women
-        </Link>
-        <Link to="/">Men</Link>
-        <Link to="/">Girls</Link>
-        <Link to="/">Boys</Link>
-        <Link to="/" style={{ color: Colors.danger }}>
+        </span>
+        <span onClick={toggle}>Men</span>
+        <span onClick={toggle}>Girls</span>
+        <span onClick={toggle}>Boys</span>
+        <span onClick={toggle} style={{ color: Colors.danger }}>
           Sale
-        </Link>
+        </span>
       </MainMenuLinks>
 
       <MainMenuForm onSubmit={searchSubmitHandler}>
