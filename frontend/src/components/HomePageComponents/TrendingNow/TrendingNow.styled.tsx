@@ -6,7 +6,17 @@ export const TrendingNowStyled = styled.section`
   padding: 80px 17.9%;
   background-color: ${Colors.gray300};
   margin-bottom: 100px;
+  /* width: 100vw; */
+
+  overflow-x: hidden;
 `;
+
+export const TrendingNowStyledContainer = styled.div`
+  display: block;
+  width: 100%;
+  overflow-x: hidden;
+`;
+
 export const TrendingNowStyledHeader = styled.div`
   display: flex;
   align-items: center;
