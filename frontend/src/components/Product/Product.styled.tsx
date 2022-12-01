@@ -23,7 +23,7 @@ export const ProductStyledImage = styled.img<{
     return css`
       transform: translateX(-${props.current * 100}%);
     `;
-  }}
+  }};
 
   ${(props) => {
     return (
@@ -33,7 +33,7 @@ export const ProductStyledImage = styled.img<{
         transform: translateX(-${props.current * 100}%);
       `
     );
-  }}
+  }};
   transition: all 0.2s ease;
 `;
 
