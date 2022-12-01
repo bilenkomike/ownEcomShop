@@ -2,18 +2,64 @@ import styled, { css } from "styled-components";
 import Colors from "../../../constants/ui/colors/Colors";
 
 export const IntroStyled = styled.section`
-  display: block;
+  display: flex;
   width: 100%;
+  /* overflow-x: hidden; */
+
   position: relative;
 `;
 
 export const IntorStyledItem = styled.div`
   position: relative;
+  display: block;
+  width: 100%;
+
+  transition: all 0.2s ease;
+`;
+
+export const IntroStyledButton = styled.button<{ left: boolean }>`
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  ${(props) =>
+    props.left
+      ? css`
+          left: 32px;
+        `
+      : css`
+          right: 32px;
+        `};
+
+  display: flex;
+  padding: 12px;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 50%;
+  background-color: ${Colors.white};
+
+  opacity: 0.75;
+
+  & > svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  transition: all 0.2s linear;
 `;
 
 export const IntroStyledItemImage = styled.img`
   display: block;
-  width: 100%;
+  width: 100vw;
   height: 700px;
 `;
 export const IntroStyledItemSection = styled.div`
