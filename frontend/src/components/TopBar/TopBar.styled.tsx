@@ -3,6 +3,8 @@ import styled from "styled-components";
 import Colors from "../../constants/ui/colors/Colors";
 
 export const TopBarStyled = styled.nav`
+  position: relative;
+
   display: flex;
   padding: 11px 17.9%;
   align-items: center;
@@ -62,5 +64,9 @@ export const TopBarStyledPositioned = styled.div<{ centered?: boolean }>`
     &:hover {
       text-decoration: underline;
     }
+  }
+
+  & > [no-hover]:hover {
+    text-decoration: none;
   }
 `;

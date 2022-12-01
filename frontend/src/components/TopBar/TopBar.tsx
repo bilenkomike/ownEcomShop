@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { TopBarStyled, TopBarStyledPositioned } from "./TopBar.styled";
@@ -8,7 +8,13 @@ import Links from "../../constants/links/Links";
 import { TfiAngleDown } from "react-icons/tfi";
 import flag from "./images/flag-usa.png";
 
+import Currencies from "../Currencies/Currencies";
+import Languages from "../Languages/Languages";
+
 const TopBar: React.FC = () => {
+  const [toggleCurr, setToggleCur] = useState(false);
+  const [toggleLangs, setToggleLangs] = useState(false);
+
   return (
     <TopBarStyled>
       <TopBarStyledPositioned style={{ textAlign: "left" }}>
@@ -22,16 +28,17 @@ const TopBar: React.FC = () => {
         <Link to={Links.contacts}>Contacts</Link>
       </TopBarStyledPositioned>
       <TopBarStyledPositioned style={{ textAlign: "right" }}>
-        <span>
+        <span no-hover="" onClick={() => setToggleLangs(!toggleLangs)}>
           <img src={flag} alt="" />
           Eng
           <TfiAngleDown />
         </span>{" "}
-        /
-        <span>
+        <Languages active={toggleLangs} />/
+        <span no-hover="" onClick={() => setToggleCur(!toggleCurr)}>
           {" "}
           $<TfiAngleDown />
         </span>
+        <Currencies active={toggleCurr} />
         <span>Log in</span> / <span>Register</span>
       </TopBarStyledPositioned>
     </TopBarStyled>
