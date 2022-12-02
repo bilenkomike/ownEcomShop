@@ -6,12 +6,17 @@ import { TopBarStyled, TopBarStyledPositioned } from "./TopBar.styled";
 import Links from "../../constants/links/Links";
 
 import { TfiAngleDown } from "react-icons/tfi";
+import { HiOutlineUser } from "react-icons/hi";
+
 import flag from "./images/flag-usa.png";
 
 import Currencies from "../Currencies/Currencies";
 import Languages from "../Languages/Languages";
 
-const TopBar: React.FC = () => {
+const TopBar: React.FC<{
+  toggleLogin: () => void;
+  toggleRegister: () => void;
+}> = ({ toggleLogin, toggleRegister }) => {
   const [toggleCurr, setToggleCur] = useState(false);
   const [toggleLangs, setToggleLangs] = useState(false);
 
@@ -39,7 +44,11 @@ const TopBar: React.FC = () => {
           $<TfiAngleDown />
         </span>
         <Currencies active={toggleCurr} />
-        <span>Log in</span> / <span>Register</span>
+        <span>
+          <HiOutlineUser />
+          <span onClick={toggleLogin}>Log in</span> /{" "}
+          <span onClick={toggleRegister}>Register</span>
+        </span>
       </TopBarStyledPositioned>
     </TopBarStyled>
   );
