@@ -5,17 +5,23 @@ import TopBar from "../TopBar/TopBar";
 import SpecialOffers from "../SpecialOffers/SpecialOffers";
 import MegaMenu from "../MegaMenu/MegaMenu";
 
-const Header: React.FC<{ toggleBackDrop: () => void }> = ({
-  toggleBackDrop,
-}) => {
+const Header: React.FC<{
+  toggleBackDrop: () => void;
+  togglebackDropLogin: () => void;
+  togglebackDropRegister: () => void;
+}> = ({ toggleBackDrop, togglebackDropLogin, togglebackDropRegister }) => {
   const [megamenu, setMegamenu] = useState(false);
   const toggleMegaMenu = () => {
     setMegamenu(!megamenu);
     toggleBackDrop();
   };
+
   return (
     <HeaderStyled>
-      <TopBar />
+      <TopBar
+        toggleLogin={togglebackDropLogin}
+        toggleRegister={togglebackDropRegister}
+      />
       <MainMenu toggle={toggleMegaMenu} />
       <MegaMenu active={megamenu} />
       <SpecialOffers />

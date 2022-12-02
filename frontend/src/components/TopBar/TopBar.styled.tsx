@@ -35,7 +35,6 @@ export const TopBarStyledPositioned = styled.div<{ centered?: boolean }>`
   & > a,
   & > span {
     flex: 1;
-    /* display: flex; */
     justify-content: space-between;
     align-items: center;
     margin: 0 10px;

@@ -7,12 +7,15 @@ interface ButtonInterface {
     | "facebook"
     | "twitter"
     | "pinterest"
-    | "youtube";
+    | "youtube"
+    | "google"
+    | "linkedin";
   styleType: "default" | "secondary" | "dark" | "light";
   variant: "outlined" | "solid";
   disabled?: boolean;
   size: "large" | "default" | "small" | "social";
   iconPosition?: "before" | "after";
+  type?: "button" | "submit";
 }
 
 export default ButtonInterface;
