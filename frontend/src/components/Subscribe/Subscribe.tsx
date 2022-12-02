@@ -10,20 +10,12 @@ import {
   SubscribeStyledContentSelectType,
   SubscribeStyledContentSelectTypeItem,
   SubscribeStyledSubscribeForm,
-  SubscribeStyledCheckboxField,
-  SubscribeStyledCheckbox,
 } from "./Subscribe.styled";
 import img from "./images/image.png";
-import checkImg from "./images/check.png";
+import CheckBox from "../CheckBox/CheckBox";
 import Title from "../Title/Title";
 
 const Subscribe: React.FC = () => {
-  const [check, setCheck] = useState(false);
-
-  const cheked = () => {
-    setCheck(!check);
-  };
-
   return (
     <SubscribeStyled>
       <SubscribeStyledContent>
@@ -57,14 +49,10 @@ const Subscribe: React.FC = () => {
             Subscribe
           </Button>
         </SubscribeStyledSubscribeForm>
-        <SubscribeStyledCheckboxField onClick={cheked}>
-          <SubscribeStyledCheckbox active={check}>
-            <span>
-              <img src={checkImg} alt="" />
-            </span>
-          </SubscribeStyledCheckbox>
-          I agree to receive communications from Createx Store.
-        </SubscribeStyledCheckboxField>
+
+        <CheckBox
+          text={"I agree to receive communications from Createx Store."}
+        />
       </SubscribeStyledContent>
       <SubscribeStyledImg src={img} />
     </SubscribeStyled>
