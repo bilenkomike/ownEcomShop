@@ -8,7 +8,6 @@ import {
   BsYoutube,
   BsPinterest,
   BsGoogle,
-  BsLinkedin,
 } from "react-icons/bs";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";

@@ -15,9 +15,6 @@ import Register from "./components/AuthComponents/Register/Register";
 
 const App: React.FunctionComponent = () => {
   const [backdrop, setBackdrop] = useState(false);
-
-  const [backdropAuth, setBackdropAuth] = useState(true);
-
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
 
