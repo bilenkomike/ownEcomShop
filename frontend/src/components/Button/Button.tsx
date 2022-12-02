@@ -7,7 +7,10 @@ import {
   BsTwitter,
   BsYoutube,
   BsPinterest,
+  BsGoogle,
+  BsLinkedin,
 } from "react-icons/bs";
+import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import ButtonInterface from "./types/Button.types";
 
@@ -19,9 +22,11 @@ const Button: React.FC<ButtonInterface> = ({
   variant,
   styleType,
   disabled = false,
+  type = "button",
 }) => {
   return (
     <ButtonStyled
+      type={type}
       size={size}
       variant={variant}
       styleType={styleType}
@@ -41,6 +46,13 @@ const Button: React.FC<ButtonInterface> = ({
 
       {icon && iconPosition === "before" && icon === "pinterest" && (
         <BsPinterest style={{ marginRight: size !== "social" ? 6 : "" }} />
+      )}
+
+      {icon && iconPosition === "before" && icon === "google" && (
+        <BsGoogle style={{ marginRight: size !== "social" ? 6 : "" }} />
+      )}
+      {icon && iconPosition === "before" && icon === "linkedin" && (
+        <FaLinkedinIn style={{ marginRight: size !== "social" ? 6 : "" }} />
       )}
 
       {icon && iconPosition === "before" && icon === "next" && (
