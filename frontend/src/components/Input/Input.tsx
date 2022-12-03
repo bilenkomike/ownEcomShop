@@ -10,9 +10,10 @@ interface Variant {
   list?: string[];
   success?: boolean;
   error?: boolean;
-  value?: string;
+  value?: string | number;
   additionalText?: string;
   onChange: (value: string) => void;
+  max?: number;
 }
 
 const Input: React.FC<Variant> = ({
@@ -22,6 +23,7 @@ const Input: React.FC<Variant> = ({
   variant,
   onChange,
   label,
+  max = 1,
 }) => {
   const id = Math.random().toString();
   return (
@@ -34,6 +36,8 @@ const Input: React.FC<Variant> = ({
         variant={variant}
         value={value}
         onChange={(e) => onChange(e.target.value)}
+        max={max}
+        min={1}
       />
     </div>
   );

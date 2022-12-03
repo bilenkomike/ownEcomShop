@@ -13,6 +13,8 @@ import BackDrop from "./components/BackDrop/BackDrop";
 import Login from "./components/AuthComponents/Login/Login";
 import Register from "./components/AuthComponents/Register/Register";
 
+import MiniCart from "./components/MiniCart/MiniCart";
+
 const App: React.FunctionComponent = () => {
   const [backdrop, setBackdrop] = useState(false);
   const [login, setLogin] = useState(false);
@@ -43,6 +45,7 @@ const App: React.FunctionComponent = () => {
       {login && <Login toggleLogin={togglebackLogin} />}
       {register && <Register toggleRegister={togglebackRegister} />}
 
+      <MiniCart />
       <Routes>
         <Route path={Links.home} element={<HomePage />} />
       </Routes>

@@ -19,7 +19,11 @@ import {
 } from "react-icons/ai";
 import Links from "../../constants/links/Links";
 
+import { useTypedDispatch } from "../../store/hooks";
+import { CartActions } from "../../store/CartSlice/index";
+
 const MainMenu: React.FC<{ toggle: () => void }> = ({ toggle }) => {
+  const dispatch = useTypedDispatch();
   const [search, setSearch] = useState("");
   const searchSubmitHandler: (e: React.FormEvent) => void = (e) => {
     e.preventDefault();
@@ -70,7 +74,7 @@ const MainMenu: React.FC<{ toggle: () => void }> = ({ toggle }) => {
         </Link>
 
         <MainMenuActionsDivider />
-        <span>
+        <span onClick={() => dispatch(CartActions.miniCartActiveToggle())}>
           <AiOutlineShoppingCart />
           <MainMenuMiniCartCounter>4</MainMenuMiniCartCounter>
         </span>
