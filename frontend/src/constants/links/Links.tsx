@@ -5,6 +5,7 @@ const Links = {
   trackOrder: "/track-order",
   contacts: "/contacts",
   wishlist: "/accounts/wishlist",
+  category: "/products/:category/:clothes",
 };
 
 export default Links;
