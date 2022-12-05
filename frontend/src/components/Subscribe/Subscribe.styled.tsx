@@ -68,7 +68,9 @@ export const SubscribeStyledSubscribeForm = styled.form`
 
   & > div {
     width: 50%;
+    position: static;
   }
+
   & > button {
     border-radius: 0px 4px 4px 0px;
   }

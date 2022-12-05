@@ -39,6 +39,7 @@ const Subscribe: React.FC = () => {
         </SubscribeStyledContentSelectType>
         <SubscribeStyledSubscribeForm>
           <Input
+            name="subscribe-email"
             label="Email"
             variant="default"
             type="email"
