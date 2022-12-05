@@ -40,6 +40,7 @@ const Register: React.FC<{ toggleRegister: () => void }> = ({
           your orders.
         </RegisterStyledSubTitle>
         <Input
+          name="register-full-name"
           label="Full name"
           type="text"
           variant="default"
@@ -48,6 +49,7 @@ const Register: React.FC<{ toggleRegister: () => void }> = ({
           placeholder="Your full name"
         />
         <Input
+          name="register-email"
           label="Email"
           type="email"
           variant="default"
@@ -57,6 +59,7 @@ const Register: React.FC<{ toggleRegister: () => void }> = ({
         />
 
         <Input
+          name="register-password"
           label="Password"
           type="password"
           variant="default"
@@ -65,6 +68,7 @@ const Register: React.FC<{ toggleRegister: () => void }> = ({
           placeholder="Your working password"
         />
         <Input
+          name="register-confrim-password"
           label="Confirm Password"
           type="password"
           variant="default"
