@@ -76,25 +76,3 @@ export const MainMenuLinks = styled.div`
 export const MainMenuForm = styled.form`
   position: relative;
 `;
-
-export const MainMenuSearchButton = styled.button`
-  width: 16px;
-  height: 16px;
-
-  border: none;
-  border-radius: 0;
-  background-color: transparent;
-
-  position: absolute;
-  bottom: 25%;
-  right: 5%;
-  z-index: 2;
-
-  color: ${Colors.gray800};
-
-  cursor: pointer;
-
-  &:focus {
-    outline: none;
-  }
-`;
