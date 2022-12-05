@@ -1,6 +1,7 @@
 interface ButtonInterface {
   children?: string;
   icon?:
+    | "filter"
     | "card"
     | "next"
     | "cart"

@@ -9,14 +9,9 @@ import {
   MainMenuMiniCartCounter,
   MainMenuLinks,
   MainMenuForm,
-  MainMenuSearchButton,
 } from "./MainMenu.styled";
 
-import {
-  AiOutlineHeart,
-  AiOutlineShoppingCart,
-  AiOutlineSearch,
-} from "react-icons/ai";
+import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
 import Links from "../../constants/links/Links";
 
 import { useTypedDispatch } from "../../store/hooks";
@@ -43,29 +38,29 @@ const MainMenu: React.FC<{ toggle: () => void }> = ({ toggle }) => {
       <Link to="/">
         <img src="/images/logo.png" alt="" />
       </Link>
-      <MainMenuLinks>
-        <span className="active" onClick={toggle}>
+      <MainMenuLinks onMouseEnter={toggle}>
+        <span className="active" onMouseEnter={toggle}>
           Women
         </span>
-        <span onClick={toggle}>Men</span>
-        <span onClick={toggle}>Girls</span>
-        <span onClick={toggle}>Boys</span>
-        <span onClick={toggle} style={{ color: Colors.danger }}>
+        <span onMouseEnter={toggle}>Men</span>
+        <span onMouseEnter={toggle}>Girls</span>
+        <span onMouseEnter={toggle}>Boys</span>
+        <span onMouseEnter={toggle} style={{ color: Colors.danger }}>
           Sale
         </span>
       </MainMenuLinks>
 
       <MainMenuForm onSubmit={searchSubmitHandler}>
         <Input
+          name="mainsearchbar"
           variant="default"
           type="text"
           placeholder="Some text..."
           onChange={updateSearch}
           value={search}
+          icon="search"
+          iconTypes="submit"
         />
-        <MainMenuSearchButton type="submit">
-          <AiOutlineSearch />
-        </MainMenuSearchButton>
       </MainMenuForm>
 
       <MainMenuActions>

@@ -13,6 +13,7 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { TiCreditCard } from "react-icons/ti";
 import ButtonInterface from "./types/Button.types";
+import img from "./images/img.png";
 
 const Button: React.FC<ButtonInterface> = ({
   children = "",
@@ -67,6 +68,13 @@ const Button: React.FC<ButtonInterface> = ({
       )}
       {icon && iconPosition === "before" && icon === "card" && (
         <TiCreditCard style={{ marginRight: size !== "social" ? 6 : "" }} />
+      )}
+      {icon && iconPosition === "before" && icon === "filter" && (
+        <img
+          src={img}
+          alt="filter"
+          style={{ marginRight: size !== "social" ? 6 : "" }}
+        />
       )}
       {children}
       {icon && iconPosition === "after" && icon === "next" && (

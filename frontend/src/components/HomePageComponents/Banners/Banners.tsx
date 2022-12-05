@@ -99,6 +99,7 @@ const Banners: React.FC = () => {
           </BannersStyledItemTitle>
           <BannersStyledSubscribeForm>
             <Input
+              name="banners-email"
               label="Email"
               variant="default"
               type="email"

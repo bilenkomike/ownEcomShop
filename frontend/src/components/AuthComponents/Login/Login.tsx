@@ -40,6 +40,7 @@ const Login: React.FC<{ toggleLogin: () => void }> = ({ toggleLogin }) => {
         </LoginStyledSubTitle>
 
         <Input
+          name="loginemail"
           label="Email"
           type="email"
           variant="default"
@@ -49,6 +50,7 @@ const Login: React.FC<{ toggleLogin: () => void }> = ({ toggleLogin }) => {
         />
 
         <Input
+          name="loginpassword"
           label="Password"
           type="password"
           variant="default"

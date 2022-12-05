@@ -14,6 +14,7 @@ import Login from "./components/AuthComponents/Login/Login";
 import Register from "./components/AuthComponents/Register/Register";
 
 import MiniCart from "./components/MiniCart/MiniCart";
+import ProductsPage from "./pages/Products/ProductsPage";
 
 const App: React.FunctionComponent = () => {
   const [backdrop, setBackdrop] = useState(false);
@@ -48,6 +49,7 @@ const App: React.FunctionComponent = () => {
       <MiniCart />
       <Routes>
         <Route path={Links.home} element={<HomePage />} />
+        <Route path={Links.category} element={<ProductsPage />} />
       </Routes>
       <Subscribe />
       <Footer />
