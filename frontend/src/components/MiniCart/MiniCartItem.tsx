@@ -36,14 +36,15 @@ const MiniCartItem: React.FC = () => {
         </MiniCartStyledListItemTitle>
         <MiniCartStyledListItemAttributes>
           <MiniCartStyledListItemAttributesItem>
-            Color: <span>pink </span>
+            Color: <span>pink</span>
           </MiniCartStyledListItemAttributesItem>
           <MiniCartStyledListItemAttributesItem>
-            Size: <span>S </span>
+            Size: <span>S</span>
           </MiniCartStyledListItemAttributesItem>
         </MiniCartStyledListItemAttributes>
         <MiniCartStyledListPriceBlock>
           <Input
+            name="product-counter"
             variant="small"
             type="number"
             value={counter}
