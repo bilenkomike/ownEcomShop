@@ -1,22 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
+import { AiOutlineSearch } from "react-icons/ai";
 
-import { InputStyled, InputStyledLabel } from "./Input.styled";
+import {
+  InputStyled,
+  InputStyledLabel,
+  InputStyledIcon,
+  InputStyledCOntainer,
+  InputStyledSelectOptions,
+  InputStyledSelectOption,
+} from "./Input.styled";
 
-interface Variant {
-  variant: "large" | "default" | "small";
-  label?: string;
-  type: string;
-  placeholder?: string;
-  list?: string[];
-  success?: boolean;
-  error?: boolean;
-  value?: string | number;
-  additionalText?: string;
-  onChange: (value: string) => void;
-  max?: number;
-}
+import { TfiAngleDown } from "react-icons/tfi";
 
-const Input: React.FC<Variant> = ({
+import InputInterface, { Option } from "./types/Input.types";
+
+const Input: React.FC<InputInterface> = ({
+  name,
   value,
   placeholder,
   type,
@@ -24,22 +23,82 @@ const Input: React.FC<Variant> = ({
   onChange,
   label,
   max = 1,
+  min = 1,
+  options = [],
+  icon,
+  iconTypes = "button",
 }) => {
-  const id = Math.random().toString();
+  const [select, setSelect] = useState(false);
+
+  const id = [
+    type.toLowerCase(),
+    variant.toLowerCase(),
+    name.toLowerCase(),
+  ].join("-");
+  let inpprops = {};
+
+  switch (type) {
+    case "number":
+      inpprops = {
+        max,
+        min,
+      };
+      break;
+    default:
+      inpprops = {};
+      break;
+  }
+
+  const onValueChanges = (value: string | number) => {
+    onChange(value.toString());
+  };
+
   return (
-    <div>
-      <InputStyledLabel htmlFor={id}>{label}</InputStyledLabel>
+    <InputStyledCOntainer>
+      {label && <InputStyledLabel htmlFor={id}>{label}</InputStyledLabel>}
       <InputStyled
+        readOnly={type === "select"}
+        inputType={type}
+        onClick={() => type === "select" && setSelect(!select)}
         id={id}
         placeholder={placeholder}
         type={type}
         variant={variant}
         value={value}
-        onChange={(e) => onChange(e.target.value)}
-        max={max}
-        min={1}
+        onChange={(e) => type !== "select" && onValueChanges(e.target.value)}
+        {...inpprops}
       />
-    </div>
+      {icon && icon === "search" ? (
+        <InputStyledIcon type={iconTypes}>
+          <AiOutlineSearch />
+        </InputStyledIcon>
+      ) : icon === "select" ? (
+        <InputStyledIcon
+          active={select}
+          type={iconTypes}
+          onClick={() => {
+            setSelect(!select);
+          }}
+        >
+          <TfiAngleDown />
+        </InputStyledIcon>
+      ) : null}
+
+      {options.length > 0 && (
+        <InputStyledSelectOptions active={select} length={options.length}>
+          {options.map((option: Option) => (
+            <InputStyledSelectOption
+              onClick={() => {
+                setSelect(!select);
+                onValueChanges(option.value);
+              }}
+            >
+              {option.label}
+            </InputStyledSelectOption>
+          ))}
+        </InputStyledSelectOptions>
+      )}
+    </InputStyledCOntainer>
   );
 };
 
