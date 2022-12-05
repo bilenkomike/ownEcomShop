@@ -94,8 +94,10 @@ export const BannersStyledSubscribeForm = styled.form`
   margin-bottom: 20px;
 
   & > div {
+    position: static;
     width: 50%;
   }
+
   & > button {
     border-radius: 0px 4px 4px 0px;
   }
