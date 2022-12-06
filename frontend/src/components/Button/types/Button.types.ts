@@ -18,6 +18,7 @@ interface ButtonInterface {
   size: "large" | "default" | "small" | "social";
   iconPosition?: "before" | "after";
   type?: "button" | "submit";
+  onClick?: () => void;
 }
 
 export default ButtonInterface;
