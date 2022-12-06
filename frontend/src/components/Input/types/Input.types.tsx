@@ -17,6 +17,7 @@ interface InputInterface {
   onChange: (value: string) => void;
   min?: number;
   max?: number;
+  step?: number;
   options?: Option[];
 
   icon?: "search" | "password" | "select";

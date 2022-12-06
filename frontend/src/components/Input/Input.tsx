@@ -24,6 +24,7 @@ const Input: React.FC<InputInterface> = ({
   label,
   max = 1,
   min = 1,
+  step = 1,
   options = [],
   icon,
   iconTypes = "button",
@@ -42,6 +43,7 @@ const Input: React.FC<InputInterface> = ({
       inpprops = {
         max,
         min,
+        step,
       };
       break;
     default:
