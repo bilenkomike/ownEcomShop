@@ -10,6 +10,10 @@ export const CheckboxStyledField = styled.div`
   color: ${Colors.gray800};
   font-weight: 400;
   font-size: 14px;
+
+  & > span {
+    color: ${Colors.gray600};
+  }
 `;
 export const CheckboxStyled = styled.div<{ active?: boolean }>`
   position: relative;
