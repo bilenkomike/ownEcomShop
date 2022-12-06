@@ -24,9 +24,11 @@ const Button: React.FC<ButtonInterface> = ({
   styleType,
   disabled = false,
   type = "button",
+  onClick = () => {},
 }) => {
   return (
     <ButtonStyled
+      onClick={onClick}
       type={type}
       size={size}
       variant={variant}

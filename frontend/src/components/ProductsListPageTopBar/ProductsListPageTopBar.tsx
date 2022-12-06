@@ -11,12 +11,15 @@ const options = [
   { value: "amount", label: "Amount" },
 ];
 
-const ProductsListPageTopBar = () => {
+const ProductsListPageTopBar: React.FC<{
+  showFilter: boolean;
+  handleshowFilter: () => void;
+}> = ({ showFilter, handleshowFilter }) => {
   const [filter, setFilter] = useState("");
   const [perPage, setPerPage] = useState(0);
   return (
     <ProductsListPageTopBarStyled>
-      {true && (
+      {showFilter && (
         <Button
           icon="filter"
           iconPosition="before"
@@ -24,11 +27,12 @@ const ProductsListPageTopBar = () => {
           styleType="default"
           type="button"
           variant="solid"
+          onClick={handleshowFilter}
         >
           Show filters
         </Button>
       )}
-      {false && (
+      {!showFilter && (
         <Button
           icon="filter"
           iconPosition="before"
@@ -36,6 +40,7 @@ const ProductsListPageTopBar = () => {
           styleType="default"
           type="button"
           variant="solid"
+          onClick={handleshowFilter}
         >
           Hide filters
         </Button>

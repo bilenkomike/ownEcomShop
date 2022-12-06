@@ -5,18 +5,13 @@ import {
 } from "./ProductsList.styled";
 import Product from "../Product/Product";
 import img from "./images/image.png";
+import ProductsFilter from "../ProductsFilter/ProductsFilter";
 
-const ProductsList: React.FC = () => {
+const ProductsList: React.FC<{ showFilter: boolean }> = ({ showFilter }) => {
   return (
     <ProductsListStyledContainer>
-      <div
-        style={{
-          display: "none",
-        }}
-      >
-        some text
-      </div>
-      <ProductsListStyled>
+      <ProductsFilter active={showFilter} />
+      <ProductsListStyled activeSort={showFilter}>
         <Product
           key={1}
           size="small"

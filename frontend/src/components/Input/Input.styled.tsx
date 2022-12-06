@@ -12,13 +12,19 @@ export const InputStyled = styled.input<{
 }>`
   display: block;
   width: 390px;
-  padding: 11px 0px 12px 16px;
+  padding: ${(props) =>
+    props.variant === "default"
+      ? "11px 0px 12px 16px"
+      : props.variant === "large"
+      ? "13px 0px 13px 16px"
+      : "9px 0px 9px 12px"};
 
   border-radius: 4px;
   border: 1px solid ${Colors.gray400};
   box-sizing: border-box;
 
-  font-size: 14px;
+  font-size: ${(props) =>
+    props.variant === "default" ? 14 : props.variant === "large" ? 16 : 12}px;
   color: ${Colors.gray900};
 
   transition: border 0.1s linear, box-shadow 0.1s linear;

@@ -3,7 +3,10 @@ import React, { useState } from "react";
 import checkImg from "./images/check.png";
 import { CheckboxStyled, CheckboxStyledField } from "./CheckBox.styled";
 
-const CheckBox: React.FC<{ text: string }> = ({ text }) => {
+const CheckBox: React.FC<{ text: string; additionalText?: string }> = ({
+  text,
+  additionalText,
+}) => {
   const [check, setCheck] = useState(false);
 
   const cheked = () => {
@@ -16,7 +19,7 @@ const CheckBox: React.FC<{ text: string }> = ({ text }) => {
           <img src={checkImg} alt="" />
         </span>
       </CheckboxStyled>
-      {text}
+      {text} <span>({additionalText})</span>
     </CheckboxStyledField>
   );
 };
