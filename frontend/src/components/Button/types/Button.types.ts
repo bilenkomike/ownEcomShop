@@ -1,6 +1,7 @@
 interface ButtonInterface {
   children?: string;
   icon?:
+    | "heart"
     | "filter"
     | "card"
     | "next"
@@ -19,6 +20,7 @@ interface ButtonInterface {
   iconPosition?: "before" | "after";
   type?: "button" | "submit";
   onClick?: () => void;
+  removeFullWidth?: boolean;
 }
 
 export default ButtonInterface;

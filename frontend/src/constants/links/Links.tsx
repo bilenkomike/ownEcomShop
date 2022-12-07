@@ -6,6 +6,9 @@ const Links = {
   contacts: "/contacts",
   wishlist: "/accounts/wishlist",
   category: "/products/:category/:clothes",
+  product: "/products/:category/:clothes/:id",
+  productDetails: "/products/:category/:clothes/:id/details",
+  productReviews: "/products/:category/:clothes/:id/reviews",
 };
 
 export default Links;
