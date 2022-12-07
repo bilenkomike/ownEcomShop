@@ -7,7 +7,7 @@ import {
 } from "./ProductDetails.styled";
 import img from "./images/image.png";
 
-const ProductDetails = () => {
+const ProductDetails: React.FC = () => {
   return (
     <ProductDetailsStyled>
       <ProductDetailsStyledContent>
