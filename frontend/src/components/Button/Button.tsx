@@ -9,9 +9,11 @@ import {
   BsPinterest,
   BsGoogle,
 } from "react-icons/bs";
+import { AiOutlineHeart } from "react-icons/ai";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FaFacebookF } from "react-icons/fa";
 import { TiCreditCard } from "react-icons/ti";
+
 import ButtonInterface from "./types/Button.types";
 import img from "./images/img.png";
 
@@ -25,6 +27,7 @@ const Button: React.FC<ButtonInterface> = ({
   disabled = false,
   type = "button",
   onClick = () => {},
+  removeFullWidth = false,
 }) => {
   return (
     <ButtonStyled
@@ -34,8 +37,12 @@ const Button: React.FC<ButtonInterface> = ({
       variant={variant}
       styleType={styleType}
       disabled={disabled}
-      style={{ width: icon === "cart" ? "100%" : "" }}
+      style={{ width: icon === "cart" && !removeFullWidth ? "100%" : "" }}
     >
+      {icon && iconPosition === "before" && icon === "heart" && (
+        <AiOutlineHeart style={{ marginRight: size !== "social" ? 6 : "" }} />
+      )}
+
       {icon && iconPosition === "before" && icon === "facebook" && (
         <FaFacebookF style={{ marginRight: size !== "social" ? 6 : "" }} />
       )}

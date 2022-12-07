@@ -172,6 +172,8 @@ export const ProductStyledWishList = styled.div<{ wished?: boolean }>`
   justify-content: center;
   align-items: center;
 
+  background: ${Colors.white};
+
   border-radius: 50%;
 
   cursor: pointer;
