@@ -100,3 +100,27 @@ export const ProductReviewsStyledStatisticsBars = styled.div<{
       `
     )}
 `;
+
+export const ProductReviewsStyledCommentsActions = styled.section`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 80px 0px 60px;
+
+  & > span {
+    display: flex;
+    align-items: center;
+
+    font-weight: 700;
+    font-size: 16px;
+    color: ${Colors.gray800};
+    & > div {
+      margin-left: 10px;
+      width: 170px;
+      & > input {
+        width: 170px;
+      }
+    }
+  }
+`;
