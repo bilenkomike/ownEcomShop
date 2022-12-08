@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import ProductInterface from "./types/Product.types";
-import Button from "../Button/Button";
-import Rating from "../Rating/Rating";
-import ProductAttributes from "../ProductAttributes/ProductAttributes";
+import Button from "components/Button/Button";
+import Rating from "components/Rating/Rating";
+import ProductAttributes from "components/ProductAttributes/ProductAttributes";
 // import { Link } from "react-router-dom";
 
 import {

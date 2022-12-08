@@ -1,5 +1,4 @@
 import React from "react";
-import Links from "../../../constants/links/Links";
 import {
   ProductPagePaginationStyled,
   ProductPagePadinationStyledItem,

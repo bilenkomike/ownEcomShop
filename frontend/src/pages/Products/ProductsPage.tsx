@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import BreadCrumbs from "../../components/BreadCrumbs/BreadCrumbs";
-import Container from "../../components/Container/Container";
-import ProductsList from "../../components/ProductsList/ProductsList";
-import ProductsListPageTopBar from "../../components/ProductsListPageTopBar/ProductsListPageTopBar";
-import ProductListBottom from "../../components/ProductsPageComponents/ProductListBottom/ProductListBottom";
+import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
+import Container from "components/Container/Container";
+import ProductsList from "components/ProductsList/ProductsList";
+import ProductsListPageTopBar from "components/ProductsListPageTopBar/ProductsListPageTopBar";
+import ProductListBottom from "components/ProductPageComponents/ProductListBottom/ProductListBottom";
 
 const ProductsPage: React.FC = () => {
   const params = useParams();

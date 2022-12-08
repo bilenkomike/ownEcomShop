@@ -1,7 +1,7 @@
 import React from "react";
-import BlogItem from "../../BlogItem/BlogItem";
-import Button from "../../Button/Button";
-import Title from "../../Title/Title";
+import BlogItem from "components/BlogItem/BlogItem";
+import Button from "components/Button/Button";
+import Title from "components/Title/Title";
 import { BlogStyled, BlogStyledHeader, BlogStyledList } from "./Blog.styled";
 import img from "./images/image.png";
 

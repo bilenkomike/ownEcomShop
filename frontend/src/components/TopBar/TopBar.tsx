@@ -3,15 +3,15 @@ import { Link } from "react-router-dom";
 
 import { TopBarStyled, TopBarStyledPositioned } from "./TopBar.styled";
 
-import Links from "../../constants/links/Links";
+import Links from "constants/links/Links";
 
 import { TfiAngleDown } from "react-icons/tfi";
 import { HiOutlineUser } from "react-icons/hi";
 
 import flag from "./images/flag-usa.png";
 
-import Currencies from "../Currencies/Currencies";
-import Languages from "../Languages/Languages";
+import Currencies from "components/Currencies/Currencies";
+import Languages from "components/Languages/Languages";
 
 const TopBar: React.FC<{
   toggleLogin: () => void;

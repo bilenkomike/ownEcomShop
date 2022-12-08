@@ -12,13 +12,13 @@ import {
   BannersStyledSubscribeForm,
 } from "./Banners.styled";
 
-import Button from "../../Button/Button";
+import Button from "components/Button/Button";
 
 import img1 from "./images/image.png";
 import img2 from "./images/image_2.png";
 import img3 from "./images/image_3.png";
 import img4 from "./images/image_4.png";
-import Input from "../../Input/Input";
+import Input from "components/Input/Input";
 
 const Banners: React.FC = () => {
   return (

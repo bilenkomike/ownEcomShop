@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Title from "../../Title/Title";
-import Product from "../../Product/Product";
-import SliedControls from "../../SlideControls/SliedControls";
+import Title from "components/Title/Title";
+import Product from "components/Product/Product";
+import SliedControls from "components/SlideControls/SliedControls";
 
 import {
   RecentlyViewedStyled,
@@ -9,7 +9,7 @@ import {
   RecentlyViewedStyledList,
   RecentlyViewedStyledContainer,
 } from "./RecentlyViewed.styled";
-import Carousel from "../../Carousel/Carousel";
+import Carousel from "components/Carousel/Carousel";
 
 import img1 from "./images/image_1.png";
 import img2 from "./images/image_2.png";

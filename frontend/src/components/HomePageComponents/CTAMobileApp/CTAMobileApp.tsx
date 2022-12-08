@@ -1,5 +1,5 @@
 import React from "react";
-import DownloadAppButtons from "../../DownloadAppButtons/DownloadAppButtons";
+import DownloadAppButtons from "components/DownloadAppButtons/DownloadAppButtons";
 import {
   CTAMobileAppStyled,
   CTAMobileAppStyledTitle,

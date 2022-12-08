@@ -9,8 +9,8 @@ import {
   ProductsFilterStyledListInner,
   ProructsFilterStyledRangeInput,
 } from "./ProductsFilter.styled";
-import Input from "../Input/Input";
-import CheckBox from "../CheckBox/CheckBox";
+import Input from "components/Input/Input";
+import CheckBox from "components/CheckBox/CheckBox";
 
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Colors from "../../constants/ui/colors/Colors";
+import Colors from "constants/ui/colors/Colors";
 import BoyImg from "./images/image.png";
 
 import {
@@ -11,7 +11,7 @@ import {
   MegaMenuBanner,
   MegaMenuBannerText,
 } from "./MegaMenu.styled";
-import Button from "../Button/Button";
+import Button from "components/Button/Button";
 
 const MegaMenu: React.FC<{ active: boolean }> = ({ active }) => {
   return (

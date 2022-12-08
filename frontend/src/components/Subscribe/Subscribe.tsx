@@ -1,6 +1,6 @@
 import React from "react";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
+import Button from "components/Button/Button";
+import Input from "components/Input/Input";
 
 import {
   SubscribeStyled,
@@ -12,8 +12,8 @@ import {
   SubscribeStyledSubscribeForm,
 } from "./Subscribe.styled";
 import img from "./images/image.png";
-import CheckBox from "../CheckBox/CheckBox";
-import Title from "../Title/Title";
+import CheckBox from "components/CheckBox/CheckBox";
+import Title from "components/Title/Title";
 
 const Subscribe: React.FC = () => {
   return (

@@ -6,7 +6,7 @@ import {
   AttributesStyledListItem,
 } from "./ProductAttributes.styled";
 
-import { Attribute } from "../Product/types/Product.types";
+import { Attribute } from "components/Product/types/Product.types";
 
 const ProductAttributes: React.FC<{ attributes: Attribute[] }> = ({
   attributes,

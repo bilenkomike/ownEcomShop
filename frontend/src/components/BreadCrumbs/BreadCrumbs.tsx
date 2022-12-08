@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../Container/Container";
+import Container from "components/Container/Container";
 import { BreadCrumbsStyled } from "./BreadCrumbs.styled";
 import { HiOutlineHome } from "react-icons/hi";
 import { TfiAngleRight } from "react-icons/tfi";

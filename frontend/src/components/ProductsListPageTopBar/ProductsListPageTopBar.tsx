@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import Button from "../Button/Button";
-import Input from "../Input/Input";
-import Pagination from "../Pagination/Pagination";
+import Button from "components/Button/Button";
+import Input from "components/Input/Input";
+import Pagination from "components/Pagination/Pagination";
 
 import { ProductsListPageTopBarStyled } from "./ProductsListPageTopBar.styled";
 

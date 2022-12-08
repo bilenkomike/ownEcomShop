@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ProductsListStyledBottom } from "./ProductListBottom.styled";
-import Input from "../../../components/Input/Input";
-import Pagination from "../../../components/Pagination/Pagination";
+import Input from "components/Input/Input";
+import Pagination from "components/Pagination/Pagination";
 
 const ProductListBottom = () => {
   const options = [

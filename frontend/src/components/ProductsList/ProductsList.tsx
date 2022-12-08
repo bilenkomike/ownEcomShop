@@ -3,9 +3,9 @@ import {
   ProductsListStyled,
   ProductsListStyledContainer,
 } from "./ProductsList.styled";
-import Product from "../Product/Product";
+import Product from "components/Product/Product";
 import img from "./images/image.png";
-import ProductsFilter from "../ProductsFilter/ProductsFilter";
+import ProductsFilter from "components/ProductsFilter/ProductsFilter";
 
 const ProductsList: React.FC<{ showFilter: boolean }> = ({ showFilter }) => {
   return (

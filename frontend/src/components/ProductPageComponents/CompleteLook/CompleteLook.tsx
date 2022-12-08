@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Carousel from "../../Carousel/Carousel";
-import Product from "../../Product/Product";
-import SliedControls from "../../SlideControls/SliedControls";
-import Title from "../../Title/Title";
+import Carousel from "components/Carousel/Carousel";
+import Product from "components/Product/Product";
+import SliedControls from "components/SlideControls/SliedControls";
+import Title from "components/Title/Title";
 import {
   CompleteLookStyled,
   CompleteLookStyledItem,
