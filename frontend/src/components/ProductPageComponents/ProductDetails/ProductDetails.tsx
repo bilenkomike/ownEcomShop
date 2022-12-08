@@ -1,11 +1,11 @@
 import React from "react";
 import Product from "components/Product/Product";
+import img from "./images/image.png";
 import {
   ProductDetailsStyled,
   ProductDetailsStyledContent,
   ProductDetailsStyledList,
 } from "./ProductDetails.styled";
-import img from "./images/image.png";
 
 import handWash from "./images/hand-wash.png";
 import noIroning from "./images/no-ironing.png";

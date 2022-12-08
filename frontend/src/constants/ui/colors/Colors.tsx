@@ -4,6 +4,7 @@ const Colors = {
   primary: "#17696A",
   primary600: "#145C5D",
   success: "#03CEA4",
+  lime: "#1FDF58",
   danger: "#FF4242",
   warning: "#F89828",
   yellow: "#FFBD00",
