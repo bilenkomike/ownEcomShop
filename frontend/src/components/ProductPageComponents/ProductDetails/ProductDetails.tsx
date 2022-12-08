@@ -12,7 +12,7 @@ import noIroning from "./images/no-ironing.png";
 import noBleach from "./images/no-bleach.png";
 import noTumbleDry from "./images/no-tumble-dry.png";
 
-const ProductDetails = () => {
+const ProductDetails: React.FC = () => {
   return (
     <ProductDetailsStyled>
       <ProductDetailsStyledContent>
