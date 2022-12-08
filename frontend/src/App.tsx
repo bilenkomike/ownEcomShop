@@ -16,11 +16,13 @@ import Register from "components/AuthComponents/Register/Register";
 import MiniCart from "components/MiniCart/MiniCart";
 import ProductsPage from "pages/Products/ProductsPage";
 import ProductPage from "pages/Product/ProductPage";
+import ReviewModal from "components/ProductPageComponents/ReviewModal/ReviewModal";
 
 const App: React.FunctionComponent = () => {
   const [backdrop, setBackdrop] = useState(false);
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
+  const [review, setReview] = useState(false);
 
   const togglebackDrop = () => {
     setBackdrop(!backdrop);
@@ -36,6 +38,12 @@ const App: React.FunctionComponent = () => {
     document.body.classList.toggle("no-scroll");
     setRegister(!register);
   };
+
+  const toggleReview = () => {
+    document.body.classList.toggle("no-scroll");
+    setReview(!review);
+  };
+
   return (
     <div>
       <Header
@@ -47,13 +55,28 @@ const App: React.FunctionComponent = () => {
       {login && <Login toggleLogin={togglebackLogin} />}
       {register && <Register toggleRegister={togglebackRegister} />}
 
+      {review && <ReviewModal onOpenReview={toggleReview} />}
+
       <MiniCart />
       <Routes>
         <Route path={Links.home} element={<HomePage />} />
         <Route path={Links.category} element={<ProductsPage />} />
-        <Route path={Links.product} element={<ProductPage />}>
-          <Route path={Links.productDetails} element={<ProductPage />} />
-          <Route path={Links.productReviews} element={<ProductPage />} />
+        <Route
+          path={Links.product}
+          element={<ProductPage review={review} onOpenReview={toggleReview} />}
+        >
+          <Route
+            path={Links.productDetails}
+            element={
+              <ProductPage review={review} onOpenReview={toggleReview} />
+            }
+          />
+          <Route
+            path={Links.productReviews}
+            element={
+              <ProductPage review={review} onOpenReview={toggleReview} />
+            }
+          />
         </Route>
       </Routes>
       <Subscribe />

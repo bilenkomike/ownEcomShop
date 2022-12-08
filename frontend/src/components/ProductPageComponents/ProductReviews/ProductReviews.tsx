@@ -18,7 +18,10 @@ import { AiOutlineStar } from "react-icons/ai";
 import Button from "components/Button/Button";
 import Input from "components/Input/Input";
 
-const ProductReviews = () => {
+const ProductReviews: React.FC<{
+  review: boolean;
+  onOpenReview: () => void;
+}> = ({ review, onOpenReview }) => {
   return (
     <ProductReviewsStyled>
       <ProductReviewsStyledCommentBlock>
@@ -73,7 +76,7 @@ const ProductReviews = () => {
             styleType="default"
             size="default"
             variant="solid"
-            // onClick={pass}
+            onClick={onOpenReview}
           >
             Leave a review
           </Button>
