@@ -19,7 +19,7 @@ const ProductsListPageTopBar: React.FC<{
   const [perPage, setPerPage] = useState(0);
   return (
     <ProductsListPageTopBarStyled>
-      {showFilter && (
+      {!showFilter && (
         <Button
           icon="filter"
           iconPosition="before"
@@ -32,7 +32,7 @@ const ProductsListPageTopBar: React.FC<{
           Show filters
         </Button>
       )}
-      {!showFilter && (
+      {showFilter && (
         <Button
           icon="filter"
           iconPosition="before"

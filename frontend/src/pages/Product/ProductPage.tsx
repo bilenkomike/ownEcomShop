@@ -8,6 +8,7 @@ import ProductDetails from "../../components/ProductPageComponents/ProductDetail
 import ProductPageDescription from "../../components/ProductPageComponents/ProductPageDescription/ProductPageDescription";
 import ProductPageGallary from "../../components/ProductPageComponents/ProductPageGallary/ProductPageGallary";
 import ProductPageHeader from "../../components/ProductPageComponents/ProductPageHeader/ProductPageHeader";
+import ProductReviews from "../../components/ProductPageComponents/ProductReviews/ProductReviews";
 import RecentlyViewed from "../../components/ProductPageComponents/RecentlyViewed/RecentlyViewed";
 import Links from "../../constants/links/Links";
 
@@ -60,7 +61,7 @@ const ProductPage: React.FC = () => {
               }
             />
             <Route path={"details"} element={<ProductDetails />} />
-            <Route path={"rating"} element={<ProductDetails />} />
+            <Route path={"reviews"} element={<ProductReviews />} />
           </Routes>
 
           {/* {active[1] && <ProductDetails />} */}
