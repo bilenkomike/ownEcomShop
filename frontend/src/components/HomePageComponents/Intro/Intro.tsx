@@ -13,8 +13,8 @@ import {
   IntroStyledButton,
 } from "./Intro.styled";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-import Button from "../../Button/Button";
-import Carousel from "../../Carousel/Carousel";
+import Button from "components/Button/Button";
+import Carousel from "components/Carousel/Carousel";
 
 const Intro: React.FC = () => {
   const [index, setIndex] = useState(0);

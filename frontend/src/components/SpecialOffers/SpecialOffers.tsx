@@ -9,7 +9,7 @@ import {
 
 import { TfiAngleRight, TfiAngleLeft } from "react-icons/tfi";
 import { Link } from "react-router-dom";
-import Carousel from "../Carousel/Carousel";
+import Carousel from "components/Carousel/Carousel";
 
 const SpecialOffers: React.FC = () => {
   const [offerId, setOfferId] = useState(0);

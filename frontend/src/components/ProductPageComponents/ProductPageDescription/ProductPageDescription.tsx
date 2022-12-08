@@ -17,14 +17,14 @@ import {
   ProductPageDescriptionStyledpayButtons,
 } from "./ProductPageDescription.styled";
 
-import Input from "../../Input/Input";
-import Rating from "../../Rating/Rating";
-import ProductAttributes from "../../ProductAttributes/ProductAttributes";
+import Input from "components/Input/Input";
+import Rating from "components/Rating/Rating";
+import ProductAttributes from "components/ProductAttributes/ProductAttributes";
 import { TbHanger } from "react-icons/tb";
-import Button from "../../Button/Button";
+import Button from "components/Button/Button";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { FaFacebookF, FaPinterestP, FaTwitter } from "react-icons/fa";
-import PaymentButton from "../../PaymentButton/PaymentButton";
+import PaymentButton from "components/PaymentButton/PaymentButton";
 
 const ProductPageDescription = ({ sale = 50 }) => {
   const [openedDelivery, setOpenedDelivery] = useState(false);

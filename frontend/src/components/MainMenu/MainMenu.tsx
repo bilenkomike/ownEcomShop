@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import Colors from "../../constants/ui/colors/Colors";
-import Input from "../Input/Input";
+import Colors from "constants/ui/colors/Colors";
+import Input from "components/Input/Input";
 import {
   MainMenuStyled,
   MainMenuActions,
@@ -12,10 +12,10 @@ import {
 } from "./MainMenu.styled";
 
 import { AiOutlineHeart, AiOutlineShoppingCart } from "react-icons/ai";
-import Links from "../../constants/links/Links";
+import Links from "constants/links/Links";
 
-import { useTypedDispatch } from "../../store/hooks";
-import { CartActions } from "../../store/CartSlice/index";
+import { useTypedDispatch } from "store/hooks";
+import { CartActions } from "store/CartSlice/index";
 
 const MainMenu: React.FC<{ toggle: () => void }> = ({ toggle }) => {
   const dispatch = useTypedDispatch();

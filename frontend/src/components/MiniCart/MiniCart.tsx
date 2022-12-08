@@ -1,6 +1,6 @@
 import React from "react";
-import { CartActions } from "../../store/CartSlice";
-import { useTypedDispatch, useTypedSelector } from "../../store/hooks";
+import { CartActions } from "store/CartSlice";
+import { useTypedDispatch, useTypedSelector } from "store/hooks";
 
 import {
   MiniCartStyled,
@@ -17,7 +17,7 @@ import {
 import { CgClose } from "react-icons/cg";
 
 import MiniCartItem from "./MiniCartItem";
-import Button from "../Button/Button";
+import Button from "components/Button/Button";
 
 const MiniCart: React.FC = () => {
   const miniCartActive = useTypedSelector((state) => state.cart.MiniCartActive);

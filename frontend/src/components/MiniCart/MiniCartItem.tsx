@@ -20,7 +20,7 @@ import {
   MiniCartStyledListItemRemoveButton,
   MiniCartStyledListItemWishList,
 } from "./MiniCart.styled";
-import Input from "../Input/Input";
+import Input from "components/Input/Input";
 
 const MiniCartItem: React.FC = () => {
   const [counter, setCounter] = useState(0);

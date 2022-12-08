@@ -1,7 +1,7 @@
 import React from "react";
 import { ProductPageHeaderStyled } from "./ProductPageHeader.styled";
-import Title from "../../../components/Title/Title";
-import ProductPagePagination from "../ProductPagePagination/ProductPagePagination";
+import Title from "components/Title/Title";
+import ProductPagePagination from "components/ProductPageComponents/ProductPagePagination/ProductPagePagination";
 import { Link } from "react-router-dom";
 
 const ProductPageHeader: React.FC<{
