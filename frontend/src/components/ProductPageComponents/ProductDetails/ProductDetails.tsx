@@ -7,10 +7,21 @@ import {
 } from "./ProductDetails.styled";
 import img from "./images/image.png";
 
+import handWash from "./images/hand-wash.png";
+import noIroning from "./images/no-ironing.png";
+import noBleach from "./images/no-bleach.png";
+import noTumbleDry from "./images/no-tumble-dry.png";
+
 const ProductDetails = () => {
   return (
     <ProductDetailsStyled>
       <ProductDetailsStyledContent>
+        <h3>Details</h3>
+        <p>
+          Id habitant tempor aliquam vulputate enim velit tincidunt sed. Urna
+          sed facilisis nulla feugiat amet venenatis. Id suspendisse ut quis
+          tellus aliquam pellentesque neque, semper donec.
+        </p>
         <ProductDetailsStyledList>
           <li>Brand: Jordan</li>
           <li>Color: gray / red / yellow</li>
@@ -21,6 +32,34 @@ const ProductDetails = () => {
           <li>
             Padded cuff with inner nodes designed to offer comfort and support
             around the Achilles tendon
+          </li>
+        </ProductDetailsStyledList>
+
+        <h3>Fabric</h3>
+
+        <ProductDetailsStyledList>
+          <li>Upper: 50% real leather, 50% textile</li>
+          <li>Lining: 100% textile</li>
+          <li>Sole: 100% other materials</li>
+        </ProductDetailsStyledList>
+
+        <h3>Care</h3>
+
+        <ProductDetailsStyledList>
+          <li>
+            <img src={handWash} alt="" /> Hand wash only (30°)
+          </li>
+          <li>
+            <img src={noIroning} alt="" />
+            No ironing
+          </li>
+          <li>
+            <img src={noBleach} alt="" />
+            Do not use any bleach
+          </li>
+          <li>
+            <img src={noTumbleDry} alt="" />
+            Do not tumble dry
           </li>
         </ProductDetailsStyledList>
       </ProductDetailsStyledContent>
