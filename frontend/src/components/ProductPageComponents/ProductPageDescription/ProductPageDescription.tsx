@@ -26,7 +26,10 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { FaFacebookF, FaPinterestP, FaTwitter } from "react-icons/fa";
 import PaymentButton from "components/PaymentButton/PaymentButton";
 
-const ProductPageDescription = ({ sale = 50 }) => {
+const ProductPageDescription: React.FC<{
+  sale: number;
+  openSizeChart: () => void;
+}> = ({ sale = 50, openSizeChart }) => {
   const [openedDelivery, setOpenedDelivery] = useState(false);
   const [openedReturn, setOpenedReturn] = useState(false);
   const [qty, setQty] = useState(1);
@@ -97,7 +100,7 @@ const ProductPageDescription = ({ sale = 50 }) => {
               icon="select"
               placeholder="Please select"
             />
-            <ProductPageDescriptionStyledSizeButton>
+            <ProductPageDescriptionStyledSizeButton onClick={openSizeChart}>
               <TbHanger /> Size Chart
             </ProductPageDescriptionStyledSizeButton>
           </span>
