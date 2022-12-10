@@ -12,7 +12,10 @@ import ProductReviews from "components/ProductPageComponents/ProductReviews/Prod
 import RecentlyViewed from "components/ProductPageComponents/RecentlyViewed/RecentlyViewed";
 import Links from "constants/links/Links";
 
-const ProductPage: React.FC = () => {
+const ProductPage: React.FC<{
+  review: boolean;
+  onOpenReview: () => void;
+}> = ({ review, onOpenReview }) => {
   const [active, setActive] = useState([true, false, false]);
   const params = useParams();
   let passparams = [];
@@ -61,7 +64,12 @@ const ProductPage: React.FC = () => {
               }
             />
             <Route path={"details"} element={<ProductDetails />} />
-            <Route path={"reviews"} element={<ProductReviews />} />
+            <Route
+              path={"reviews"}
+              element={
+                <ProductReviews review={review} onOpenReview={onOpenReview} />
+              }
+            />
           </Routes>
 
           {/* {active[1] && <ProductDetails />} */}
