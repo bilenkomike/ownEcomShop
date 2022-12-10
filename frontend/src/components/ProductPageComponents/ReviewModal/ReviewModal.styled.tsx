@@ -33,4 +33,40 @@ export const ReviewModalStyledContent = styled.form`
     0px 12px 10px -6px rgba(30, 33, 44, 0.08),
     0px 4px 4px -4px rgba(30, 33, 44, 0.05);
   border-radius: 4px;
+
+  & > #close-login {
+    margin-top: 0;
+    width: auto;
+  }
+
+  & > div,
+  & > textarea {
+    margin-bottom: 10px;
+  }
+`;
+
+export const ReviewModalStyledTitle = styled.h3`
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  color: ${Colors.gray900};
+`;
+
+export const ReviewModalStyledCloseButton = styled.button`
+  position: absolute;
+  top: 24px;
+  right: 24px;
+
+  display: block;
+  & > svg {
+    width: 24px;
+    height: 24px;
+  }
+  color: ${Colors.gray700};
+
+  &:hover {
+    transform: rotate(180deg);
+  }
+
+  transition: all 0.2s linear;
 `;
