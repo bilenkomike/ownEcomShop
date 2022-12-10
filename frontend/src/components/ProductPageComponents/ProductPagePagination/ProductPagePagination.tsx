@@ -10,15 +10,10 @@ const ProductPagePagination: React.FC<{
 }> = ({ changeBody, active }) => {
   return (
     <ProductPagePaginationStyled>
-      <ProductPagePadinationStyledItem
-        to={""}
-
-        // onClick={() => changeBody(0)}
-      >
+      <ProductPagePadinationStyledItem to={""} end>
         General Info
       </ProductPagePadinationStyledItem>
       <ProductPagePadinationStyledItem
-        style={(navData: any) => navData.isActive && { color: "blue" }}
         to={"details"}
 
         // onClick={() => changeBody(1)}
@@ -26,7 +21,6 @@ const ProductPagePagination: React.FC<{
         Product details
       </ProductPagePadinationStyledItem>
       <ProductPagePadinationStyledItem
-        style={(navData: any) => navData.isActive && { color: "blue" }}
         to={"reviews"}
 
         // onClick={() => changeBody(2)}

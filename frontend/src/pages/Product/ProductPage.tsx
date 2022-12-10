@@ -11,12 +11,19 @@ import ProductPageHeader from "components/ProductPageComponents/ProductPageHeade
 import ProductReviews from "components/ProductPageComponents/ProductReviews/ProductReviews";
 import RecentlyViewed from "components/ProductPageComponents/RecentlyViewed/RecentlyViewed";
 import Links from "constants/links/Links";
+import SizeChartModal from "components/ProductPageComponents/SizeChartModal/SizeChartModal";
 
 const ProductPage: React.FC<{
   review: boolean;
   onOpenReview: () => void;
 }> = ({ review, onOpenReview }) => {
   const [active, setActive] = useState([true, false, false]);
+
+  const [sizeChart, setSizeChart] = useState(false);
+  const openSsizeChart = () => {
+    setSizeChart(!sizeChart);
+    document.body.classList.toggle("no-scroll");
+  };
   const params = useParams();
   let passparams = [];
   for (let i = 0; i < Object.keys(params).length; i++) {
@@ -59,7 +66,10 @@ const ProductPage: React.FC<{
               element={
                 <>
                   <ProductPageGallary />
-                  <ProductPageDescription />
+                  <ProductPageDescription
+                    sale={10}
+                    openSizeChart={openSsizeChart}
+                  />
                 </>
               }
             />
@@ -79,6 +89,8 @@ const ProductPage: React.FC<{
       <CompleteLook />
       <Interesting />
       <RecentlyViewed />
+
+      {sizeChart && <SizeChartModal openSizeChart={openSsizeChart} />}
     </article>
   );
 };
