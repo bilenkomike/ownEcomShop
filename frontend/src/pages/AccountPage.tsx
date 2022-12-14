@@ -1,4 +1,4 @@
-import { AccountMenuStyled } from "components/AccountComponents/AccountMenu/AccountMenu.styled";
+import AccountMenu from "components/AccountComponents/AccountMenu/AccountMenu";
 import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import Container from "components/Container/Container";
 import Links from "constants/links/Links";
@@ -22,7 +22,7 @@ const AccountPage = () => {
             alignItems: "flex-start",
           }}
         >
-          <AccountMenuStyled />
+          <AccountMenu />
           <div>
             <Routes>
               {/* <Route path={Links.accountProfile} element={ /> */}

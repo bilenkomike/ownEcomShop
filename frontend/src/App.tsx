@@ -95,6 +95,8 @@ const App: React.FunctionComponent = () => {
 
           <Route path={Links.account} element={<AccountPage />}>
             <Route path={Links.accountProfile} element={<AccountPage />} />
+            <Route path={Links.accountOrders} element={<AccountPage />} />
+
             <Route path={Links.accountWislist} element={<AccountPage />} />
             <Route path={Links.accountRecent} element={<AccountPage />} />
             <Route path={Links.accountRviews} element={<AccountPage />} />
