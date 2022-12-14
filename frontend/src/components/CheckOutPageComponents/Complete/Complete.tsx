@@ -45,7 +45,6 @@ const Complete = () => {
       <Button type="submit" styleType="default" size="large" variant="solid">
         Complete Order
       </Button>
-      2
     </CompleteStyled>
   );
 };

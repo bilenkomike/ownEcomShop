@@ -21,6 +21,7 @@ import CheckOutPage from "pages/CheckOutPage/CheckOutPage";
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import AccountPage from "pages/AccountPage";
 
 const stripePromise = loadStripe(
   "pk_test_51MEYeaEt3uw5zLqo1svTqEqOFiqW0O82IhfoNDjdDDbbWHZqDHHteFPht6exwl9prYuObR5tvVFU7vfURhTs8K21005M2gkIcw"
@@ -91,6 +92,13 @@ const App: React.FunctionComponent = () => {
           </Route>
 
           <Route path={Links.checkout} element={<CheckOutPage />} />
+
+          <Route path={Links.account} element={<AccountPage />}>
+            <Route path={Links.accountProfile} element={<AccountPage />} />
+            <Route path={Links.accountWislist} element={<AccountPage />} />
+            <Route path={Links.accountRecent} element={<AccountPage />} />
+            <Route path={Links.accountRviews} element={<AccountPage />} />
+          </Route>
         </Routes>
       </Elements>
       <Subscribe />

@@ -18,8 +18,10 @@ import { useLocation } from "react-router-dom";
 
 const Subscribe: React.FC = (props) => {
   const location = useLocation();
-
-  if (location.pathname.includes("checkout")) return <section> </section>;
+  const locationIncludes =
+    location.pathname.includes("checkout") ||
+    location.pathname.includes("account");
+  if (locationIncludes) return <section> </section>;
 
   return (
     <SubscribeStyled>
