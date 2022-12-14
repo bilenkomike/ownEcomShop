@@ -13,7 +13,7 @@ const Links = {
   account: "/account",
   accountProfile: "/account/profile",
   accountOrders: "/account/orders",
-  accountWislist: "/account/wislist",
+  accountWislist: "/account/wishlist",
   accountRecent: "/account/recent",
   accountRviews: "/account/reviews",
 };
