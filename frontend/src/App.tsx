@@ -17,6 +17,14 @@ import MiniCart from "components/MiniCart/MiniCart";
 import ProductsPage from "pages/Products/ProductsPage";
 import ProductPage from "pages/Product/ProductPage";
 import ReviewModal from "components/ProductPageComponents/ReviewModal/ReviewModal";
+import CheckOutPage from "pages/CheckOutPage/CheckOutPage";
+
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe(
+  "pk_test_51MEYeaEt3uw5zLqo1svTqEqOFiqW0O82IhfoNDjdDDbbWHZqDHHteFPht6exwl9prYuObR5tvVFU7vfURhTs8K21005M2gkIcw"
+);
 
 const App: React.FunctionComponent = () => {
   const [backdrop, setBackdrop] = useState(false);
@@ -58,27 +66,33 @@ const App: React.FunctionComponent = () => {
       {review && <ReviewModal onOpenReview={toggleReview} />}
 
       <MiniCart />
-      <Routes>
-        <Route path={Links.home} element={<HomePage />} />
-        <Route path={Links.category} element={<ProductsPage />} />
-        <Route
-          path={Links.product}
-          element={<ProductPage review={review} onOpenReview={toggleReview} />}
-        >
+      <Elements stripe={stripePromise}>
+        <Routes>
+          <Route path={Links.home} element={<HomePage />} />
+          <Route path={Links.category} element={<ProductsPage />} />
           <Route
-            path={Links.productDetails}
+            path={Links.product}
             element={
               <ProductPage review={review} onOpenReview={toggleReview} />
             }
-          />
-          <Route
-            path={Links.productReviews}
-            element={
-              <ProductPage review={review} onOpenReview={toggleReview} />
-            }
-          />
-        </Route>
-      </Routes>
+          >
+            <Route
+              path={Links.productDetails}
+              element={
+                <ProductPage review={review} onOpenReview={toggleReview} />
+              }
+            />
+            <Route
+              path={Links.productReviews}
+              element={
+                <ProductPage review={review} onOpenReview={toggleReview} />
+              }
+            />
+          </Route>
+
+          <Route path={Links.checkout} element={<CheckOutPage />} />
+        </Routes>
+      </Elements>
       <Subscribe />
       <Footer />
     </div>

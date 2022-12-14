@@ -5,6 +5,7 @@ export const PaymentButtonStyled = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 120px;
   height: 64px;
   /* padding: 21px; */
@@ -13,4 +14,13 @@ export const PaymentButtonStyled = styled.button`
   background-color: ${Colors.gray200};
 
   margin-right: 24px;
+
+  & > img {
+    display: block;
+    width: 70%;
+  }
+
+  color: black;
+  text-transform: lowercase;
+  font-size: 10px;
 `;
