@@ -10,6 +10,12 @@ const Links = {
   productDetails: "/products/:category/:clothes/:id/details",
   productReviews: "/products/:category/:clothes/:id/reviews",
   checkout: "/checkout",
+  account: "/account",
+  accountProfile: "/account/profile",
+  accountOrders: "/account/orders",
+  accountWislist: "/account/wislist",
+  accountRecent: "/account/recent",
+  accountRviews: "/account/reviews",
 };
 
 export default Links;
