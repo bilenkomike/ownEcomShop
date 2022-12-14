@@ -9,6 +9,7 @@ const Links = {
   product: "/products/:category/:clothes/:id",
   productDetails: "/products/:category/:clothes/:id/details",
   productReviews: "/products/:category/:clothes/:id/reviews",
+  checkout: "/checkout",
 };
 
 export default Links;
