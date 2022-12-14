@@ -1,6 +1,10 @@
+import Button from "components/Button/Button";
+import AdditionalInfo from "components/CheckOutPageComponents/AdditionalInfo/AdditionalInfo";
 import CheckOutPageHeader from "components/CheckOutPageComponents/CheckOutPageHeader/CheckOutPageHeader";
 import CheckOutPageItemReviews from "components/CheckOutPageComponents/CheckOutPageItemReviews/CheckOutPageItemReviews";
+import Complete from "components/CheckOutPageComponents/Complete/Complete";
 import PaymentMethod from "components/CheckOutPageComponents/PaymentMethod/PaymentMethod";
+import Promo from "components/CheckOutPageComponents/Promo/Promo";
 import Shipping from "components/CheckOutPageComponents/Shipping/Shipping";
 import ShippingAndBilling from "components/CheckOutPageComponents/ShippingAndBilling/ShippingAndBilling";
 import Container from "components/Container/Container";
@@ -23,6 +27,11 @@ const CheckOutPage = () => {
           <ShippingAndBilling />
           <Shipping />
           <PaymentMethod />
+          <AdditionalInfo />
+        </div>
+        <div style={{ display: "block", width: "33%" }}>
+          <Promo />
+          <Complete />
         </div>
       </form>
     </Container>
