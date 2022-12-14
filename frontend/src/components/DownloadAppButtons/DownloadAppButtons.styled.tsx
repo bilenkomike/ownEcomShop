@@ -32,10 +32,16 @@ export const DownloadAppButtonsStyledButtonImage = styled.img`
 export const DownloadAppButtonsStyledButtonDescription = styled.div`
   display: block;
   text-align: left;
-`;
-
-export const DownloadAppStyledButttonText = styled.img`
-  display: block;
-  width: 101.52px;
-  height: 32.51px;
+  & > span {
+    display: block;
+    width: 101.52px;
+    &:first-child {
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    &:last-child {
+      font-size: 17px;
+      font-weight: 600;
+    }
+  }
 `;

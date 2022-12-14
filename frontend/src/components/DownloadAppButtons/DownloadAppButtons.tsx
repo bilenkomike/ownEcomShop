@@ -1,14 +1,11 @@
 import React from "react";
-import appleImg from "./images/apple.png";
-import androidImg from "./images/android.png";
-import appleText from "./images/apple-text.png";
-import androidText from "./images/android-text.png";
+import appleImg from "./images/apple.svg";
+import androidImg from "./images/android.svg";
 import {
   DownloadAppButtonsStyled,
   DownloadAppButtonsStyledButton,
   DownloadAppButtonsStyledButtonDescription,
   DownloadAppButtonsStyledButtonImage,
-  DownloadAppStyledButttonText,
 } from "./DownloadAppButtons.styled";
 
 const DownloadAppButtons: React.FC = () => {
@@ -20,7 +17,8 @@ const DownloadAppButtons: React.FC = () => {
           alt={"apple download app"}
         />
         <DownloadAppButtonsStyledButtonDescription>
-          <DownloadAppStyledButttonText src={appleText} />
+          <span style={{ textTransform: "capitalize" }}>Download on the</span>
+          <span>App Store</span>
         </DownloadAppButtonsStyledButtonDescription>
       </DownloadAppButtonsStyledButton>
 
@@ -30,7 +28,8 @@ const DownloadAppButtons: React.FC = () => {
           alt={"apple download app"}
         />
         <DownloadAppButtonsStyledButtonDescription>
-          <DownloadAppStyledButttonText src={androidText} />
+          <span>Get it on</span>
+          <span>Google Play</span>
         </DownloadAppButtonsStyledButtonDescription>
       </DownloadAppButtonsStyledButton>
     </DownloadAppButtonsStyled>
