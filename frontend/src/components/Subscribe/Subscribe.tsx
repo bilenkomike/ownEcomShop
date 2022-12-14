@@ -14,8 +14,13 @@ import {
 import img from "./images/image.png";
 import CheckBox from "components/CheckBox/CheckBox";
 import Title from "components/Title/Title";
+import { useLocation } from "react-router-dom";
 
-const Subscribe: React.FC = () => {
+const Subscribe: React.FC = (props) => {
+  const location = useLocation();
+
+  if (location.pathname.includes("checkout")) return <section> </section>;
+
   return (
     <SubscribeStyled>
       <SubscribeStyledContent>
