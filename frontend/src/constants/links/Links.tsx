@@ -15,7 +15,7 @@ const Links = {
   accountOrders: "/account/orders",
   accountWislist: "/account/wishlist",
   accountRecent: "/account/recent",
-  accountRviews: "/account/reviews",
+  accountReviews: "/account/reviews",
 };
 
 export default Links;

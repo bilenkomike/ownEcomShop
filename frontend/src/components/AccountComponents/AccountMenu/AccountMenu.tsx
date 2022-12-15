@@ -26,15 +26,19 @@ const AccountMenu = () => {
           to={Links.accountProfile}
           active={pathname.includes("/profile")}
         >
-          <BsPerson />
-          My profile
+          <span>
+            <BsPerson />
+            My profile
+          </span>
         </AccountMenuStyledListItem>
         <AccountMenuStyledListItem
           to={Links.accountOrders}
           active={pathname.includes("/orders")}
         >
-          <BsBag />
-          My orders
+          <span>
+            <BsBag />
+            My orders
+          </span>
         </AccountMenuStyledListItem>
         <AccountMenuStyledListItem
           to={Links.accountWislist}
@@ -50,24 +54,30 @@ const AccountMenu = () => {
           to={Links.accountRecent}
           active={pathname.includes("/recent")}
         >
-          <BsEye />
-          Recently viewed
+          <span>
+            <BsEye />
+            Recently viewed
+          </span>
         </AccountMenuStyledListItem>
 
         <AccountMenuStyledListItem
-          to={Links.accountRviews}
+          to={Links.accountReviews}
           active={pathname.includes("/reviews")}
         >
-          <BsStar />
-          My reviews
+          <span>
+            <BsStar />
+            My reviews
+          </span>
         </AccountMenuStyledListItem>
 
         <AccountMenuStyledListItem
           to={Links.accountProfile}
           active={pathname.includes("/logout")}
         >
-          <IoIosLogOut />
-          Sign out
+          <span>
+            <IoIosLogOut />
+            Sign out
+          </span>
         </AccountMenuStyledListItem>
       </AccountMenuStyledList>
     </AccountMenuStyled>

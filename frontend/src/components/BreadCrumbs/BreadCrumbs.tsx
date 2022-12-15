@@ -21,7 +21,7 @@ const BreadCrumbs: React.FC<{
             <div key={`${index}_breadcrumbs`}>
               <TfiAngleRight />
             </div>
-            <span>{param.value}</span>
+            <span key={`${index}_breadcrumbs1`}>{param.value}</span>
           </>
         ))}
       </Container>
