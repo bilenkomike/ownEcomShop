@@ -19,6 +19,7 @@ import { useLocation } from "react-router-dom";
 const Subscribe: React.FC = (props) => {
   const location = useLocation();
   const locationIncludes =
+    location.pathname.includes("track-order") ||
     location.pathname.includes("checkout") ||
     location.pathname.includes("account");
   if (locationIncludes) return <section> </section>;

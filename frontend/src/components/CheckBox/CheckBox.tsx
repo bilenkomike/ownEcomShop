@@ -19,7 +19,7 @@ const CheckBox: React.FC<{ text: string; additionalText?: string }> = ({
           <img src={checkImg} alt="" />
         </span>
       </CheckboxStyled>
-      {text} <span>({additionalText})</span>
+      {text} {additionalText && <span>({additionalText})</span>}
     </CheckboxStyledField>
   );
 };
