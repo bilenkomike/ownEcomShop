@@ -5,7 +5,6 @@ import { NavLink } from "react-router-dom";
 export const AccountMenuStyled = styled.nav`
   display: block;
   width: 285px;
-  margin-top: 40px;
 
   border: 1px solid ${Colors.gray300};
   box-shadow: 0px 80px 80px -20px rgba(154, 156, 165, 0.08),
@@ -55,6 +54,8 @@ export const AccountMenuStyledListItem = styled(NavLink)<{ active: boolean }>`
   font-size: 16px;
   color: ${Colors.gray800};
 
+  cursor: pointer;
+
   ${(props) =>
     props.active &&
     css`
@@ -63,5 +64,25 @@ export const AccountMenuStyledListItem = styled(NavLink)<{ active: boolean }>`
     `}
 
   & > span {
+    & > svg {
+      margin-right: 10px;
+    }
   }
+
+  & > span:nth-child(2) {
+    padding: 3px 8px;
+    background-color: ${Colors.warning};
+    border-radius: 4px;
+
+    color: ${Colors.white};
+    font-weight: 900;
+    font-size: 12px;
+  }
+
+  &:hover {
+    background-color: ${Colors.primary600};
+    color: ${Colors.white};
+  }
+
+  transition: all 0.2s ease;
 `;
