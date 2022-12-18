@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Intro from "components/HomePageComponents/Intro/Intro";
 import TopCategories from "components/HomePageComponents/TopCategories/TopCategories";
@@ -12,6 +12,8 @@ import Services from "components/HomePageComponents/Services/Services";
 import Instagram from "components/HomePageComponents/Instagram/Instagram";
 import Blog from "components/HomePageComponents/Blog/Blog";
 import Brands from "components/HomePageComponents/Brands/Brands";
+
+import axios from "axios";
 
 const HomePage: React.FC = () => {
   return (
