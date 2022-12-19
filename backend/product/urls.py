@@ -11,13 +11,14 @@ from .views import (
      ProductAttributesView,
      ProductBrandsViewSet,
      ProductPricesViewSet,
-     ProductDetailsUpdateViewSet
+     ProductDetailsUpdateViewSet,
+     ProductDetailReviewView
 )
 
-urlpatterns = [
-     
+urlpatterns = [     
      path('', ProductListView.as_view(), name="api-products-list"),
      path('<int:pk>/', ProductDetailView.as_view(), name="api-products-detail"),
+     path('<int:pk>/reviews/', ProductDetailReviewView.as_view(), name="api-products-detail-reviews"),
      path('create/', ProductCreateViewSet.as_view({'post':'create'}), name="api-products-create"),
      path('<int:pk>/delete/', ProductDeleteViewSet.as_view(), name="delete-product-api"),
      path('<int:pk>/update/', ProductUpdateViewSet.as_view(), name="delete-update-api"),

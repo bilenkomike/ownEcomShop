@@ -6,9 +6,9 @@ from rest_framework.permissions import IsAdminUser
 
 from currencies.models import Currency
 
+from django_filters.rest_framework import DjangoFilterBackend
 
-
-
+from rest_framework import filters
 from rest_framework import generics
 
 import json
@@ -22,10 +22,11 @@ from .models import (
     ProductDetails,
     ProductSubCategory,
     ProductAttribute,
-    ProductBrand
+    ProductBrand,
+    ProductSelectedAttributes
 )
 
-from .serializers import (
+from .serializers import (  
     ProductSerializer,
     ProductReviewSerialier,
     ProductCategorySerializer,
@@ -41,32 +42,125 @@ from .serializers import (
 
 from rest_framework.pagination import PageNumberPagination
 
-class SmallPagesPagination(PageNumberPagination):  
-    page_size = 1
+class ProductPagesPagination(PageNumberPagination):  
+    
+    page_size_query_param = 'perPage'
+    
+    # max_page_size = 16
     
     def get_paginated_response(self, data):
+        print(data)
         return Response({
             'count': self.page.paginator.count,
+            'pages': self.page.paginator.num_pages,
             'page_number': self.page.number,
             'next': self.get_next_link(),
             'previous': self.get_previous_link(),
             'results': data,
         })
+        
 
+class ReviewsPagesPagination(PageNumberPagination):  
+    
+    page_size = 4
+
+    def get_paginated_response(self, data):
+        print(data)
+        return Response({
+            'count': self.page.paginator.count,
+            'pages': self.page.paginator.num_pages,
+            'page_number': self.page.number,
+            'next': self.get_next_link(),
+            'previous': self.get_previous_link(),
+            'results': data,
+        })
    
 
 class ProductListView(generics.ListAPIView):
     model = Product
     serializer_class = ProductSerializer
-    queryset = Product.objects.all()
-    pagination_class = SmallPagesPagination
+    # queryset = Product.objects.all()
+    pagination_class = ProductPagesPagination
+    
+    filter_backends = [filters.SearchFilter]
+    search_fields = ['brand__name']
     
     def get_queryset(self):
-        return Product.objects.all()
+        if len(self.request.query_params) > 0:
+            params = self.request.query_params
+            brand = self.request.query_params.get('brand', None)
+            color = self.request.query_params.get('color', None)
+            size = self.request.query_params.get('size', None)
+            material = self.request.query_params.get('material', None)
+            minprice = self.request.query_params.get('minprice', 0)
+            maxprice = self.request.query_params.get('maxprice', None)
+            currency = self.request.query_params.get('currency', None)
+            products = Product.objects.all()
+            if brand != None:
+                products = products.filter(brand__name=params['brand'])
+
+            if color != None:
+                filtered_prods = []
+                for product in products:
+                    attrs = ProductSelectedAttributes.objects.filter(product=product, values__value=color)
+                    if len(attrs) > 0:
+                        filtered_prods.append(product)
+                products = filtered_prods
+                
+                
+            if material:
+                filtered_prods = []
+                for product in products:
+                    attrs = ProductSelectedAttributes.objects.filter(product=product, values__value=material)
+                    if len(attrs) > 0:
+                        filtered_prods.append(product)
+                
+                products = filtered_prods
+                
+            if size != None:    
+                filtered_prods = []
+                for product in products:
+                    attrs = ProductSelectedAttributes.objects.filter(product=product, values__value=size)
+                    if len(attrs) > 0:
+                        filtered_prods.append(product)
+                
+                products = filtered_prods
+            
+            
+        
+            if int(minprice) >= 0 and currency != None:    
+                filtered_prods = []
+                for product in products:
+                    prices = ProductPrices.objects.filter(product=product, amount__gte=int(minprice), currency__symbol=currency)
+                    if len(prices) > 0:
+                        filtered_prods.append(product)
+                
+                products = filtered_prods
+                
+            if maxprice != None and int(maxprice) >= 0 and currency != None:     
+                filtered_prods = []
+                for product in products:
+                    prices = ProductPrices.objects.filter(product=product, amount__lte=int(maxprice), currency__symbol=currency)
+                    if len(prices) > 0:
+                        filtered_prods.append(product)
+
+                
+                products = filtered_prods
+            
+            
+            return products
+        else:
+            return Product.objects.all()
+        
+        
+        
     
     def get(self, request, *args, **kwargs):
+    
         serializer = ProductSerializer(self.get_queryset(), many=True)
+        
         page = self.paginate_queryset(serializer.data)
+        
         return self.get_paginated_response(page)
 
 
@@ -75,28 +169,27 @@ class ProductDetailView(generics.RetrieveAPIView):
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
     
-
-
-class ProductViewSet(viewsets.ModelViewSet):
+class ProductDetailReviewView(generics.ListAPIView):
+    serializer_class = ProductReviewSerialier
+    pagination_class = ReviewsPagesPagination
     
-    serializer_class = ProductSerializer
+    def get_queryset(self):
+        return ProductReview.objects
     
-    def get_queryset(self): 
-        return Product.objects.all()
-    
-    def list(self, request, *args, **kwargs):
-        products = self.get_queryset()
-        serializer = ProductSerializer(products,many=True)
-        # return Response('Works')
-        return Response(serializer.data)
-    
-    def retrieve(self, request, *args, **kwargs):
-        product = self.get_object()
-        serializer = ProductSerializer(product)
-        return Response(serializer.data)
-
-
-
+    def get(self,request,pk):
+        product = Product.objects.get(id=pk)
+        reviews = self.get_queryset().filter(product=product).order_by('date')
+        obj = {"1": 0, "2": 0, "3":0,"4":0,"5":0}
+        for review in reviews: 
+            obj[str(int(review.rating))] += 1
+        serializer = ProductReviewSerialier(reviews, many=True)
+        
+        page = self.paginate_queryset(serializer.data)
+        data = {
+            "data":page,
+            "stats": obj
+        }
+        return self.get_paginated_response(data)
 
 
 
