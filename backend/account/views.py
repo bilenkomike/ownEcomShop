@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from shipping.models import Shipping
 
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated, IsAdminUser,AllowAny
@@ -39,6 +40,7 @@ class RegisterUserApiView(generics.CreateAPIView):
         )
         
         user.save()
+        Shipping.objects.create(user=user,phone='', country='', city='', zip='',address='')
         serializer = UserSerializerWithToken(user, many=False)
         return Response(serializer.data)
 
@@ -55,6 +57,8 @@ class UserAPIView(generics.UpdateAPIView):
         
         user = request.user
         
+        shipping = {}
+        
         for i in request.data:
             if i == 'fullname':
                 user.first_name = request.data[i]
@@ -63,8 +67,23 @@ class UserAPIView(generics.UpdateAPIView):
             if i == 'email':
                 user['username'] = request.data[i]
                 user['email'] = request.data[i]
-        
+            if i == 'city':
+                shipping['city'] = request.data[i]
+            if i == 'country':
+                shipping['country'] = request.data[i]
+            if i == 'zip':
+                shipping['zip'] = request.data[i]
+            if i == 'address':
+                shipping['address'] = request.data[i]
+            if i == 'phone':
+                shipping['phone'] = request.data[i]
+
         serializer = UserSerializer(user, many=False)
+        shippin = Shipping.objects.filter(user=user.id)
+        
+        shippin.update(**shipping)
+        
+        
         user.save()
         return Response(serializer.data, status=status.HTTP_200_OK)
 
