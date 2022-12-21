@@ -16,7 +16,7 @@ from .models import (
 
 
 from currencies.serializers import CurrencySerializer
-
+from look.serializers import LookSerializer
 
 class ProductAttributeValuesSerializer(serializers.ModelSerializer):
     class Meta: 
@@ -123,7 +123,7 @@ class ProductSerializer(serializers.ModelSerializer):
     
     brand = ProductBrandSerializer(read_only=True, many=False)
     
-
+    look = serializers.SerializerMethodField(read_only=True)
     
     class Meta:
         model = Product
@@ -133,6 +133,13 @@ class ProductSerializer(serializers.ModelSerializer):
     def get_reviews(self,obj):
         reviews = obj.productreview_set.all()
         serializer = ProductReviewSerialier(reviews, many=True)
+        return serializer.data
+    
+
+    def get_look(self, obj):
+        look = obj.look_set.all()
+        look.products = ProductSerializer(many=True)
+        serializer = LookSerializer(look,many=True)
         return serializer.data
     
     
