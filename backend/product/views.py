@@ -5,6 +5,7 @@ from rest_framework.permissions import IsAdminUser
 
 
 from currencies.models import Currency
+from look.models import Look
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -168,6 +169,15 @@ class ProductDetailView(generics.RetrieveAPIView):
     model = Product
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
+    
+    # def retrieve(self, request, *args, **kwargs):
+    #     product = self.get_object()
+    #     look = Look.objects.get(products__in=[product])
+    #     # look = 
+    #     # for prod in look.products:
+    #     #     if prod != product:
+    #     #         prod = 
+    #     return Response('some')
     
 class ProductDetailReviewView(generics.ListAPIView):
     serializer_class = ProductReviewSerialier
