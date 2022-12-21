@@ -148,7 +148,7 @@ class ProductSerializer(serializers.ModelSerializer):
     
     def get_attributes(self, obj):
         attrs = obj.productselectedattributes_set.all()
-        print(attrs)
+        
         serializer = ProductAttributesSelectedSerializer(attrs, many=True)
         return serializer.data
     
