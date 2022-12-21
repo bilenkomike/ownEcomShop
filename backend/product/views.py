@@ -49,7 +49,7 @@ class ProductPagesPagination(PageNumberPagination):
     # max_page_size = 16
     
     def get_paginated_response(self, data):
-        print(data)
+        
         return Response({
             'count': self.page.paginator.count,
             'pages': self.page.paginator.num_pages,
@@ -65,7 +65,7 @@ class ReviewsPagesPagination(PageNumberPagination):
     page_size = 4
 
     def get_paginated_response(self, data):
-        print(data)
+        
         return Response({
             'count': self.page.paginator.count,
             'pages': self.page.paginator.num_pages,
@@ -224,7 +224,7 @@ class ProductCreateViewSet(viewsets.ModelViewSet):
             type=type,category = category,subcategory=subcategory
         )
         prices = json.loads(data['prices'])    
-        print(prices)
+        
         for item in prices:
             currency = Currency.objects.get(symbol=item)
             ProductPrices.objects.create(currency=currency,amount=prices[item], product=product)
