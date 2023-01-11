@@ -48,6 +48,11 @@ INSTALLED_APPS = [
     'wishlist',
     'order',
     'delivery',
+    'blogtags', 
+    'blogcategories',
+    'post',
+    'comments', 
+    'stores',
 ]
 
 MIDDLEWARE = [
@@ -69,7 +74,9 @@ ROOT_URLCONF = "backend.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+                BASE_DIR / 'templates',
+            ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -196,3 +203,13 @@ SIMPLE_JWT = {
     'SLIDING_TOKEN_LIFETIME': timedelta(minutes=5),
     'SLIDING_TOKEN_REFRESH_LIFETIME': timedelta(days=1),
 }
+
+
+# Email config
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER="createxmike@gmail.com"
+EMAIL_HOST_PASSWORD = "onwnmyvmrhddccau"
+EMAIL_USE_TLS=True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
