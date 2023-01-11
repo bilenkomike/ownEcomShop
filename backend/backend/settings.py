@@ -53,6 +53,8 @@ INSTALLED_APPS = [
     'post',
     'comments', 
     'stores',
+    'contacts',
+    'faq',
 ]
 
 MIDDLEWARE = [

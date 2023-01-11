@@ -29,4 +29,7 @@ urlpatterns = [
     path('api/posts/', include('post.urls')),
     path('api/comments/', include('comments.urls')),
     path('api/stores/', include('stores.urls')),
+    path('api/contacts/', include('contacts.urls')),
+    path('api/faq/', include('faq.urls')),
+    
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # for media
