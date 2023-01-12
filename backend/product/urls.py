@@ -12,7 +12,8 @@ from .views import (
      ProductBrandsViewSet,
      ProductPricesViewSet,
      ProductDetailsUpdateViewSet,
-     ProductDetailReviewView
+     ProductDetailReviewView,
+     ProductsNewArrivalsViewSet
 )
 
 urlpatterns = [     
@@ -24,6 +25,7 @@ urlpatterns = [
      path('<int:pk>/update/', ProductUpdateViewSet.as_view(), name="delete-update-api"),
      path('<int:pk>/details/update', ProductDetailsUpdateViewSet.as_view(), name="update-product-details"),
      
+     path('new-arrivals/', ProductsNewArrivalsViewSet.as_view(), name='new-arivals-api'),
      path('types/', ProductTypesView.as_view(), name="product-types-api"),
      path('categories/',ProductCategoryView.as_view(), name="product-categories-api"),
      path('subcategories/',ProductSubCategoryView.as_view(), name="product-subcategories-api"),
