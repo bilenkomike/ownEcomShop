@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Colors from "constants/ui/colors/Colors";
 import Input from "components/Input/Input";
@@ -17,7 +17,11 @@ import Links from "constants/links/Links";
 import { useTypedDispatch } from "store/hooks";
 import { CartActions } from "store/CartSlice/index";
 
+import axios from "axios";
+import API_URL from "config";
+
 const MainMenu: React.FC<{ toggle: () => void }> = ({ toggle }) => {
+  const [links, setLinks] = useState([]);
   const dispatch = useTypedDispatch();
   const [search, setSearch] = useState("");
   const searchSubmitHandler: (e: React.FormEvent) => void = (e) => {
@@ -33,18 +37,29 @@ const MainMenu: React.FC<{ toggle: () => void }> = ({ toggle }) => {
     setSearch(searchValue);
   };
 
+  useEffect(() => {
+    axios.get(API_URL + "products/types/").then((response) => {
+      setLinks(response.data);
+    });
+  }, []);
+
   return (
     <MainMenuStyled>
       <Link to="/">
         <img src="/images/logo.png" alt="" />
       </Link>
       <MainMenuLinks onMouseEnter={toggle}>
-        <span className="active" onMouseEnter={toggle}>
+        {/* onMouseEnter={toggle} */}
+        {links &&
+          links.map((link: { id: number; name: string }) => (
+            <span key={link.name}>{link.name}</span>
+          ))}
+        {/* <span className="active" onMouseEnter={toggle}>
           Women
         </span>
         <span onMouseEnter={toggle}>Men</span>
         <span onMouseEnter={toggle}>Girls</span>
-        <span onMouseEnter={toggle}>Boys</span>
+        <span onMouseEnter={toggle}>Boys</span> */}
         <span onMouseEnter={toggle} style={{ color: Colors.danger }}>
           Sale
         </span>
