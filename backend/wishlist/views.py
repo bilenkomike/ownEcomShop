@@ -9,7 +9,6 @@ from product.models import Product,ProductAttributeValues
 class WishListView(generics.ListAPIView):
     permission_classes = [IsAuthenticated]
     def list(self, request):
-        print(request.user)
         wishlist = WishList.objects.filter(user=request.user)
         
         serializer = WishListSerializer(wishlist, many=True)
@@ -34,3 +33,33 @@ class WishListAddView(generics.CreateAPIView):
         
         serializer = WishListSerializer(wish, many=False)
         return Response(serializer.data)
+
+
+
+class WishListUpdateItemView(generics.UpdateAPIView):
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'pk'
+    
+    
+    def patch(self, request):
+        wish = self.request.data['wish']
+        
+        attrs = []
+        
+        for attr in request.data['attributes'].split(','):
+            attrs.append(ProductAttributeValues.objects.get(id=attr).id)
+        wish.selected_attributes.set(attrs)
+        
+        serializer = WishListSerializer(wish, many=False)
+        return Response(serializer.data)
+    
+    
+    
+class DeleteWishListView(generics.DestroyAPIView):
+    model = WishList
+    permission_classes = [IsAuthenticated]
+    lookup_field = 'pk'
+    queryset = WishList.objects.all()
+    serializer_class = WishListSerializer
+    
+    
