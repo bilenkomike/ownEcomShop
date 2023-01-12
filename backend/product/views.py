@@ -75,6 +75,15 @@ class ReviewsPagesPagination(PageNumberPagination):
             'previous': self.get_previous_link(),
             'results': data,
         })
+        
+        
+class ProductsNewArrivalsViewSet(generics.ListAPIView):
+    model = Product
+    serializer_class = ProductSerializer
+    pagination_class = ProductPagesPagination
+    queryset = Product.objects.all().order_by('-date_added')
+    
+    
    
 
 class ProductListView(generics.ListAPIView):
