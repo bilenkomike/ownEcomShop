@@ -20,7 +20,7 @@ const Recent = () => {
         </RecentStyledHeaderItem>
       </AccountHeader>
       <RecentStyledList>
-        <Product
+        {/* <Product
           size="large"
           id="some"
           name="Shirt with insertion lace trims"
@@ -43,7 +43,7 @@ const Recent = () => {
           gallary={[img2]}
           price={49.95}
           currency="$"
-        />
+        /> */}
       </RecentStyledList>
     </RecentStyled>
   );

@@ -41,7 +41,7 @@ const TrendingNow = () => {
       <TrendingNowStyledContainer>
         <Carousel widthType="%" currentSlide={page}>
           <TrendingNowStyledList>
-            <Product
+            {/* <Product
               size="large"
               id="some"
               name="Shirt with insertion lace trims"
@@ -64,10 +64,10 @@ const TrendingNow = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </TrendingNowStyledList>
           <TrendingNowStyledList>
-            <Product
+            {/* <Product
               size="large"
               id="some"
               name="Shirt with insertion lace trims"
@@ -90,10 +90,10 @@ const TrendingNow = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </TrendingNowStyledList>
           <TrendingNowStyledList>
-            <Product
+            {/* <Product
               size="large"
               id="some"
               name="Shirt with insertion lace trims"
@@ -116,7 +116,7 @@ const TrendingNow = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </TrendingNowStyledList>
         </Carousel>
       </TrendingNowStyledContainer>

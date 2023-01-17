@@ -39,7 +39,7 @@ const Interesting = () => {
       <InterestingStyledContainer>
         <Carousel widthType="%" currentSlide={page}>
           <InterestingStyledList>
-            <Product
+            {/* <Product
               size="small"
               id="some"
               name="Shirt with insertion lace trims"
@@ -70,10 +70,10 @@ const Interesting = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </InterestingStyledList>
           <InterestingStyledList>
-            <Product
+            {/* <Product
               size="small"
               id="some"
               name="Shirt with insertion lace trims"
@@ -104,10 +104,10 @@ const Interesting = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </InterestingStyledList>
           <InterestingStyledList>
-            <Product
+            {/* <Product
               size="small"
               id="some"
               name="Shirt with insertion lace trims"
@@ -138,7 +138,7 @@ const Interesting = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </InterestingStyledList>
         </Carousel>
       </InterestingStyledContainer>

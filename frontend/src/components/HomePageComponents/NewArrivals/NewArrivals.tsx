@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Product from "components/Product/Product";
 import img from "./images/product/small/image.png";
@@ -19,9 +19,18 @@ import {
   NewArrivalsStyledDescription,
 } from "./NewArrivals.styled";
 
+import axios from "axios";
+import API_URL from "config";
+
 const NewArrivals: React.FC = () => {
+  const [products, setProducts] = useState([]);
   const [page, setPage] = useState(0);
   const array = ["", "", "", ""];
+
+  useEffect(() => {
+    // axios.get()
+  }, []);
+
   return (
     <NewArrivalsStyled>
       <Title> New arrivals</Title>
@@ -33,6 +42,180 @@ const NewArrivals: React.FC = () => {
       </NewArrivalsStyledLink>
       <Carousel widthType="%" currentSlide={page}>
         <NewArrivalsStyledList>
+          {/* <Product
+            key={1}
+            size="small"
+            id="black-and-white-sport-cap"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img, img, img]}
+            rating={4}
+            wishlist
+            attributes={[
+              {
+                id: "size",
+                type: "text",
+                items: [
+                  { name: "S", value: "S" },
+                  { name: "M", value: "M" },
+                  { name: "L", value: "L" },
+                  { name: "XL", value: "XL" },
+                ],
+                selectedValue: "XL",
+              },
+              {
+                id: "color",
+                type: "color",
+                items: [
+                  { name: "#C0DDED", value: "#C0DDED" },
+                  { name: "#874E19", value: "#874E19" },
+                  { name: "#000000", value: "#000000" },
+                ],
+                selectedValue: "#000000",
+              },
+            ]}
+          />
+          <Product
+            key={2}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img2]}
+            sale={50}
+          />
+          <Product
+            key={3}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img3]}
+            sale={33}
+          />
+          <Product
+            key={4}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img4]}
+            sale={50}
+          />
+
+          <Product
+            key={5}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img5]}
+            sale={50}
+          />
+          <Product
+            key={6}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img6]}
+            sale={50}
+          /> */}
+        </NewArrivalsStyledList>
+        <NewArrivalsStyledList>
+          {/* <Product
+            key={1}
+            size="small"
+            id="black-and-white-sport-cap"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img, img, img]}
+            rating={4}
+            wishlist
+            attributes={[
+              {
+                id: "size",
+                type: "text",
+                items: [
+                  { name: "S", value: "S" },
+                  { name: "M", value: "M" },
+                  { name: "L", value: "L" },
+                  { name: "XL", value: "XL" },
+                ],
+                selectedValue: "XL",
+              },
+              {
+                id: "color",
+                type: "color",
+                items: [
+                  { name: "#C0DDED", value: "#C0DDED" },
+                  { name: "#874E19", value: "#874E19" },
+                  { name: "#000000", value: "#000000" },
+                ],
+                selectedValue: "#000000",
+              },
+            ]}
+          />
+          <Product
+            key={2}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img2]}
+            sale={50}
+          />
+          <Product
+            key={3}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img3]}
+            sale={33}
+          />
+          <Product
+            key={4}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img4]}
+            sale={50}
+          />
+
+          <Product
+            key={5}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img5]}
+            sale={50}
+          />
+          <Product
+            key={6}
+            size="small"
+            id="black-and-white-sport-cap1"
+            name="Black and white sport cap"
+            price={18.5}
+            currency="$"
+            gallary={[img6]}
+            sale={50}
+          /> */}
+        </NewArrivalsStyledList>
+        {/* <NewArrivalsStyledList>
           <Product
             key={1}
             size="small"
@@ -205,181 +388,7 @@ const NewArrivals: React.FC = () => {
             gallary={[img6]}
             sale={50}
           />
-        </NewArrivalsStyledList>
-        <NewArrivalsStyledList>
-          <Product
-            key={1}
-            size="small"
-            id="black-and-white-sport-cap"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img, img, img]}
-            rating={4}
-            wishlist
-            attributes={[
-              {
-                id: "size",
-                type: "text",
-                items: [
-                  { name: "S", value: "S" },
-                  { name: "M", value: "M" },
-                  { name: "L", value: "L" },
-                  { name: "XL", value: "XL" },
-                ],
-                selectedValue: "XL",
-              },
-              {
-                id: "color",
-                type: "color",
-                items: [
-                  { name: "#C0DDED", value: "#C0DDED" },
-                  { name: "#874E19", value: "#874E19" },
-                  { name: "#000000", value: "#000000" },
-                ],
-                selectedValue: "#000000",
-              },
-            ]}
-          />
-          <Product
-            key={2}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img2]}
-            sale={50}
-          />
-          <Product
-            key={3}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img3]}
-            sale={33}
-          />
-          <Product
-            key={4}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img4]}
-            sale={50}
-          />
-
-          <Product
-            key={5}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img5]}
-            sale={50}
-          />
-          <Product
-            key={6}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img6]}
-            sale={50}
-          />
-        </NewArrivalsStyledList>
-        <NewArrivalsStyledList>
-          <Product
-            key={1}
-            size="small"
-            id="black-and-white-sport-cap"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img, img, img]}
-            rating={4}
-            wishlist
-            attributes={[
-              {
-                id: "size",
-                type: "text",
-                items: [
-                  { name: "S", value: "S" },
-                  { name: "M", value: "M" },
-                  { name: "L", value: "L" },
-                  { name: "XL", value: "XL" },
-                ],
-                selectedValue: "XL",
-              },
-              {
-                id: "color",
-                type: "color",
-                items: [
-                  { name: "#C0DDED", value: "#C0DDED" },
-                  { name: "#874E19", value: "#874E19" },
-                  { name: "#000000", value: "#000000" },
-                ],
-                selectedValue: "#000000",
-              },
-            ]}
-          />
-          <Product
-            key={2}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img2]}
-            sale={50}
-          />
-          <Product
-            key={3}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img3]}
-            sale={33}
-          />
-          <Product
-            key={4}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img4]}
-            sale={50}
-          />
-
-          <Product
-            key={5}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img5]}
-            sale={50}
-          />
-          <Product
-            key={6}
-            size="small"
-            id="black-and-white-sport-cap1"
-            name="Black and white sport cap"
-            price={18.5}
-            currency="$"
-            gallary={[img6]}
-            sale={50}
-          />
-        </NewArrivalsStyledList>
+        </NewArrivalsStyledList> */}
       </Carousel>
       <NewArrivalsStyledListPagination>
         {array.map((item, index) => (

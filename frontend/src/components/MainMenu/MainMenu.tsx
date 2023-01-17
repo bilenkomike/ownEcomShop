@@ -79,7 +79,7 @@ const MainMenu: React.FC<{ toggle: () => void }> = ({ toggle }) => {
       </MainMenuForm>
 
       <MainMenuActions>
-        <Link to={Links.wishlist}>
+        <Link to={Links.accountWislist}>
           <AiOutlineHeart />2
         </Link>
 

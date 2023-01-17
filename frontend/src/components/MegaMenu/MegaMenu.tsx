@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Colors from "constants/ui/colors/Colors";
 import BoyImg from "./images/image.png";
 
@@ -12,8 +12,16 @@ import {
   MegaMenuBannerText,
 } from "./MegaMenu.styled";
 import Button from "components/Button/Button";
+import axios from "axios";
+import API_URL from "config";
 
-const MegaMenu: React.FC<{ active: boolean }> = ({ active }) => {
+const MegaMenu: React.FC<{ active: boolean; type?: string }> = ({
+  active,
+  type = "Women",
+}) => {
+  useEffect(() => {
+    axios.get(API_URL.concat(""));
+  }, [type]);
   return (
     <MegaMenuStyled active={active}>
       <MegaMenuList>

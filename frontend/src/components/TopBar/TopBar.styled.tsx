@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 import Colors from "../../constants/ui/colors/Colors";
 
@@ -68,4 +68,19 @@ export const TopBarStyledPositioned = styled.div<{ centered?: boolean }>`
   & > [no-hover]:hover {
     text-decoration: none;
   }
+`;
+
+export const TopBarStyledAngle = styled.span<{ active: boolean }>`
+  & > svg {
+    transition: all 0.2s ease;
+  }
+  ${(props) =>
+    props.active
+      ? css`
+          & > svg {
+            transform: rotate(180deg);
+          }
+          /* margin-top: -2px; */
+        `
+      : ""}
 `;

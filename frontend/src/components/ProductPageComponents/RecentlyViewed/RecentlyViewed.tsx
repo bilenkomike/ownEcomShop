@@ -41,102 +41,222 @@ const RecentlyViewed = () => {
             <Product
               size="small"
               id="some"
-              name="Shirt with insertion lace trims"
+              title="Shirt with insertion lace trims"
               gallary={[img1]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Chrono watch with blue leather belt"
+              title="Chrono watch with blue leather belt"
               gallary={[img2]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Check coat with colour contrast"
+              title="Check coat with colour contrast"
               gallary={[img3]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Check coat with colour contrast"
+              title="Check coat with colour contrast"
               gallary={[img3]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
           </RecentlyViewedStyledList>
           <RecentlyViewedStyledList>
             <Product
               size="small"
               id="some"
-              name="Shirt with insertion lace trims"
+              title="Shirt with insertion lace trims"
               gallary={[img1]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Chrono watch with blue leather belt"
+              title="Chrono watch with blue leather belt"
               gallary={[img2]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Check coat with colour contrast"
+              title="Check coat with colour contrast"
               gallary={[img3]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Check coat with colour contrast"
+              title="Check coat with colour contrast"
               gallary={[img3]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
           </RecentlyViewedStyledList>
           <RecentlyViewedStyledList>
             <Product
               size="small"
               id="some"
-              name="Shirt with insertion lace trims"
+              title="Shirt with insertion lace trims"
               gallary={[img1]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Chrono watch with blue leather belt"
+              title="Chrono watch with blue leather belt"
               gallary={[img2]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Check coat with colour contrast"
+              title="Check coat with colour contrast"
               gallary={[img3]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
             <Product
               size="small"
               id="some"
-              name="Check coat with colour contrast"
+              title="Check coat with colour contrast"
               gallary={[img3]}
               price={49.95}
               currency="$"
+              prices={[
+                {
+                  amount: 100,
+                  currency: {
+                    symbol: "$",
+                    currency: "USD",
+                  },
+                  id: 100,
+                },
+              ]}
             />
           </RecentlyViewedStyledList>
         </Carousel>
