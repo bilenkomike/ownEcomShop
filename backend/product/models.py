@@ -18,7 +18,7 @@ class ProductCategory(models.Model):
     name = models.CharField(max_length=150)
     type = models.ForeignKey(ProductsType, on_delete=models.CASCADE)
     def __str__(self):
-        return self.name
+        return f"{self.name} - {self.type}"
     
 class ProductSubCategory(models.Model):
     name = models.CharField(max_length=150)
@@ -134,8 +134,7 @@ class ProductSelectedAttributes(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     attribute = models.ManyToManyField(ProductAttribute)
     values = models.ManyToManyField(ProductAttributeValues)
-    qty = models.IntegerField(default=0)
+    
     
     def __str__(self):
-        
-        return f"for product - {self.product} with QTY: {self.qty}"
+        return f"for product - {self.product}"

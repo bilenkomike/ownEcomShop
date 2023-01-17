@@ -77,15 +77,35 @@ class ProductsTypeSerializer(serializers.ModelSerializer):
         fields = "__all__"
         
 class ProductCategorySerializer(serializers.ModelSerializer):
+    
+    subbcategories = serializers.SerializerMethodField(read_only=True)
+    
     class Meta: 
         model = ProductCategory
-        fields = ["name",'id']
+        fields = "__all__"
+        
+    def get_subbcategories(self,obj):
+        subcategories = obj.productsubcategory_set.all()
+        serializer=  ProductSubCategorySerializer(subcategories, many=True)
+        return serializer.data
 
 class ProductSubCategorySerializer(serializers.ModelSerializer):
     class Meta: 
         model = ProductSubCategory
-        fields = ["name",'id']
+        fields = "__all__"
         
+
+class MeagMenuSerializer(serializers.ModelSerializer):
+    categories = serializers.SerializerMethodField(read_only=True)
+    class Meta:
+        model = ProductsType
+        fields = "__all__"
+        
+    def get_categories(self,obj):
+        categories = obj.productcategory_set.all()
+        serializer = ProductCategorySerializer(categories, many=True)
+        return serializer.data
+
         
         
 class ProductReviewSerialier(serializers.ModelSerializer):
@@ -101,6 +121,35 @@ class ProductBrandSerializer(serializers.ModelSerializer):
         
         
     
+    
+class ProductMinifiedSerializer(serializers.ModelSerializer):
+    image_1 = serializers.ImageField()
+    image_2 = serializers.ImageField(required=False)
+    image_3 = serializers.ImageField(required=False)
+    image_4 = serializers.ImageField(required=False)
+
+    prices = serializers.SerializerMethodField(read_only=True)
+    type = serializers.StringRelatedField(many=False)
+    category = serializers.StringRelatedField(many=False)
+    subcategory = serializers.StringRelatedField(many=False)
+    attributes = serializers.SerializerMethodField(read_only=True)
+    
+    brand = ProductBrandSerializer(read_only=True, many=False)
+    
+    class Meta:
+        model = Product
+        fields = '__all__'
+        
+    def get_prices(self, obj):
+        prices = obj.productprices_set.all()
+        serializer = ProductPriceSerializer(prices, many=True)
+        return serializer.data
+    
+    def get_attributes(self, obj):
+        attrs = obj.productselectedattributes_set.all()
+        
+        serializer = ProductAttributesSelectedSerializer(attrs, many=True)
+        return serializer.data
 
 
 class ProductSerializer(serializers.ModelSerializer):
@@ -147,17 +196,19 @@ class ProductSerializer(serializers.ModelSerializer):
         prices = obj.productprices_set.all()
         serializer = ProductPriceSerializer(prices, many=True)
         return serializer.data
-
-    def get_product_details(self,obj):
-        details = obj.productdetails_set.all()
-        serializer = ProductDetailsSerializer(details, many=True)
-        return serializer.data
     
     def get_attributes(self, obj):
         attrs = obj.productselectedattributes_set.all()
         
         serializer = ProductAttributesSelectedSerializer(attrs, many=True)
         return serializer.data
+
+    def get_product_details(self,obj):
+        details = obj.productdetails_set.all()
+        serializer = ProductDetailsSerializer(details, many=True)
+        return serializer.data
+    
+    
     
 
 

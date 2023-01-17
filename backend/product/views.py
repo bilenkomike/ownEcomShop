@@ -36,12 +36,25 @@ from .serializers import (
     ProductAttributesSerializer,
     ProductBrandSerializer,
     ProductPriceSerializer,
-    ProductDetailsSerializer
+    ProductDetailsSerializer,
+    ProductsTypeSerializer,
+    ProductMinifiedSerializer,
+    MeagMenuSerializer
 )
 
 
 
 from rest_framework.pagination import PageNumberPagination
+
+
+
+class MegaMenuViewSet(generics.ListAPIView):
+    model  = ProductsType
+    queryset = ProductsType.objects.all()
+    serializer_class = MeagMenuSerializer
+    
+
+
 
 class ProductPagesPagination(PageNumberPagination):  
     
@@ -81,15 +94,118 @@ class ProductsNewArrivalsViewSet(generics.ListAPIView):
     model = Product
     serializer_class = ProductSerializer
     pagination_class = ProductPagesPagination
-    queryset = Product.objects.all().order_by('-date_added')
+    queryset = Product.objects.all().order_by('-date_added')[:12]
     
     
    
 
+# class ProductListView(generics.ListAPIView):
+#     model = Product
+#     serializer_class = ProductSerializer
+#     queryset = Product.objects.all()
+#     pagination_class = ProductPagesPagination
+    
+    # filter_backends = [filters.SearchFilter]
+    # search_fields = ['brand__name']
+    
+    # def get_queryset(self):
+    #     if len(self.request.query_params) > 0:
+    #         params = self.request.query_params
+    #         brand = self.request.query_params.get('brand', None)
+    #         color = self.request.query_params.get('color', None)
+    #         size = self.request.query_params.get('size', None)
+    #         material = self.request.query_params.get('material', None)
+    #         minprice = self.request.query_params.get('minprice', 0)
+    #         maxprice = self.request.query_params.get('maxprice', None)
+    #         currency = self.request.query_params.get('currency', None)
+    #         type = self.request.query_params.get('type', None)
+    #         category = self.request.query_params.get('category', None)
+            
+    #         products = Product.objects.all()
+            
+    #         if type != None:
+                
+    #             type = ProductsType.objects.filter(name=type.capitalize())
+                
+                
+    #             products = products.filter(type=type[0])
+                
+    #         if category != None:
+    #             category = ProductCategory.objects.filter(name=category.capitalize())
+    #             products = products.filter(category=category[0])
+            
+            
+    #         if brand != None:
+    #             products = products.filter(brand__name=params['brand'])
+
+    #         if color != None:
+    #             filtered_prods = []
+    #             for product in products:
+    #                 attrs = ProductSelectedAttributes.objects.filter(product=product, values__value=color)
+    #                 if len(attrs) > 0:
+    #                     filtered_prods.append(product)
+    #             products = filtered_prods
+                
+                
+    #         if material:
+    #             filtered_prods = []
+    #             for product in products:
+    #                 attrs = ProductSelectedAttributes.objects.filter(product=product, values__value=material)
+    #                 if len(attrs) > 0:
+    #                     filtered_prods.append(product)
+                
+    #             products = filtered_prods
+                
+    #         if size != None:    
+    #             filtered_prods = []
+    #             for product in products:
+    #                 attrs = ProductSelectedAttributes.objects.filter(product=product, values__value=size)
+    #                 if len(attrs) > 0:
+    #                     filtered_prods.append(product)
+                
+    #             products = filtered_prods
+            
+            
+        
+    #         if int(minprice) >= 0 and currency != None:    
+    #             filtered_prods = []
+    #             for product in products:
+    #                 prices = ProductPrices.objects.filter(product=product, amount__gte=int(minprice), currency__symbol=currency)
+    #                 if len(prices) > 0:
+    #                     filtered_prods.append(product)
+                
+    #             products = filtered_prods
+                
+    #         if maxprice != None and int(maxprice) >= 0 and currency != None:     
+    #             filtered_prods = []
+    #             for product in products:
+    #                 prices = ProductPrices.objects.filter(product=product, amount__lte=int(maxprice), currency__symbol=currency)
+    #                 if len(prices) > 0:
+    #                     filtered_prods.append(product)
+
+                
+    #             products = filtered_prods
+            
+            
+    #         return products
+    #     else:
+    #         return Product.objects.all()
+        
+        
+        
+    
+    # def get(self, request, *args, **kwargs):
+    
+    #     serializer = ProductSerializer(self.get_queryset(), many=True)
+        
+    #     page = self.paginate_queryset(serializer.data)
+        
+    #     return self.get_paginated_response(page)
+    
+    
 class ProductListView(generics.ListAPIView):
     model = Product
-    serializer_class = ProductSerializer
-    # queryset = Product.objects.all()
+    serializer_class = ProductMinifiedSerializer
     pagination_class = ProductPagesPagination
     
     filter_backends = [filters.SearchFilter]
@@ -105,7 +221,23 @@ class ProductListView(generics.ListAPIView):
             minprice = self.request.query_params.get('minprice', 0)
             maxprice = self.request.query_params.get('maxprice', None)
             currency = self.request.query_params.get('currency', None)
+            type = self.request.query_params.get('type', None)
+            category = self.request.query_params.get('category', None)
+            
             products = Product.objects.all()
+            
+            if type != None:
+                
+                type = ProductsType.objects.filter(name=type.capitalize())
+                
+                
+                products = products.filter(type=type[0])
+                
+            if category != None:
+                category = ProductCategory.objects.filter(name=category.capitalize())
+                products = products.filter(category=category[0])
+            
+            
             if brand != None:
                 products = products.filter(brand__name=params['brand'])
 
@@ -136,7 +268,6 @@ class ProductListView(generics.ListAPIView):
                 
                 products = filtered_prods
             
-            
         
             if int(minprice) >= 0 and currency != None:    
                 filtered_prods = []
@@ -162,11 +293,8 @@ class ProductListView(generics.ListAPIView):
         else:
             return Product.objects.all()
         
-        
-        
-    
     def get(self, request, *args, **kwargs):
-    
+        
         serializer = ProductSerializer(self.get_queryset(), many=True)
         
         page = self.paginate_queryset(serializer.data)
@@ -285,9 +413,9 @@ class ProductDetailsUpdateViewSet(generics.UpdateAPIView):
     lookup_field = 'pk'
     
 class ProductTypesView(generics.ListAPIView):
-    model = ProductCategory
-    serializer_class = ProductCategorySerializer
-    queryset = ProductCategory.objects.all()
+    model = ProductsType
+    serializer_class = ProductsTypeSerializer
+    queryset = ProductsType.objects.all()
 
 class ProductCategoryView(generics.ListAPIView):
     model = ProductCategory
