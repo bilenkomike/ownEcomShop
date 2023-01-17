@@ -13,7 +13,8 @@ from .views import (
      ProductPricesViewSet,
      ProductDetailsUpdateViewSet,
      ProductDetailReviewView,
-     ProductsNewArrivalsViewSet
+     ProductsNewArrivalsViewSet,
+     MegaMenuViewSet
 )
 
 urlpatterns = [     
@@ -32,4 +33,5 @@ urlpatterns = [
      path('attributes/', ProductAttributesView.as_view(), name="product-atrributes-api"),
      path('brands/', ProductBrandsViewSet.as_view(), name="proucts-brand-api"),
      path('maxprices/<str:pk>/', ProductPricesViewSet.as_view(), name="proucts-price-api"),
+     path('megamenu/', MegaMenuViewSet.as_view(), name='mega-menu-api'),
 ]

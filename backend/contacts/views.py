@@ -8,10 +8,12 @@ class ContactListView(generics.ListAPIView):
     model = Contact
     queryset = Contact.objects.filter(answered=False)
     serializer_class = ContactSerializer
+    permission_classes = [IsAdminUser]
 
 class DetailsContactView(generics.RetrieveAPIView):
     model = Contact
     queryset = Contact.objects.all()
+    permission_classes = [IsAdminUser]
     serializer_class = ContactSerializer
     lookup_field = 'pk'
     
@@ -25,6 +27,7 @@ class UpdateContactView(generics.UpdateAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     lookup_field = 'pk'
+    permission_classes = [IsAdminUser]
     
 
 class DeleteContactView(generics.DestroyAPIView):
@@ -32,4 +35,5 @@ class DeleteContactView(generics.DestroyAPIView):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     lookup_field = 'pk'
+    permission_classes = [IsAdminUser]
     

@@ -47,7 +47,7 @@ const CompleteLook = () => {
             <div>
               <Carousel currentSlide={0}>
                 <CompleteLookStyledList>
-                  <Product
+                  {/* <Product
                     size="small"
                     id="some"
                     name="Shirt with insertion lace trims"
@@ -62,10 +62,10 @@ const CompleteLook = () => {
                     gallary={[img2]}
                     price={49.95}
                     currency="$"
-                  />
+                  /> */}
                 </CompleteLookStyledList>
                 <CompleteLookStyledList>
-                  <Product
+                  {/* <Product
                     size="small"
                     id="some"
                     name="Shirt with insertion lace trims"
@@ -80,10 +80,10 @@ const CompleteLook = () => {
                     gallary={[img2]}
                     price={49.95}
                     currency="$"
-                  />
+                  /> */}
                 </CompleteLookStyledList>
                 <CompleteLookStyledList>
-                  <Product
+                  {/* <Product
                     size="small"
                     id="some"
                     name="Shirt with insertion lace trims"
@@ -98,7 +98,7 @@ const CompleteLook = () => {
                     gallary={[img2]}
                     price={49.95}
                     currency="$"
-                  />
+                  /> */}
                 </CompleteLookStyledList>
               </Carousel>
               <CompleteLookStyledListPagination>
@@ -116,7 +116,7 @@ const CompleteLook = () => {
             <div>
               <Carousel currentSlide={0}>
                 <CompleteLookStyledList>
-                  <Product
+                  {/* <Product
                     size="small"
                     id="some"
                     name="Shirt with insertion lace trims"
@@ -131,10 +131,10 @@ const CompleteLook = () => {
                     gallary={[img2]}
                     price={49.95}
                     currency="$"
-                  />
+                  /> */}
                 </CompleteLookStyledList>
                 <CompleteLookStyledList>
-                  <Product
+                  {/* <Product
                     size="small"
                     id="some"
                     name="Shirt with insertion lace trims"
@@ -149,10 +149,10 @@ const CompleteLook = () => {
                     gallary={[img2]}
                     price={49.95}
                     currency="$"
-                  />
+                  /> */}
                 </CompleteLookStyledList>
                 <CompleteLookStyledList>
-                  <Product
+                  {/* <Product
                     size="small"
                     id="some"
                     name="Shirt with insertion lace trims"
@@ -167,7 +167,7 @@ const CompleteLook = () => {
                     gallary={[img2]}
                     price={49.95}
                     currency="$"
-                  />
+                  /> */}
                 </CompleteLookStyledList>
               </Carousel>
               <CompleteLookStyledListPagination>

@@ -40,7 +40,7 @@ const Sales = () => {
       <SalesStyledContainer>
         <Carousel widthType="%" currentSlide={page}>
           <SalesStyledList>
-            <Product
+            {/* <Product
               size="large"
               id="some"
               name="Shirt with insertion lace trims"
@@ -63,10 +63,10 @@ const Sales = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </SalesStyledList>
           <SalesStyledList>
-            <Product
+            {/* <Product
               size="large"
               id="some"
               name="Shirt with insertion lace trims"
@@ -89,10 +89,10 @@ const Sales = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </SalesStyledList>
           <SalesStyledList>
-            <Product
+            {/* <Product
               size="large"
               id="some"
               name="Shirt with insertion lace trims"
@@ -115,7 +115,7 @@ const Sales = () => {
               gallary={[img3]}
               price={49.95}
               currency="$"
-            />
+            /> */}
           </SalesStyledList>
         </Carousel>
       </SalesStyledContainer>

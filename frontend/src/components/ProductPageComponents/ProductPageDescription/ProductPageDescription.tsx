@@ -66,7 +66,7 @@ const ProductPageDescription: React.FC<{
         <ProductPageDescriptionStyledAttribute>
           Color
           <span>
-            <ProductAttributes
+            {/* <ProductAttributes
               attributes={[
                 {
                   id: "color",
@@ -79,7 +79,7 @@ const ProductPageDescription: React.FC<{
                   selectedValue: "#874E19",
                 },
               ]}
-            />
+            /> */}
             Brown
           </span>
         </ProductPageDescriptionStyledAttribute>

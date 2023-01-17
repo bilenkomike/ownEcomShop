@@ -42,11 +42,11 @@ class CreateSubscription(CreateAPIView):
             user = user[0]
         else:
             user = None  
-        # return Response('ok')
+            
         if product_category:
-            product_category = ProductsType.objects.get(name=product_category)
+            product_category = ProductsType.objects.filter(name=product_category).first()
         if blog_category:
-            blog_category = BlogCategory.objects.get(id=int(blog_category))
+            blog_category = BlogCategory.objects.filter(name=blog_category).first()
             
         if len(Subscription.objects.filter(email=data['email'], product_category=product_category)) > 0 or len(Subscription.objects.filter(email=data['email'], blog_category=blog_category)) > 0:
             return Response('You`ve already subscribed check your email.', status=HTTP_208_ALREADY_REPORTED)
@@ -62,15 +62,7 @@ class CreateSubscription(CreateAPIView):
             template,
             'createxmike@gmail.com',
             [data['email']],
-            # ['bcc@example.com'],
-            # reply_to=['another@example.com'],
             headers={'Message-ID': 'subscription'},
-            
-            # 'Property listing inquery',
-            # 'There has been an inquery for . Sign into the admin panel for more info',
-            # 'createxmike@gmail.com',
-            # [data['reply_email']],
-            # fail_silently=False
             )
         email.fail_silently = False
         email.content_subtype = 'html'

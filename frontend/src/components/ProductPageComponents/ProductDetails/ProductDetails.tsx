@@ -67,35 +67,45 @@ const ProductDetails: React.FC = () => {
         key={1}
         size="large"
         id="black-and-white-sport-cap"
-        name="Black and white sport cap"
+        title="Black and white sport cap"
         price={18.5}
+        prices={[
+          {
+            amount: 100,
+            currency: {
+              symbol: "$",
+              currency: "USD",
+            },
+            id: 100,
+          },
+        ]}
         currency="$"
         gallary={[img, img, img]}
         rating={4}
         wishlist={false}
-        attributes={[
-          {
-            id: "size",
-            type: "text",
-            items: [
-              { name: "S", value: "S" },
-              { name: "M", value: "M" },
-              { name: "L", value: "L" },
-              { name: "XL", value: "XL" },
-            ],
-            selectedValue: "XL",
-          },
-          {
-            id: "color",
-            type: "color",
-            items: [
-              { name: "#C0DDED", value: "#C0DDED" },
-              { name: "#874E19", value: "#874E19" },
-              { name: "#000000", value: "#000000" },
-            ],
-            selectedValue: "#000000",
-          },
-        ]}
+        // attributes={[
+        //   {
+        //     id: "size",
+        //     type: "text",
+        //     items: [
+        //       { name: "S", value: "S" },
+        //       { name: "M", value: "M" },
+        //       { name: "L", value: "L" },
+        //       { name: "XL", value: "XL" },
+        //     ],
+        //     selectedValue: "XL",
+        //   },
+        //   {
+        //     id: "color",
+        //     type: "color",
+        //     items: [
+        //       { name: "#C0DDED", value: "#C0DDED" },
+        //       { name: "#874E19", value: "#874E19" },
+        //       { name: "#000000", value: "#000000" },
+        //     ],
+        //     selectedValue: "#000000",
+        //   },
+        // ]}
       />
     </ProductDetailsStyled>
   );

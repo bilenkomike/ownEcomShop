@@ -1,26 +1,36 @@
 import React, { useEffect, useState } from "react";
 import { CurrenciesStyled, CurrenciesStyledItem } from "./Currencies.styled";
-import axios from "axios";
-import API_URL from "config";
+import {
+  fetchCurrencies,
+  selectCurrency,
+  toggleListCurrencies,
+} from "store/CurrenciesSlice/currencies-slice";
+import { useTypedDispatch, useTypedSelector } from "store/hooks";
 
-const Currencies: React.FC<{ active: boolean }> = ({ active }) => {
-  const [currencies, setCurrencies] = useState([]);
+const Currencies: React.FC = () => {
+  const currencies = useTypedSelector((state) => state.currencies.currencies);
+  const active = useTypedSelector((state) => state.currencies.open);
+  const dispatch = useTypedDispatch();
+
   useEffect(() => {
-    axios.get(API_URL + "currencies/").then((response) => {
-      setCurrencies(response.data);
-    });
-  }, []);
+    dispatch(fetchCurrencies());
+  }, [dispatch]);
+
+  const handleCurrencyClick = (symbol: string) => {
+    dispatch(selectCurrency({ symbol }));
+    dispatch(toggleListCurrencies());
+  };
 
   return currencies.length > 0 ? (
-    <CurrenciesStyled active={active}>
+    <CurrenciesStyled active={active} data-testid="resolved">
       {currencies.map((currency: { currency: string; symbol: string }) => (
-        <CurrenciesStyledItem key={currency.currency}>
+        <CurrenciesStyledItem
+          key={currency.currency}
+          onClick={() => handleCurrencyClick(currency.symbol)}
+        >
           {currency.symbol} {currency.currency}
         </CurrenciesStyledItem>
       ))}
-
-      {/* <CurrenciesStyledItem>€ EUR</CurrenciesStyledItem>
-        <CurrenciesStyledItem>₴ UAH</CurrenciesStyledItem> */}
     </CurrenciesStyled>
   ) : (
     <></>

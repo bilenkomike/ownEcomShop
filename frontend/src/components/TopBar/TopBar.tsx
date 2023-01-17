@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { TopBarStyled, TopBarStyledPositioned } from "./TopBar.styled";
+import {
+  TopBarStyled,
+  TopBarStyledPositioned,
+  TopBarStyledAngle,
+} from "./TopBar.styled";
 
 import Links from "constants/links/Links";
 
@@ -13,12 +17,23 @@ import flag from "./images/flag-usa.png";
 import Currencies from "components/Currencies/Currencies";
 import Languages from "components/Languages/Languages";
 
+import { useTypedDispatch, useTypedSelector } from "store/hooks";
+import { toggleListCurrencies } from "store/CurrenciesSlice/currencies-slice";
+// import {
+//   fetchCurrencies,
+//   selectCurrency,
+// } from "store/CurrenciesSlice/currencies-slice";
+
 const TopBar: React.FC<{
   toggleLogin: () => void;
   toggleRegister: () => void;
 }> = ({ toggleLogin, toggleRegister }) => {
-  const [toggleCurr, setToggleCur] = useState(false);
   const [toggleLangs, setToggleLangs] = useState(false);
+  const dispatch = useTypedDispatch();
+  const currency = useTypedSelector(
+    (state) => state.currencies.selectedCurrency
+  );
+  const open = useTypedSelector((state) => state.currencies.open);
 
   return (
     <TopBarStyled>
@@ -39,11 +54,13 @@ const TopBar: React.FC<{
           <TfiAngleDown />
         </span>{" "}
         <Languages active={toggleLangs} />/
-        <span no-hover="" onClick={() => setToggleCur(!toggleCurr)}>
-          {" "}
-          $<TfiAngleDown />
+        <span no-hover="" onClick={() => dispatch(toggleListCurrencies())}>
+          {currency !== null ? currency.symbol : ""}
+          <TopBarStyledAngle active={open}>
+            <TfiAngleDown />
+          </TopBarStyledAngle>
         </span>
-        <Currencies active={toggleCurr} />
+        <Currencies />
         <span>
           <HiOutlineUser />
           <span onClick={toggleLogin}>Log in</span> /{" "}
