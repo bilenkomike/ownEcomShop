@@ -12,4 +12,4 @@ class Store(models.Model):
     
     work_from = models.TimeField(default=datetime.now)
     work_till = models.TimeField(default=datetime.now)
-    image = models.ImageField(upload_to='stores/%Y/%m/%d', null=False, blank=False)
+    image = models.ImageField(upload_to='stores/%Y/%m/%d', null=True, blank=True)

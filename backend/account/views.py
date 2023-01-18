@@ -15,7 +15,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics
 
 
-
+    
 
 class MyTokenObtainPairView(TokenObtainPairView):
     serializer_class = MyTokenObtainPairSerializer
@@ -30,7 +30,6 @@ class RegisterUserApiView(generics.CreateAPIView):
     
     def create(self, request, *args, **kwargs):
         data = request.data
-        print(request.data)
         
         user = User.objects.create(
             first_name=data['fullname'],
@@ -106,7 +105,7 @@ class UsersViewSet(generics.ListAPIView):
     model = User
     serializer_class = UserSerializer
     queryset = User.objects.all()
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
     
 
 
