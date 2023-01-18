@@ -6,7 +6,7 @@ from .views import RetrieveUserById,MyTokenObtainPairView,UsersViewSet,ProfileVi
 
 urlpatterns = [
     path('users/', UsersViewSet.as_view(), name="users"),
-    path('login/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('login/', MyTokenObtainPairView.as_view(), name='login'),
     path('register/', RegisterUserApiView.as_view(), name="register"),
     path('profile/', ProfileViewSet.as_view(), name="profile"),
     path('profile/update/', UserAPIView.as_view(), name="profile-update"),
