@@ -16,7 +16,7 @@ class ProductsType(models.Model):
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=150)
-    type = models.ForeignKey(ProductsType, on_delete=models.CASCADE)
+    type = models.ForeignKey(ProductsType,null=True, blank=True, on_delete=models.CASCADE)
     def __str__(self):
         return f"{self.name} - {self.type}"
     

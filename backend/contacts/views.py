@@ -8,7 +8,7 @@ class ContactListView(generics.ListAPIView):
     model = Contact
     queryset = Contact.objects.filter(answered=False)
     serializer_class = ContactSerializer
-    permission_classes = [IsAdminUser]
+    # permission_classes = [IsAdminUser]
 
 class DetailsContactView(generics.RetrieveAPIView):
     model = Contact

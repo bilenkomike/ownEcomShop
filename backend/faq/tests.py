@@ -21,7 +21,7 @@ class TestAPIFAQ(APITestCase):
     def authenticate(self):
         user = User.objects.create_superuser(username="someemail@gmail.com",email="someemail@gmail.com", password="Myroslav_2023")
         Shipping.objects.create(user=user,phone='', country='', city='', zip='',address='')
-        response = self.client.post(reverse('token_obtain_pair'), {"username":user.email, "password":'Myroslav_2023'})
+        response = self.client.post(reverse('login'), {"username":user.email, "password":'Myroslav_2023'})
         self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {response.data['token']}")
         
     def test_faq_enpoint(self):
