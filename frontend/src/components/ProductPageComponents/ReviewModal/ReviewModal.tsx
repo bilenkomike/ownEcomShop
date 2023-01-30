@@ -1,7 +1,7 @@
 import Button from "components/Button/Button";
 import Input from "components/Input/Input";
 import TextArea from "components/TextArea/TextArea";
-import React from "react";
+import React, { useState } from "react";
 import {
   ReviewModalStyled,
   ReviewModalStyledContent,
@@ -19,6 +19,9 @@ const ReviewModal: React.FC<{ onOpenReview: () => void }> = ({
   for (let i = 1; i <= 5; i++) {
     options.push({ label: String(i), value: String(i) });
   }
+
+  const [review, setReview] = useState("");
+
   return (
     <ReviewModalStyled onClick={onOpenReview}>
       <ReviewModalStyledContent onClick={(e) => e.stopPropagation()}>
@@ -60,7 +63,12 @@ const ReviewModal: React.FC<{ onOpenReview: () => void }> = ({
           placeholder="Choose rating"
         />
         <InputFiles />
-        <TextArea label="Review" placeholder="Your working email" />
+        <TextArea
+          label="Review"
+          placeholder="Your working email"
+          value={review}
+          onChange={(e) => setReview(e)}
+        />
         <Button
           type="submit"
           variant="solid"
