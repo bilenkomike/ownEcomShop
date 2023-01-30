@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'contacts',
     'faq',
     'subscription',
+    'companycontacts',
 ]
 
 MIDDLEWARE = [
