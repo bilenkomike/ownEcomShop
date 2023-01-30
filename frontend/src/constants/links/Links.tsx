@@ -3,7 +3,7 @@ const Links = {
   blog: "/blog",
   returnDelivery: "/return-delivery",
   trackOrder: "/track-order",
-  contacts: "/contacts",
+
   category: "/products/:type/:category",
   product: "/products/:type/:category/:id",
   productDetails: "/products/:type/:category/:id/details",
@@ -15,6 +15,10 @@ const Links = {
   accountWislist: "/account/wishlist",
   accountRecent: "/account/recent",
   accountReviews: "/account/reviews",
+
+  contacts: "/contacts/",
+  contactStores: "/contacts/stores/",
+  contactsFAQ: "/contacts/faq/",
 };
 
 export default Links;

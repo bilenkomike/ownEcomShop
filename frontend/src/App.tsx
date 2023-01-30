@@ -22,6 +22,7 @@ import CheckOutPage from "pages/CheckOutPage/CheckOutPage";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import AccountPage from "pages/Account/AccountPage";
+import ContactsPage from "pages/Contacts/ContactsPage";
 
 const stripePromise = loadStripe(
   "pk_test_51MEYeaEt3uw5zLqo1svTqEqOFiqW0O82IhfoNDjdDDbbWHZqDHHteFPht6exwl9prYuObR5tvVFU7vfURhTs8K21005M2gkIcw"
@@ -89,6 +90,10 @@ const App: React.FunctionComponent = () => {
                 <ProductPage review={review} onOpenReview={toggleReview} />
               }
             />
+          </Route>
+          <Route path={Links.contacts} element={<ContactsPage />}>
+            <Route path={Links.contactStores} element={<ContactsPage />} />
+            <Route path={Links.contactsFAQ} element={<ContactsPage />} />
           </Route>
 
           <Route path={Links.checkout} element={<CheckOutPage />} />
