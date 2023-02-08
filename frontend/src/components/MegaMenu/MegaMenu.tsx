@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Colors from "constants/ui/colors/Colors";
 import BoyImg from "./images/image.png";
 
@@ -12,18 +12,42 @@ import {
   MegaMenuBannerText,
 } from "./MegaMenu.styled";
 import Button from "components/Button/Button";
-import axios from "axios";
-import API_URL from "config";
+import { useTypedDispatch, useTypedSelector } from "store/hooks";
 
-const MegaMenu: React.FC<{ active: boolean; type?: string }> = ({
-  active,
-  type = "Women",
-}) => {
+type MenuDataType = {
+  id: number;
+  name: string;
+  categories: {
+    id: number;
+    name: string;
+    type: number;
+    subbcategories:
+      | {
+          id: number;
+          name: string;
+          catergory: number;
+        }[]
+      | [];
+  }[];
+};
+
+const MegaMenu: React.FC<{
+  type?: string;
+  data: MenuDataType[];
+  active: boolean;
+}> = ({ type = "Women", data, active }) => {
+  // const active = useTypedSelector((state) => state.backdropSlice.open);
+  const [menuData, setMenuData] = useState<MenuDataType | null>(null);
   useEffect(() => {
-    axios.get(API_URL.concat(""));
-  }, [type]);
+    const newData = data.find((item) => item.name === type);
+    if (newData) {
+      setMenuData(newData);
+    } else {
+      setMenuData(null);
+    }
+  }, [data, type]);
   return (
-    <MegaMenuStyled active={active}>
+    <MegaMenuStyled active={active} onClick={(e) => e.stopPropagation()}>
       <MegaMenuList>
         <MegaMenuListItem>New collection</MegaMenuListItem>
         <MegaMenuListItem>Best Sellers</MegaMenuListItem>
@@ -32,51 +56,23 @@ const MegaMenu: React.FC<{ active: boolean; type?: string }> = ({
           Sale up to 70%
         </MegaMenuListItem>
       </MegaMenuList>
-      <MegaMenuList>
-        <MegaMenuListTitle>CLOTHES</MegaMenuListTitle>
-        <MegaMenuListItem>Coats</MegaMenuListItem>
-        <MegaMenuListItem>Jackets</MegaMenuListItem>
-        <MegaMenuListItem>Suits</MegaMenuListItem>
-        <MegaMenuListItem>Dresses </MegaMenuListItem>
-        <MegaMenuListItem>Cardigans & sweaters</MegaMenuListItem>
-        <MegaMenuListItem>Sweatshirts & hoodies</MegaMenuListItem>
-        <MegaMenuListItem>T-shirts & tops</MegaMenuListItem>
-        <MegaMenuListItem>Pants</MegaMenuListItem>
-        <MegaMenuListItem>Jeans</MegaMenuListItem>
-        <MegaMenuListItem>Shorts</MegaMenuListItem>
-        <MegaMenuListItem>Skirts</MegaMenuListItem>
-        <MegaMenuListItem>Lingerie & nightwear</MegaMenuListItem>
-        <MegaMenuListItem>Sportswear</MegaMenuListItem>
-        <MegaMenuListItem>Swimwear</MegaMenuListItem>
-      </MegaMenuList>
-      <MegaMenuList>
-        <MegaMenuListTitle>SHOES</MegaMenuListTitle>
-        <MegaMenuListItem>Boots</MegaMenuListItem>
-        <MegaMenuListItem>Flat shoes</MegaMenuListItem>
-        <MegaMenuListItem>Heels</MegaMenuListItem>
-        <MegaMenuListItem>Sandals</MegaMenuListItem>
-        <MegaMenuListItem>Mules</MegaMenuListItem>
-        <MegaMenuListItem>Sliders</MegaMenuListItem>
-        <MegaMenuListItem>Slippers</MegaMenuListItem>
-        <MegaMenuListItem>Sneakers</MegaMenuListItem>
-        <MegaMenuListItem>Leather</MegaMenuListItem>
-      </MegaMenuList>
-      <MegaMenuList>
-        <MegaMenuListTitle>ACCESSORIES</MegaMenuListTitle>
-        <MegaMenuListItem>Bags & bagpacks</MegaMenuListItem>
-        <MegaMenuListItem>Hats & scarves</MegaMenuListItem>
-        <MegaMenuListItem>Hair accessories</MegaMenuListItem>
-        <MegaMenuListItem>Belts</MegaMenuListItem>
-        <MegaMenuListItem>Jewellery</MegaMenuListItem>
-        <MegaMenuListItem>Watches</MegaMenuListItem>
-        <MegaMenuListItem>Sunglasses</MegaMenuListItem>
-        <MegaMenuListItem>Purses</MegaMenuListItem>
-        <MegaMenuListItem>Gloves</MegaMenuListItem>
-        <MegaMenuListItem>Socks & tights</MegaMenuListItem>
-      </MegaMenuList>
+      {menuData !== null &&
+        menuData.categories.map((category) => (
+          <MegaMenuList key={`megamenu_item_${category.id}`}>
+            {/* make here a link on each item even on title */}
+            <MegaMenuListTitle>{category.name.toUpperCase()}</MegaMenuListTitle>
+
+            {category.subbcategories.length > 0 &&
+              category.subbcategories.map((item) => (
+                <MegaMenuListItem key={item.name}>{item.name}</MegaMenuListItem>
+              ))}
+          </MegaMenuList>
+        ))}
+
       <MegaMenuLine />
       <MegaMenuBanner>
-        <img src={BoyImg} alt="" />
+        {/* complete sales block */}
+        <img src={BoyImg} alt="boy" />
         <MegaMenuBannerText>Back to school. Sale up to 50%</MegaMenuBannerText>
         <Button
           icon="next"

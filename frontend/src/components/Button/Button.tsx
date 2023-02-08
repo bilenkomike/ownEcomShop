@@ -94,5 +94,3 @@ const Button: React.FC<ButtonInterface> = ({
 };
 
 export default Button;
-
-// (props) => {

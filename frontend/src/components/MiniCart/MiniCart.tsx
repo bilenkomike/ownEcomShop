@@ -21,7 +21,6 @@ import Button from "components/Button/Button";
 
 const MiniCart: React.FC = () => {
   const miniCartActive = useTypedSelector((state) => state.cart.MiniCartActive);
-  console.log(miniCartActive);
 
   const dispatch = useTypedDispatch();
 
