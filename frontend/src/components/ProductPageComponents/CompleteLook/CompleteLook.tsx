@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Carousel from "components/Carousel/Carousel";
 import Product from "components/Product/Product";
 import SliedControls from "components/SlideControls/SliedControls";
-import Title from "components/Title/Title";
+import Title from "UI/Title/Title";
 import {
   CompleteLookStyled,
   CompleteLookStyledItem,

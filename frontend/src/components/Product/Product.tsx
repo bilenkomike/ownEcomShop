@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import ProductInterface, { ProductCartInterface } from "./types/Product.types";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import Rating from "components/Rating/Rating";
 import ProductAttributes from "components/ProductAttributes/ProductAttributes";
 // import { Link } from "react-router-dom";

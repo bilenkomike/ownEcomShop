@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Title from "components/Title/Title";
+import Title from "UI/Title/Title";
 import {
   InterestingStyled,
   InterestingStyledHeader,

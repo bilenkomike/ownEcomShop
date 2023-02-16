@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonStyled } from "./Button.styled";
+import "./Button.scss";
 import {
   BsArrowRight,
   BsCart,
@@ -28,14 +28,22 @@ const Button: React.FC<ButtonInterface> = ({
   type = "button",
   onClick = () => {},
   removeFullWidth = false,
+  // size={size}
+  // variant={variant}
+  // styleType={styleType}
 }) => {
+  const classes = [
+    "button",
+    `size-${size}`,
+    `styleType-${styleType}`,
+    `variant-${variant}`,
+  ];
+
   return (
-    <ButtonStyled
+    <button
+      className={classes.join(" ")}
       onClick={onClick}
       type={type}
-      size={size}
-      variant={variant}
-      styleType={styleType}
       disabled={disabled}
       style={{ width: icon === "cart" && !removeFullWidth ? "100%" : "" }}
     >
@@ -89,7 +97,7 @@ const Button: React.FC<ButtonInterface> = ({
       {icon && iconPosition === "after" && icon === "next" && (
         <BsArrowRight style={{ marginLeft: size !== "social" ? 6 : "" }} />
       )}
-    </ButtonStyled>
+    </button>
   );
 };
 

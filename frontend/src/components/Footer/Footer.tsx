@@ -8,7 +8,7 @@ import {
   FooterStyledListTitle,
 } from "./Footer.styled";
 import DownloadAppButtons from "components/DownloadAppButtons/DownloadAppButtons";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 
 import { BsHeart } from "react-icons/bs";
 

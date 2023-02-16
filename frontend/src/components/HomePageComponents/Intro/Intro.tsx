@@ -13,7 +13,7 @@ import {
   IntroStyledButton,
 } from "./Intro.styled";
 import { BsArrowRight, BsArrowLeft } from "react-icons/bs";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import Carousel from "components/Carousel/Carousel";
 
 const Intro: React.FC = () => {

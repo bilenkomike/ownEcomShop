@@ -15,7 +15,7 @@ import Pagination from "components/Pagination/Pagination";
 import Rating from "components/Rating/Rating";
 
 import { AiOutlineStar } from "react-icons/ai";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import Input from "components/Input/Input";
 
 const ProductReviews: React.FC<{

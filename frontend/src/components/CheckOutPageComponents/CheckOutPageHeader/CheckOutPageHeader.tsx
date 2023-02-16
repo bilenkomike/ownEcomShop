@@ -1,5 +1,5 @@
 import Alert from "components/Alert/Alert";
-import Title from "components/Title/Title";
+import Title from "UI/Title/Title";
 import Links from "constants/links/Links";
 import React from "react";
 import { AiOutlineUser } from "react-icons/ai";

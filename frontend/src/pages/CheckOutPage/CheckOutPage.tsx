@@ -1,4 +1,4 @@
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import AdditionalInfo from "components/CheckOutPageComponents/AdditionalInfo/AdditionalInfo";
 import CheckOutPageHeader from "components/CheckOutPageComponents/CheckOutPageHeader/CheckOutPageHeader";
 import CheckOutPageItemReviews from "components/CheckOutPageComponents/CheckOutPageItemReviews/CheckOutPageItemReviews";

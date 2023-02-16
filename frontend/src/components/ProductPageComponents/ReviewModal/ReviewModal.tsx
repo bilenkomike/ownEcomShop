@@ -1,4 +1,4 @@
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import Input from "components/Input/Input";
 import TextArea from "components/TextArea/TextArea";
 import React, { useState } from "react";

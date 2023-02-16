@@ -21,7 +21,7 @@ import Input from "components/Input/Input";
 import Rating from "components/Rating/Rating";
 import ProductAttributes from "components/ProductAttributes/ProductAttributes";
 import { TbHanger } from "react-icons/tb";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { FaFacebookF, FaPinterestP, FaTwitter } from "react-icons/fa";
 import PaymentButton from "components/PaymentButton/PaymentButton";

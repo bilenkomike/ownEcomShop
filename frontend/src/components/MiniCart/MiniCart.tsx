@@ -17,7 +17,7 @@ import {
 import { CgClose } from "react-icons/cg";
 
 import MiniCartItem from "./MiniCartItem";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 
 const MiniCart: React.FC = () => {
   const miniCartActive = useTypedSelector((state) => state.cart.MiniCartActive);

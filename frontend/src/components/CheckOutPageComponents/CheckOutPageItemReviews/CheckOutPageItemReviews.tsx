@@ -12,7 +12,7 @@ import {
   CheckOutPageItemReviewsStyledTotal,
 } from "./CheckOutPageItemReviews.styled";
 import Input from "components/Input/Input";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import { AiOutlineHeart } from "react-icons/ai";
 
 const CheckOutPageItemReviews = () => {

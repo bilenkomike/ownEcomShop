@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import Title from "components/Title/Title";
+import Title from "UI/Title/Title";
 import Product from "components/Product/Product";
 import SliedControls from "components/SlideControls/SliedControls";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 
 import {
   SalesStyled,

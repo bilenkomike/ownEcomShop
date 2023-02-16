@@ -1,6 +1,6 @@
 import React from "react";
 import { ProductPageHeaderStyled } from "./ProductPageHeader.styled";
-import Title from "components/Title/Title";
+import Title from "UI/Title/Title";
 import ProductPagePagination from "components/ProductPageComponents/ProductPagePagination/ProductPagePagination";
 
 const ProductPageHeader: React.FC<{

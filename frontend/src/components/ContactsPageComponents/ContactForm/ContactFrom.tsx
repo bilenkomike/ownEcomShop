@@ -10,7 +10,7 @@ import CompanyContactInformation from "./CompanyContactInformation/CompanyContac
 import Input from "components/Input/Input";
 import TextArea from "components/TextArea/TextArea";
 import Alert from "components/Alert/Alert";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import API_URL from "config";
 
 const ContactFrom = () => {

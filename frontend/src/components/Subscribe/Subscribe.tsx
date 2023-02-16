@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import Input from "components/Input/Input";
 
 import {
@@ -13,7 +13,7 @@ import {
 } from "./Subscribe.styled";
 import img from "./images/image.png";
 import CheckBox from "components/CheckBox/CheckBox";
-import Title from "components/Title/Title";
+import Title from "UI/Title/Title";
 import { useLocation } from "react-router-dom";
 
 import axios from "axios";

@@ -6,7 +6,7 @@ import {
   InputFileStyledLabel,
 } from "./InputFile.styled";
 
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 
 import { BsUpload } from "react-icons/bs";
 

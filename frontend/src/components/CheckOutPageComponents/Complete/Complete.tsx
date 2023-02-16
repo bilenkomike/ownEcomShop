@@ -1,4 +1,4 @@
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import React from "react";
 import {
   CompleteStyled,

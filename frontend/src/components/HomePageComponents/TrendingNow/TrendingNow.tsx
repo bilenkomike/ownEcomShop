@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Title from "components/Title/Title";
+import Title from "UI/Title/Title";
 import {
   TrendingNowStyled,
   TrendingNowStyledHeader,
@@ -9,7 +9,7 @@ import {
 } from "./TrendingNow.styled";
 import Product from "components/Product/Product";
 import SliedControls from "components/SlideControls/SliedControls";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 
 import img1 from "./images/image_1.png";
 import img2 from "./images/image_2.png";

@@ -12,7 +12,7 @@ import {
   BannersStyledSubscribeForm,
 } from "./Banners.styled";
 
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 
 import img1 from "./images/image.png";
 import img2 from "./images/image_2.png";

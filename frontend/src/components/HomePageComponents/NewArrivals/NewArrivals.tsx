@@ -7,7 +7,7 @@ import img3 from "./images/product/small/imageimage_3.png";
 import img4 from "./images/product/small/imageimage_4.png";
 import img5 from "./images/product/small/image_5.png";
 import img6 from "./images/product/small/image_6.png";
-import Title from "components/Title/Title";
+import Title from "UI/Title/Title";
 import Carousel from "components/Carousel/Carousel";
 
 import {

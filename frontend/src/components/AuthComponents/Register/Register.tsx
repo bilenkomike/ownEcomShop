@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import CheckBox from "components/CheckBox/CheckBox";
 import Input from "components/Input/Input";
 import {

@@ -17,7 +17,7 @@ import { BiTimeFive } from "react-icons/bi";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 import img from "./images/image.png";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 
 const OrdersItem = () => {
   const [open, setOpen] = useState(false);

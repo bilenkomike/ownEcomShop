@@ -11,7 +11,7 @@ import {
   MegaMenuBanner,
   MegaMenuBannerText,
 } from "./MegaMenu.styled";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
 import { useTypedDispatch, useTypedSelector } from "store/hooks";
 
 type MenuDataType = {
