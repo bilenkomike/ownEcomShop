@@ -1,0 +1,10 @@
+@import "../../utils/colors/colors.scss";
+
+.divider {
+  display: block;
+  height: 1px;
+  width: 100%;
+  margin: 32px 0;
+
+  background-color: $gray300;
+}
