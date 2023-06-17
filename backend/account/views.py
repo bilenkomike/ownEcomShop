@@ -56,7 +56,6 @@ class UserAPIView(generics.UpdateAPIView):
         
         
         user = request.user
-        
         shipping = {}
         
         for i in request.data:
@@ -65,8 +64,8 @@ class UserAPIView(generics.UpdateAPIView):
             if i == 'password':
                 user.password = make_password(request.data['password'])
             if i == 'email':
-                user['username'] = request.data[i]
-                user['email'] = request.data[i]
+                user.username = request.data[i]
+                user.email = request.data[i]
             if i == 'city':
                 shipping['city'] = request.data[i]
             if i == 'country':

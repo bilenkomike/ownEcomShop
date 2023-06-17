@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = "django-insecure-m#*ve6d-ogvyul^my&!q=nzp@+)x(uavtpvm6(u)7h_fe!$4#^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'rest_framework',
+    'drf_yasg',
     
     'product',
     'currencies',
@@ -56,6 +58,8 @@ INSTALLED_APPS = [
     'contacts',
     'faq',
     'subscription',
+    'companycontacts',
+    'images',   
 ]
 
 MIDDLEWARE = [
@@ -99,16 +103,19 @@ WSGI_APPLICATION = "backend.wsgi.application"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
-    # "default": {
-    #     "ENGINE": "django.db.backends.sqlite3",
-    #     "NAME": BASE_DIR / "db.sqlite3",
-    # }
     "default":{
         'ENGINE': 'django.db.backends.postgresql',
+        # mac
         'NAME': 'ecommercedb',
         'USER': 'postgres',
         'PASSWORD':'12345',
         'HOST': 'localhost'
+        
+        # laptop
+        # 'NAME': 'ecom',
+        # 'USER': 'postgres',
+        # 'PASSWORD':'root',
+        # 'HOST': 'localhost'
     }
 }
 
@@ -132,6 +139,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LANGUAGE_CODE = "en-us"
 
 TIME_ZONE = "UTC"
+# TIME_ZONE = 'Europe/Berlin's
 
 USE_I18N = True
 
@@ -143,9 +151,20 @@ USE_TZ = True
 
 STATIC_URL = "static/static/"
 
-STATICFILES_DIRS = [
-    (BASE_DIR / 'static/static'),
-]
+
+if DEBUG:
+        STATICFILES_DIRS = [
+            os.path.join(BASE_DIR, 'static')
+       ]
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# STATICFILES_DIRS = [
+#     (BASE_DIR / 'static/static'),
+# ]
+
+# STATIC_ROOT = BASE_DIR / 'static/static'
+
 
 MEDIA_ROOT = BASE_DIR / 'static/photos'
 MEDIA_URL = '/static/photos/'
@@ -176,7 +195,7 @@ from datetime import timedelta
 
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(days=30),
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': False,
     'BLACKLIST_AFTER_ROTATION': False,

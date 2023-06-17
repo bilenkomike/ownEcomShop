@@ -1,7 +1,6 @@
 import Links from "constants/links/Links";
-import path from "path";
-import React from "react";
-import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   AccountMenuStyled,
   AccountMenuStyledHeader,
@@ -12,14 +11,42 @@ import {
 import { BsPerson, BsBag, BsHeart, BsEye, BsStar } from "react-icons/bs";
 
 import { IoIosLogOut } from "react-icons/io";
+import { useTypedDispatch, useTypedSelector } from "store/hooks";
+import { unSetUser } from "components/AuthComponents/Login/store/useAuth";
+import axios from "axios";
+import API_URL from "config";
 
 const AccountMenu = () => {
+  const [wishlistCount, setWishlistCount] = useState(0);
+  const user = useTypedSelector((state) => state.authSlice);
   const { pathname } = useLocation();
+  const dispatch = useTypedDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (user.token) {
+      axios
+        .get(`${API_URL}wishlist/`, {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        })
+        .then((response) => {
+          setWishlistCount(response.data.length);
+        });
+    }
+  }, [user]);
+
+  const logout = (e: React.FormEvent) => {
+    e.preventDefault();
+    dispatch(unSetUser());
+    navigate("/");
+  };
   return (
     <AccountMenuStyled>
       <AccountMenuStyledHeader>
-        <h3>Bilenko Mike</h3>
-        <p>annetteb@example.com</p>
+        <h3>{user.fullname}</h3>
+        <p>{user.email}</p>
       </AccountMenuStyledHeader>
       <AccountMenuStyledList>
         <AccountMenuStyledListItem
@@ -48,7 +75,7 @@ const AccountMenu = () => {
             <BsStar />
             Wishlist
           </span>
-          <span>2</span>
+          {wishlistCount > 0 && <span>{wishlistCount}</span>}
         </AccountMenuStyledListItem>
         <AccountMenuStyledListItem
           to={Links.accountRecent}
@@ -73,6 +100,7 @@ const AccountMenu = () => {
         <AccountMenuStyledListItem
           to={Links.accountProfile}
           active={pathname.includes("/logout")}
+          onClick={logout}
         >
           <span>
             <IoIosLogOut />

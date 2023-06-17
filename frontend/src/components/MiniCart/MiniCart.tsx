@@ -17,12 +17,13 @@ import {
 import { CgClose } from "react-icons/cg";
 
 import MiniCartItem from "./MiniCartItem";
-import Button from "components/Button/Button";
+import Button from "UI/Button/Button";
+import { useNavigate } from "react-router-dom";
 
 const MiniCart: React.FC = () => {
+  const navigate = useNavigate();
   const miniCartActive = useTypedSelector((state) => state.cart.MiniCartActive);
-  console.log(miniCartActive);
-
+  const cartCount = useTypedSelector((state) => state.cart.count);
   const dispatch = useTypedDispatch();
 
   return (
@@ -37,7 +38,7 @@ const MiniCart: React.FC = () => {
         >
           <MiniCartStyledInnerColumn>
             <MiniCartStyledHeader>
-              Your cart (4)
+              Your cart ({cartCount > 0 ? cartCount : "empty"})
               <CgClose
                 onClick={() => dispatch(CartActions.miniCartActiveToggle())}
               />
@@ -63,6 +64,10 @@ const MiniCart: React.FC = () => {
                 variant="solid"
                 size="large"
                 type="button"
+                onClick={() => {
+                  dispatch(CartActions.miniCartActiveToggle());
+                  navigate("/checkout");
+                }}
               >
                 Checkout
               </Button>

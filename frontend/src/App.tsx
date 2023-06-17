@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Links from "constants/links/Links";
 
 import Header from "components/Header/Header";
 import Subscribe from "components/Subscribe/Subscribe";
-import Footer from "components/Footer/Footer";
+import Footer from "modules/Footer/Footer";
 
 import HomePage from "pages/Home/HomePage";
 import BackDrop from "components/BackDrop/BackDrop";
@@ -21,17 +21,23 @@ import CheckOutPage from "pages/CheckOutPage/CheckOutPage";
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import AccountPage from "pages/AccountPage";
+import AccountPage from "pages/Account/AccountPage";
+import ContactsPage from "pages/Contacts/ContactsPage";
+import BlogPage from "pages/Blog/Blog";
+import { useTypedSelector } from "store/hooks";
 
 const stripePromise = loadStripe(
   "pk_test_51MEYeaEt3uw5zLqo1svTqEqOFiqW0O82IhfoNDjdDDbbWHZqDHHteFPht6exwl9prYuObR5tvVFU7vfURhTs8K21005M2gkIcw"
 );
 
 const App: React.FunctionComponent = () => {
+  const [loading, setLoading] = useState(true);
   const [backdrop, setBackdrop] = useState(false);
   const [login, setLogin] = useState(false);
   const [register, setRegister] = useState(false);
   const [review, setReview] = useState(false);
+
+  const user = useTypedSelector((state) => state.authSlice);
 
   const togglebackDrop = () => {
     setBackdrop(!backdrop);
@@ -53,6 +59,16 @@ const App: React.FunctionComponent = () => {
     setReview(!review);
   };
 
+  useEffect(() => {
+    window.addEventListener("load", () => {
+      setLoading(false);
+    });
+  }, []);
+
+  if (loading) {
+    return <p>Loading ...</p>;
+  }
+
   return (
     <div>
       <Header
@@ -61,8 +77,22 @@ const App: React.FunctionComponent = () => {
         togglebackDropRegister={togglebackRegister}
       />
       <BackDrop active={backdrop} />
-      {login && <Login toggleLogin={togglebackLogin} />}
-      {register && <Register toggleRegister={togglebackRegister} />}
+      {user.token.length <= 0 && (
+        <>
+          {login && (
+            <Login
+              toggleRegister={togglebackRegister}
+              toggleLogin={togglebackLogin}
+            />
+          )}
+          {register && (
+            <Register
+              toggleLogin={togglebackLogin}
+              toggleRegister={togglebackRegister}
+            />
+          )}
+        </>
+      )}
 
       {review && <ReviewModal onOpenReview={toggleReview} />}
 
@@ -90,16 +120,43 @@ const App: React.FunctionComponent = () => {
               }
             />
           </Route>
+          <Route path={Links.contacts} element={<ContactsPage />}>
+            <Route path={Links.contactStores} element={<ContactsPage />} />
+            <Route path={Links.contactsFAQ} element={<ContactsPage />} />
+          </Route>
 
           <Route path={Links.checkout} element={<CheckOutPage />} />
 
-          <Route path={Links.account} element={<AccountPage />}>
-            <Route path={Links.accountProfile} element={<AccountPage />} />
-            <Route path={Links.accountOrders} element={<AccountPage />} />
-            <Route path={Links.accountWislist} element={<AccountPage />} />
-            <Route path={Links.accountRecent} element={<AccountPage />} />
-            <Route path={Links.accountReviews} element={<AccountPage />} />
-          </Route>
+          {user.token.length > 0 && (
+            <Route path={Links.account} element={<AccountPage />}>
+              <Route path={Links.accountProfile} element={<AccountPage />} />
+              <Route path={Links.accountOrders} element={<AccountPage />} />
+              <Route path={Links.accountWislist} element={<AccountPage />} />
+              <Route path={Links.accountRecent} element={<AccountPage />} />
+              <Route path={Links.accountReviews} element={<AccountPage />} />
+            </Route>
+          )}
+          {user.token.length <= 0 && (
+            <Route path={Links.account} element={<Navigate to="/" />}>
+              <Route
+                path={Links.accountProfile}
+                element={<Navigate to="/" />}
+              />
+              <Route path={Links.accountOrders} element={<Navigate to="/" />} />
+              <Route
+                path={Links.accountWislist}
+                element={<Navigate to="/" />}
+              />
+              <Route path={Links.accountRecent} element={<Navigate to="/" />} />
+              <Route
+                path={Links.accountReviews}
+                element={<Navigate to="/" />}
+              />
+            </Route>
+          )}
+
+          {/* <Route path={Links.blog} element={<BlogPage />}></Route> */}
+          <Route path={Links.blog} element={<BlogPage />} />
         </Routes>
       </Elements>
       <Subscribe />

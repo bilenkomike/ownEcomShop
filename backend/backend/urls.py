@@ -12,6 +12,20 @@ from rest_framework_simplejwt.views import (
 )
 
 
+from drf_yasg import openapi
+from drf_yasg.views import get_schema_view as swagger_get_schema_view
+
+
+schema_view = swagger_get_schema_view(
+    openapi.Info(
+        title = 'E-commerce API',
+        default_version="1.0.0",
+        description="API docs",
+    ),
+    public=True
+)
+
+
 urlpatterns = [
     path('api-auth/', include('rest_framework.urls')),
     path("admin/", admin.site.urls),
@@ -32,4 +46,16 @@ urlpatterns = [
     path('api/contacts/', include('contacts.urls')),
     path('api/faq/', include('faq.urls')),
     path('api/subscription/', include('subscription.urls')),
-] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # for media
+    path('api/company-contacts/', include('companycontacts.urls')),
+    
+    
+    #api docs
+    path('api/docs/', include(
+        [
+            path('', schema_view.with_ui('swagger', cache_timeout=0), name="swagger-schema"),
+        ]
+    ))
+] 
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) # for media
+urlpatterns += static(settings.STATIC_URL, document_root = settings.STATIC_ROOT) # for static

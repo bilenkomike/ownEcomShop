@@ -47,7 +47,8 @@ class ProductPagesPagination(PageNumberPagination):
     
     page_size_query_param = 'perPage'
     
-    # max_page_size = 16
+    max_page_size = 16
+    
     
     def get_paginated_response(self, data):
         
@@ -75,8 +76,21 @@ class ReviewsPagesPagination(PageNumberPagination):
             'previous': self.get_previous_link(),
             'results': data,
         })
+<<<<<<< Updated upstream
    
 
+=======
+        
+        
+class ProductsNewArrivalsViewSet(generics.ListAPIView):
+    model = Product
+    serializer_class = ProductSerializer
+    pagination_class = ProductPagesPagination
+    queryset = Product.objects.all().order_by('-date_added')[:12]
+    
+    
+    
+>>>>>>> Stashed changes
 class ProductListView(generics.ListAPIView):
     model = Product
     serializer_class = ProductSerializer
@@ -169,15 +183,6 @@ class ProductDetailView(generics.RetrieveAPIView):
     model = Product
     serializer_class = ProductSerializer
     queryset = Product.objects.all()
-    
-    # def retrieve(self, request, *args, **kwargs):
-    #     product = self.get_object()
-    #     look = Look.objects.get(products__in=[product])
-    #     # look = 
-    #     # for prod in look.products:
-    #     #     if prod != product:
-    #     #         prod = 
-    #     return Response('some')
     
 class ProductDetailReviewView(generics.ListAPIView):
     serializer_class = ProductReviewSerialier
@@ -318,6 +323,6 @@ class ProductPricesViewSet(generics.RetrieveAPIView):
         serializermin = ProductPriceSerializer(pricemin, many=False)
             
         return Response({
-            "min": serializermin.data,
+            "   min": serializermin.data,
             "max": serializermax.data
         })

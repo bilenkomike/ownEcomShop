@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { TopBarStyled, TopBarStyledPositioned } from "./TopBar.styled";
+import {
+  TopBarStyled,
+  TopBarStyledPositioned,
+  TopBarStyledAngle,
+} from "./TopBar.styled";
 
-import Links from "constants/links/Links";
+// import Links from "constants/links/Links";
+import Links from "utils/routes/Links";
 
 import { TfiAngleDown } from "react-icons/tfi";
 import { HiOutlineUser } from "react-icons/hi";
@@ -13,12 +18,34 @@ import flag from "./images/flag-usa.png";
 import Currencies from "components/Currencies/Currencies";
 import Languages from "components/Languages/Languages";
 
+import { useTypedDispatch, useTypedSelector } from "store/hooks";
+import { toggleListCurrencies } from "store/CurrenciesSlice/currencies-slice";
+import { unSetUser } from "components/AuthComponents/Login/store/useAuth";
+
+// import {
+//   fetchCurrencies,
+//   selectCurrency,
+// } from "store/CurrenciesSlice/currencies-slice";
+
 const TopBar: React.FC<{
   toggleLogin: () => void;
   toggleRegister: () => void;
 }> = ({ toggleLogin, toggleRegister }) => {
-  const [toggleCurr, setToggleCur] = useState(false);
   const [toggleLangs, setToggleLangs] = useState(false);
+  const dispatch = useTypedDispatch();
+  const navigate = useNavigate();
+  const currency = useTypedSelector(
+    (state) => state.currencies.selectedCurrency
+  );
+  const open = useTypedSelector((state) => state.currencies.open);
+  const user = useTypedSelector((state) => state.authSlice);
+
+  const logout = () => {
+    dispatch(unSetUser());
+    navigate("/");
+  };
+
+  console.log(user);
 
   return (
     <TopBarStyled>
@@ -39,15 +66,27 @@ const TopBar: React.FC<{
           <TfiAngleDown />
         </span>{" "}
         <Languages active={toggleLangs} />/
-        <span no-hover="" onClick={() => setToggleCur(!toggleCurr)}>
-          {" "}
-          $<TfiAngleDown />
+        <span no-hover="" onClick={() => dispatch(toggleListCurrencies())}>
+          {currency !== null ? currency.symbol : ""}
+          <TopBarStyledAngle active={open}>
+            <TfiAngleDown />
+          </TopBarStyledAngle>
         </span>
-        <Currencies active={toggleCurr} />
+        <Currencies />
         <span>
           <HiOutlineUser />
-          <span onClick={toggleLogin}>Log in</span> /{" "}
-          <span onClick={toggleRegister}>Register</span>
+          {user.username.length <= 0 && (
+            <>
+              <span onClick={toggleLogin}>Log in</span>/
+              <span onClick={toggleRegister}>Register</span>
+            </>
+          )}
+          {user.username.length > 0 && (
+            <>
+              <Link to={Links.accountProfile}>Account</Link>/
+              <span onClick={logout}>Logout</span>
+            </>
+          )}
         </span>
       </TopBarStyledPositioned>
     </TopBarStyled>

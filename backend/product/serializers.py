@@ -14,9 +14,11 @@ from .models import (
     ProductBrand
 )
 
-
+from images.serializers import ImageSerializer
 from currencies.serializers import CurrencySerializer
 from look.serializers import LookSerializer
+from account.serializers import UserSerializer
+
 
 class ProductAttributeValuesSerializer(serializers.ModelSerializer):
     class Meta: 
@@ -47,7 +49,7 @@ class ProductAttributesSelectedSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = ProductSelectedAttributes
-        fields = ["attribute", 'values', 'qty']
+        fields = ["attribute", 'values']
 
 
 class ProductPriceSerializer(serializers.ModelSerializer):
@@ -89,6 +91,7 @@ class ProductSubCategorySerializer(serializers.ModelSerializer):
         
         
 class ProductReviewSerialier(serializers.ModelSerializer):
+    author = UserSerializer(many=False)
     class Meta:
         model  = ProductReview
         fields = "__all__"
@@ -101,15 +104,41 @@ class ProductBrandSerializer(serializers.ModelSerializer):
         
         
     
+<<<<<<< Updated upstream
+=======
+    
+class ProductMinifiedSerializer(serializers.ModelSerializer):
+    images = ImageSerializer(many=True)
+
+    prices = serializers.SerializerMethodField(read_only=True)
+    type = serializers.StringRelatedField(many=False)
+    category = serializers.StringRelatedField(many=False)
+    subcategory = serializers.StringRelatedField(many=False)
+    attributes = serializers.SerializerMethodField(read_only=True)
+    
+    brand = ProductBrandSerializer(read_only=True, many=False)
+    
+    class Meta:
+        model = Product
+        fields = '__all__'
+        
+    def get_prices(self, obj):
+        prices = obj.productprices_set.all()
+        serializer = ProductPriceSerializer(prices, many=True)
+        return serializer.data
+    
+    def get_attributes(self, obj):
+        attrs = obj.productselectedattributes_set.all()
+        
+        serializer = ProductAttributesSelectedSerializer(attrs, many=True)
+        return serializer.data
+>>>>>>> Stashed changes
 
 
 class ProductSerializer(serializers.ModelSerializer):
         
-    
-    image_1 = serializers.ImageField()
-    image_2 = serializers.ImageField(required=False)
-    image_3 = serializers.ImageField(required=False)
-    image_4 = serializers.ImageField(required=False)
+    images = ImageSerializer(many=True)
+
     video = serializers.FileField(required=False)
     
     prices = serializers.SerializerMethodField(read_only=True)

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import ProductInterface from "./types/Product.types";
-import Button from "components/Button/Button";
+import ProductInterface, { ProductCartInterface } from "./types/Product.types";
+import Button from "UI/Button/Button";
 import Rating from "components/Rating/Rating";
 import ProductAttributes from "components/ProductAttributes/ProductAttributes";
 // import { Link } from "react-router-dom";
@@ -22,46 +22,63 @@ import {
 
 import { TfiAngleLeft, TfiAngleRight } from "react-icons/tfi";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import API_URL, { IMG_URL } from "config";
 
-const Product: React.FC<ProductInterface> = ({
+const Product: React.FC<ProductCartInterface> = ({
   id,
-  name,
+  title,
   price,
+  prices,
   rating = 0,
   sale = 0,
   wishlist = false,
   size,
   gallary,
   attributes = [],
-  currency,
+  currency = "$",
 }) => {
   const [selectedImage, setSelectedImage] = useState(0);
+  const gall = [];
+
+  for (const img of gallary) {
+    if (img !== null) {
+      gall.push(img);
+    }
+  }
+  // prices.map((price) => console.log(price.currency.symbol));
+  // console.log(
+  //   prices.find((price) => price.currency.symbol === currency)!.amount
+  // );
+
+  const newPrice = prices.find((price) => price.currency.symbol === currency)!;
+
+  console.log(title, "PRODUCT");
 
   return (
     <ProductStyled size={size}>
       {/* <Link to={`/product/${id}`}> */}
       {sale > 0 && <ProductStyledSale>-{sale}%</ProductStyledSale>}
       <ProductStyledGalary>
-        {gallary.length > 1 && (
+        {gall.length > 1 && (
           <>
             <ProductStyledGallaryButton
               left
               onClick={() =>
                 selectedImage < 1
-                  ? setSelectedImage(gallary.length - 1)
+                  ? setSelectedImage(gall.length - 1)
                   : setSelectedImage(selectedImage - 1)
               }
             >
               <TfiAngleLeft />
             </ProductStyledGallaryButton>
 
-            {gallary.map((image, index) => (
+            {gall.map((image, index) => (
               <ProductStyledImage
                 key={image}
                 index={index}
                 current={selectedImage}
-                src={image}
-                alt={name.concat(`${index}`)}
+                src={`${IMG_URL}${image}`}
+                alt={title.concat(`${index}`)}
                 active={index === selectedImage}
               />
             ))}
@@ -69,7 +86,7 @@ const Product: React.FC<ProductInterface> = ({
             <ProductStyledGallaryButton
               left={false}
               onClick={() =>
-                selectedImage > gallary.length - 2
+                selectedImage > gall.length - 2
                   ? setSelectedImage(0)
                   : setSelectedImage(selectedImage + 1)
               }
@@ -78,12 +95,12 @@ const Product: React.FC<ProductInterface> = ({
             </ProductStyledGallaryButton>
           </>
         )}
-        {gallary.length === 1 && (
+        {gall.length === 1 && (
           <ProductStyledImage
             index={0}
             current={selectedImage}
-            src={gallary[selectedImage]}
-            alt={name}
+            src={`${IMG_URL}${gall[selectedImage]}`}
+            alt={title}
             active={0 === selectedImage}
           />
         )}
@@ -94,18 +111,20 @@ const Product: React.FC<ProductInterface> = ({
       </ProductStyledGalary>
       <ProductStyledDescription>
         <div>
-          <ProductStyledTitle>{name}</ProductStyledTitle>
+          <ProductStyledTitle>{title}</ProductStyledTitle>
           <ProductStyledPrice>
             <ProductStyledPriceText sale={sale > 0}>
-              {sale === 0 && `${currency} ${price}`}
+              {sale === 0 && `${currency} ${newPrice.amount}`}
               {sale > 0 &&
-                `${currency} ${(price - (price * sale) / 100).toFixed(2)}`}
+                `${currency} ${
+                  newPrice.amount - (newPrice.amount * sale) / 100
+                }`}
             </ProductStyledPriceText>
 
             {sale > 0 && (
               <ProductStyledPriceSaleFrom>
                 {currency}
-                {price}
+                {newPrice.amount}
               </ProductStyledPriceSaleFrom>
             )}
           </ProductStyledPrice>

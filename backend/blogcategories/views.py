@@ -10,6 +10,7 @@ class BlogCategoriesViews(generics.ListAPIView):
     serializer_class = BlogCategorySerializer
     queryset = BlogCategory.objects.all()
     
+    
 class BlogCategoryDetailsView(generics.RetrieveAPIView):
     queryset = BlogCategory.objects.all()
     serializer_class = BlogCategorySerializer

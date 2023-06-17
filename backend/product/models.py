@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import datetime
 from random import randint
+from images.models import Image
 # Create your models here.
 from currencies.models import Currency
 from django.contrib.auth.models import User
@@ -40,15 +41,22 @@ class ProductBrand(models.Model):
     def __str__(self):
         return self.name
 
+
+    # image_1 =       models.ImageField(upload_to='products/%Y/%m/%d/%h-%i-%s', null=False, blank=False)
+    # image_2 =       models.ImageField(upload_to='products/%Y/%m/%d/%h-%i-%s', null=True, blank=True) 
+    # image_3 =       models.ImageField(upload_to='products/%Y/%m/%d/%h-%i-%s', null=True, blank=True)
+    # image_4 =       models.ImageField(upload_to='products/%Y/%m/%d/%h-%i-%s', null=True, blank=True)
+
 class Product(models.Model):
+    
+ 
+    
     title =         models.CharField(max_length=255)
     brand =         models.ForeignKey(ProductBrand, on_delete=models.CASCADE, default=1)
     art_no =        models.CharField(max_length=9, default = articul_number, editable=False)
     qty =           models.IntegerField(default=0)
-    image_1 =       models.ImageField(upload_to='products/%Y/%m/%d/%h-%i-%s', null=False, blank=False)
-    image_2 =       models.ImageField(upload_to='products/%Y/%m/%d/%h-%i-%s', null=True, blank=True) 
-    image_3 =       models.ImageField(upload_to='products/%Y/%m/%d/%h-%i-%s', null=True, blank=True)
-    image_4 =       models.ImageField(upload_to='products/%Y/%m/%d/%h-%i-%s', null=True, blank=True)
+    images =        models.ManyToManyField(Image)
+   
     video =         models.FileField(upload_to='videos/%Y/%m/%d/%h-%i-%s',blank=True, verbose_name="", null=True)
     sale =          models.IntegerField(default=0)
     rating =        models.IntegerField(default=0,editable=False)
@@ -134,7 +142,11 @@ class ProductSelectedAttributes(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     attribute = models.ManyToManyField(ProductAttribute)
     values = models.ManyToManyField(ProductAttributeValues)
+<<<<<<< Updated upstream
     qty = models.IntegerField(default=0)
+=======
+    # qty = models.IntegerField(default=0)
+>>>>>>> Stashed changes
     
     def __str__(self):
         
