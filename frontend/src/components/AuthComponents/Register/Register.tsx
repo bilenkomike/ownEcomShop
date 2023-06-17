@@ -14,16 +14,64 @@ import {
 } from "./Register.styled";
 
 import { TfiClose } from "react-icons/tfi";
+import axios from "axios";
+import API_URL from "config";
+import { useNavigate } from "react-router-dom";
+import { useTypedDispatch } from "store/hooks";
+import { setAuth } from "../Login/store/useAuth";
+import Links from "utils/routes/Links";
 
-const Register: React.FC<{ toggleRegister: () => void }> = ({
-  toggleRegister,
-}) => {
+const Register: React.FC<{
+  toggleRegister: () => void;
+  toggleLogin: () => void;
+}> = ({ toggleRegister, toggleLogin }) => {
+  const navigate = useNavigate();
+  const dispatch = useTypedDispatch();
+
+  const [fullname, setFullname] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+
+  const [expires, setExpires] = useState(false);
+
+  const submit = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    if (password !== passwordConfirm) {
+      return;
+    }
+
+    axios
+      .post(`${API_URL}account/register/`, {
+        email,
+        fullname,
+        password,
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          dispatch(setAuth({ ...response.data, expires: expires ? 7 : 1 }));
+          setFullname("");
+          setEmail("");
+          setPassword("");
+          setPasswordConfirm("");
+          navigate(Links.accountProfile);
+          toggleRegister();
+        }
+      });
+  };
+
+  const linkClick = () => {
+    toggleLogin();
+    toggleRegister();
+  };
 
   return (
     <RegisterStyled onClick={toggleRegister}>
-      <RegisterStyledForm onClick={(e) => e.stopPropagation()}>
+      <RegisterStyledForm
+        onClick={(e) => e.stopPropagation()}
+        onSubmit={submit}
+      >
         <RegisterStyledCloseButton
           type="button"
           id="close-register"
@@ -44,8 +92,8 @@ const Register: React.FC<{ toggleRegister: () => void }> = ({
           label="Full name"
           type="text"
           variant="default"
-          onChange={setEmail}
-          value={email}
+          onChange={setFullname}
+          value={fullname}
           placeholder="Your full name"
         />
         <Input
@@ -72,12 +120,16 @@ const Register: React.FC<{ toggleRegister: () => void }> = ({
           label="Confirm Password"
           type="password"
           variant="default"
-          onChange={setPassword}
-          value={password}
+          onChange={setPasswordConfirm}
+          value={passwordConfirm}
           placeholder="Your working password again"
         />
 
-        <CheckBox text="Remember me" />
+        <CheckBox
+          text="Remember me"
+          checked={expires}
+          onChange={() => setExpires(!expires)}
+        />
 
         <Button
           variant="solid"
@@ -89,7 +141,7 @@ const Register: React.FC<{ toggleRegister: () => void }> = ({
         </Button>
         <div>
           Have an account?{" "}
-          <RegisterStyledLink to="/"> Sign in </RegisterStyledLink>
+          <RegisterStyledLink onClick={linkClick}> Sign in </RegisterStyledLink>
         </div>
 
         <RegisterStyledAddition>

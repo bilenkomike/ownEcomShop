@@ -83,7 +83,9 @@ export const RegisterStyledSubTitle = styled.h3`
   color: ${Colors.gray700};
 `;
 
-export const RegisterStyledLink = styled(Link)`
+export const RegisterStyledLink = styled.span`
+  cursor: pointer;
+
   color: ${Colors.primary};
 `;
 

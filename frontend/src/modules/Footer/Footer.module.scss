@@ -1,22 +1,20 @@
-import styled from "styled-components";
-import Colors from "../../constants/ui/colors/Colors";
-import HexToRGBA from "../../constants/ui/colors/colorsHelpers/HexToRGBA";
+@import "../../utils/colors/colors.scss";
 
-export const FooterStyled = styled.footer`
+.footer {
   padding: 60px 0 0;
-  background-color: ${Colors.gray900};
-`;
+  background-color: $gray900;
+}
 
-export const FooterStyledContent = styled.div`
+.footer__content {
   display: flex;
   justify-content: space-between;
 
   padding: 0px 17.9% 32px;
   align-items: center;
 
-  color: ${Colors.white};
+  color: $white;
 
-  border-bottom: 1px solid ${HexToRGBA(Colors.white, 0.5)};
+  border-bottom: 1px solid rgba($white, 0.5);
   &:first-child {
     align-items: flex-start;
   }
@@ -31,15 +29,17 @@ export const FooterStyledContent = styled.div`
       opacity: 1;
     }
   }
-`;
 
-export const FooterStyledCopyRight = styled.span`
+  cursor: pointer;
+}
+
+.footer__copyright {
   & > svg {
-    color: ${Colors.primary};
+    color: $primary;
   }
-`;
+}
 
-export const FooterStyledList = styled.div`
+.footer__list {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -52,8 +52,9 @@ export const FooterStyledList = styled.div`
   &:last-child {
     margin-right: 0;
   }
-`;
-export const FooterStyledListItem = styled.div`
+}
+
+.footer__list__item {
   display: flex;
   opacity: 0.6;
   justify-content: space-between;
@@ -61,18 +62,18 @@ export const FooterStyledListItem = styled.div`
 
   & > strong {
     opacity: 1;
-    color: ${Colors.white};
+    color: $white;
   }
 
   & > button {
     margin-right: 5px;
   }
-`;
+}
 
-export const FooterStyledListTitle = styled.h3`
+.footer__list__title {
   padding: 0;
   margin: 0;
 
   font-weight: 700;
   text-transform: uppercase;
-`;
+}

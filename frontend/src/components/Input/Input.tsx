@@ -59,6 +59,7 @@ const Input: React.FC<InputInterface> = ({
     <InputStyledCOntainer>
       {label && <InputStyledLabel htmlFor={id}>{label}</InputStyledLabel>}
       <InputStyled
+        autoComplete="off"
         readOnly={type === "select"}
         inputType={type}
         onClick={() => type === "select" && setSelect(!select)}

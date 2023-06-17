@@ -34,10 +34,14 @@ const PaymentMethod = () => {
   const addPaypalScript = () => {
     const script = document.createElement("script");
     script.type = "text/javascript";
+
+    // AXtqLwrqfSIBuWqJnyjNmknbZ2Ayc_qD-5Rg9oStg0tenP1WP9Qh2cozzOp8CAQ_-ZEOB5Q8UpSq_FG3
+    //
     script.src =
-      "https://www.paypal.com/sdk/js?client-id=AXtqLwrqfSIBuWqJnyjNmknbZ2Ayc_qD-5Rg9oStg0tenP1WP9Qh2cozzOp8CAQ_-ZEOB5Q8UpSq_FG3";
+      "https://www.paypal.com/sdk/js?client-id=ARRA1TuvbCMOqsrfYkyHsetsQIsOQvh8U2PWCEwsXzv_xNKYxEkxnJavTpHPyJsKETAAoAgNEQJzpm9r";
     script.async = true;
     script.onload = () => {
+      console.log("lalalla");
       // setSdkReady(true);
     };
 

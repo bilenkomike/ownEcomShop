@@ -8,9 +8,16 @@ import BreadCrumbs from "components/BreadCrumbs/BreadCrumbs";
 import Container from "components/Container/Container";
 import Links from "constants/links/Links";
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
+import { useTypedSelector } from "store/hooks";
 
 const AccountPage = () => {
+  const user = useTypedSelector((state) => state.authSlice);
+  const navigate = useNavigate();
+  if (user.token === "") {
+    console.log(user);
+    navigate("/");
+  }
   return (
     <>
       <BreadCrumbs

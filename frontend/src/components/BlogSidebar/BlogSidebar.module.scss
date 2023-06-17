@@ -1,0 +1,137 @@
+@import "../../utils/colors/colors.scss";
+
+.blog__sidebar {
+  display: block;
+  width: 30%;
+
+  &__search {
+    & > div > input {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    color: $gray900;
+    font-family: "Lato";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  &__list {
+    display: block;
+    margin-top: 24px;
+  }
+
+  &__category__item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 4px 0;
+
+    font-style: normal;
+    font-family: "Lato";
+    font-weight: 700;
+    font-size: 16px;
+    color: $gray800;
+
+    & > h5 {
+      font-style: normal;
+      font-family: "Lato";
+      font-weight: 700;
+      font-size: 16px;
+      color: $gray800;
+      transition: all 0.2s linear;
+    }
+
+    &.active {
+      color: $primary;
+
+      & > h5 {
+        color: $primary;
+      }
+    }
+
+    &:hover {
+      color: $primary;
+
+      & > h5 {
+        color: $primary;
+      }
+    }
+
+    &:first-child {
+      padding-top: 0;
+    }
+
+    &:last-child {
+      padding-bottom: 0;
+    }
+
+    cursor: pointer;
+    transition: all 0.2s linear;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+}
+
+.blog__feature__post {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+
+  &__image {
+    display: block;
+    width: 100px;
+    height: 100px;
+
+    border-radius: 4px;
+
+    object-fit: cover;
+  }
+
+  &__content {
+    width: calc(100% - 120px);
+
+    &__title {  
+      display: block;
+      margin-top: 4px;
+
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 16px;
+      color: $gray900;
+      line-height: 1.3;
+
+      transition: all 0.1s linear;
+    }
+
+    &__date {
+      display: flex;
+      align-items: center;
+
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      color: $gray700;
+
+      & > svg {
+        margin-right: 5px;
+      }
+    }
+  }
+
+  &:hover &__content__title {
+    color: $primary;
+  }
+
+  cursor: pointer;
+}

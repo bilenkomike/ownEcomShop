@@ -8,16 +8,6 @@ export const backGroundColor = (
   size: Size
 ) => {
   if (size !== "social") {
-    switch (styleType) {
-      case "default":
-        return variant === "solid" ? Colors.primary : "transparent";
-      case "secondary":
-        return variant === "solid" ? Colors.gray300 : "transparent";
-      case "dark":
-        return variant === "solid" ? Colors.gray800 : "transparent";
-      case "light":
-        return variant === "solid" ? Colors.white : "transparent";
-    }
   } else {
     switch (styleType) {
       case "default":
@@ -38,16 +28,6 @@ export const borderColor = (
   size?: Size
 ) => {
   if (size !== "social") {
-    switch (styleType) {
-      case "default":
-        return `1px solid ${Colors.primary}`;
-      case "secondary":
-        return `1px solid ${Colors.gray400}`;
-      case "dark":
-        return `1px solid ${Colors.gray800}`;
-      case "light":
-        return `1px solid ${Colors.white}`;
-    }
   } else {
     return variant === "solid" ? "none" : `1px solid ${Colors.gray400}`;
   }
@@ -55,16 +35,6 @@ export const borderColor = (
 
 export const color = (variant: Variant, styleType: StyleType, size: Size) => {
   if (size !== "social") {
-    switch (styleType) {
-      case "default":
-        return variant === "solid" ? Colors.white : Colors.primary;
-      case "secondary":
-        return Colors.gray800;
-      case "dark":
-        return variant === "solid" ? Colors.white : Colors.gray800;
-      case "light":
-        return variant === "solid" ? Colors.gray800 : Colors.white;
-    }
   } else {
     switch (styleType) {
       case "default":
@@ -264,31 +234,3 @@ export const disabledHover = (
 //       : "transparent";
 //   case "light":
 //     return variant === "solid" ? Colors.gray100 : "transparent";
-
-export const size = (size: Size) => {
-  switch (size) {
-    case "social":
-      return "8px";
-    case "small":
-      return "12px 24px";
-
-    case "default":
-      return "15px 32px";
-    case "large":
-      return "18px 40px";
-  }
-};
-
-export const fontSize = (size: Size) => {
-  switch (size) {
-    case "social":
-      return "16px";
-    case "small":
-      return "12px ";
-
-    case "default":
-      return "14px";
-    case "large":
-      return "16px";
-  }
-};

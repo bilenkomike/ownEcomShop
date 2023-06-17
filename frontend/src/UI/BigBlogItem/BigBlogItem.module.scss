@@ -1,0 +1,75 @@
+@import "../../utils/colors/colors.scss";
+
+.big__post {
+  display: block;
+  width: 100%;
+  margin-bottom: 58px;
+
+  &__image {
+    display: block;
+    width: 100%;
+
+    border-radius: 4px;
+
+    object-fit: cover;
+  }
+
+  &__content {
+    display: block;
+
+    &__header {
+      display: flex;
+      width: 100%;
+      margin-top: 16px;
+      align-items: center;
+
+      &__text {
+        display: flex;
+        align-items: center;
+        font-family: "Lato";
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        color: $gray700;
+
+        & > svg {
+          margin-right: 5px;
+        }
+      }
+
+      &__divider {
+        display: block;
+        margin: 0 12px;
+        height: 12px;
+        background-color: $gray700;
+        width: 1px;
+      }
+    }
+
+    &__title {
+      display: block;
+      margin: 8px 0;
+
+      font-family: "Lato";
+      font-style: normal;
+      font-weight: 700;
+      font-size: 20px;
+      color: $gray900;
+
+      transition: all 0.1s linear;
+    }
+
+    &__description {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      color: $gray800;
+      line-height: 1.5;
+    }
+  }
+
+  &:hover &__content__title {
+    color: $primary;
+  }
+
+  cursor: pointer;
+}

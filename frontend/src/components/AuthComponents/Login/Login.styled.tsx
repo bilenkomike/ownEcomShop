@@ -88,8 +88,9 @@ export const LoginStyledSubTitle = styled.h3`
   color: ${Colors.gray700};
 `;
 
-export const LoginStyledLink = styled(Link)`
+export const LoginStyledLink = styled.span`
   color: ${Colors.primary};
+  cursor: pointer;
 `;
 
 export const LoginStyledAddition = styled.div`

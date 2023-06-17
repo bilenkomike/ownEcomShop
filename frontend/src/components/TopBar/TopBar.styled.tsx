@@ -33,7 +33,8 @@ export const TopBarStyledPositioned = styled.div<{ centered?: boolean }>`
   text-align: center;
   color: ${Colors.gray600};
   & > a,
-  & > span {
+  & > span,
+  & > span > a {
     flex: 1;
     justify-content: space-between;
     align-items: center;
